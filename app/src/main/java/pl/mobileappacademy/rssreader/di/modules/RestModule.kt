@@ -8,21 +8,22 @@ import retrofit2.Retrofit
 import javax.inject.Singleton
 
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
 @Module
 class RestModule {
 
-    @Provides
-    @Singleton
-    fun provideGson() = Gson()
+    //@Provides
+    //@Singleton
+    //fun provideGson() = Gson()
 
     @Provides
     @Singleton
-    fun provideRetrofit(gson: Gson) : Retrofit {
+    fun provideRetrofit() : Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create(gson)).build()
+            .baseUrl("https://www.tvn24.pl/najnowsze.xml")
+            .addConverterFactory(SimpleXmlConverterFactory.create()).build()
     }
 
     @Provides
