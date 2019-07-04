@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.blank_fragment_1_fragment.*
+import pl.mobileappacademy.rssreader.App
+import pl.mobileappacademy.rssreader.Injector
 
 import pl.mobileappacademy.rssreader.R
 
@@ -34,12 +36,12 @@ class BlankFragment1 : Fragment() {
         viewModel = ViewModelProviders.of(this).get(BlankFragment1ViewModel::class.java)
         // TODO: Use the ViewModel
 
-        button3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.blankFragment2, null))
+        button3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.mainPage, null))
 
         button1.setOnClickListener {
             findNavController().navigate(R.id.blankFragment2)
         }
-
+        viewModel.showToast()
     }
 
 }
