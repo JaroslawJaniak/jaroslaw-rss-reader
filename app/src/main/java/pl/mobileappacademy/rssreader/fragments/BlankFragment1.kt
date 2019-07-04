@@ -12,11 +12,11 @@ import kotlinx.android.synthetic.main.blank_fragment_1_fragment.*
 
 import pl.mobileappacademy.rssreader.R
 
-class BlankFragment_1 : Fragment() {
+class BlankFragment1 : Fragment() {
 
 
     companion object {
-        fun newInstance() = BlankFragment_1()
+        fun newInstance() = BlankFragment1()
     }
 
     private lateinit var viewModel: BlankFragment1ViewModel
