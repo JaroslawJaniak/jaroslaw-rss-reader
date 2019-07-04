@@ -4,7 +4,7 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
             app:startDestination="@id/blankFragment_1">
 
-    <fragment android:id="@+id/blankFragment_1" android:name="pl.mobileappacademy.rssreader.fragments.BlankFragment_1"
+    <fragment android:id="@+id/blankFragment_1" android:name="pl.mobileappacademy.rssreader.fragments.BlankFragment1"
               android:label="blank_fragment_1_fragment" tools:layout="@layout/blank_fragment_1_fragment">
 
         <action android:id="@+id/action_blankFragment_1_to_blankFragment2" app:destination="@id/blankFragment2"/>
