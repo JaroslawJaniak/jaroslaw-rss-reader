@@ -1,13 +1,6 @@
 package pl.mobileappacademy.rssreader.di
 
 
-//import com.example.myapplication.di.modules.RestModule
-//import com.example.myapplication.di.modules.TestModule
-//import com.example.myapplication.pages.TestFragment1ViewModel
-//import com.example.myapplication.pages.TestFragment_1
-
-
-
 import dagger.Component
 import dagger.Module
 import pl.mobileappacademy.rssreader.di.modules.AppModule
