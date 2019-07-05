@@ -41,6 +41,8 @@ class BlankFragment1 : Fragment() {
         button1.setOnClickListener {
             findNavController().navigate(R.id.blankFragment2)
         }
+
+
         viewModel.showToast()
     }
 

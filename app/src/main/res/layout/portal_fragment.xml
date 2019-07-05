@@ -10,14 +10,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="12dp"
-            android:text="main: go to frag 1"
+            android:text="portal: go to frag 1"
             android:textColor="#FFF"
             android:backgroundTint="@color/colorPrimaryDark"
             android:elevation="@dimen/fab_margin"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:id="@+id/portal_recycle_view"
+    />
 
 
 </LinearLayout>

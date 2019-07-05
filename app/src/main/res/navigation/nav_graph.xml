@@ -18,6 +18,8 @@
 
     <fragment android:id="@+id/blankFragment2" android:name="pl.mobileappacademy.rssreader.fragments.BlankFragment2"
               android:label="blank_fragment2_fragment" tools:layout="@layout/blank_fragment2_fragment"/>
+    <fragment android:id="@+id/portalFragment" android:name="pl.mobileappacademy.rssreader.fragments.PortalFragment"
+              android:label="PortalFragment"/>
 
 
 </navigation>

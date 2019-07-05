@@ -31,7 +31,7 @@ class MainPage : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MainPageViewModel::class.java)
         // TODO: Use the ViewModel
 
-        button4.setOnClickListener {
+        button5.setOnClickListener {
             findNavController().navigate(R.id.blankFragment_1)
         }
     }

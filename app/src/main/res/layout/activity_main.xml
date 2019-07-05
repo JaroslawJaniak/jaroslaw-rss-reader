@@ -7,6 +7,17 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+    <pl.mobileappacademy.rssreader.fragments.topBar.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+    </pl.mobileappacademy.rssreader.fragments.topBar.TopBar>
+
+
     <fragment
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -18,8 +29,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
 
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph" />
-
-
+            app:navGraph="@navigation/nav_graph" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="1.0" android:layout_marginTop="48dp">
+    </fragment>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

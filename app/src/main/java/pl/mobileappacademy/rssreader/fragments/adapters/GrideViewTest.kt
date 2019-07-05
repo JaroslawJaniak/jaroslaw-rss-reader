@@ -3,21 +3,35 @@ package pl.mobileappacademy.rssreader.fragments.adapters
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent
 import android.widget.BaseAdapter;
 import android.widget.ImageView
 import android.widget.TextView;
+import pl.mobileappacademy.rssreader.models.Portal
+//import java.awt.print.Book
+//import java.awt.print.Book
 
 
 
-public class MainPageAdapter: BaseAdapter() {
+
+
+
+
+public class GrideViewTest: BaseAdapter() {
 
 
     //internal var feedIcons: Array<Int>? = null
 
     internal var feedIcons = arrayOfNulls<Int>(8)
-    internal var imageView: ImageView? = null
-    //private val mContext: Context? = null
+    //internal var imageView: ImageView? = null
 
+    private var mContext: Context? = null
+    private var portals: Array<Portal>? = null
+
+    fun MainPageAdapter(context: Context, portals: Array<Portal>) {
+        this.mContext = context
+        this.portals = portals
+    }
 
 
     override fun getItemId(p0: Int): Long {
@@ -26,22 +40,24 @@ public class MainPageAdapter: BaseAdapter() {
 
     override fun getCount(): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return portals!!.size
     }
 
-    override fun getItem(p0: Int): Any {
+    override fun getItem(p0: Int): Any? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return null;
     }
 
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-        //val textView = TextView(mContext)
-        //textView.setText(String.valueOf(p0))
+        val textView = TextView(mContext)
+        textView.setText("some text...")
 
-        //return textView
+        return textView
     }
 
-    private val  mContext: Context? = null
+
 
 
 

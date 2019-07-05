@@ -34,7 +34,7 @@ class BlankFragment2 : Fragment() {
         // TODO: Use the ViewModel
 
         button2.setOnClickListener {
-            findNavController().navigate(R.id.blankFragment_1)
+            findNavController().navigate(R.id.portalFragment)
         }
 
 

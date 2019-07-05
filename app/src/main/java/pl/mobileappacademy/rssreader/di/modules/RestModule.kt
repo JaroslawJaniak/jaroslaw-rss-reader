@@ -13,16 +13,12 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 @Module
 class RestModule {
 
-    //@Provides
-    //@Singleton
-    //fun provideGson() = Gson()
-
     @Provides
     @Singleton
     fun provideRetrofit() : Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("https://www.tvn24.pl/najnowsze.xml")
+            .baseUrl("https://www.tvn24.pl/")
             .addConverterFactory(SimpleXmlConverterFactory.create()).build()
     }
 
