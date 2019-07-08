@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.blank_fragment_1_fragment.*
+import kotlinx.android.synthetic.main.topbar_view.*
 import pl.mobileappacademy.rssreader.App
 import pl.mobileappacademy.rssreader.Injector
 
@@ -41,6 +42,7 @@ class BlankFragment1 : Fragment() {
         button1.setOnClickListener {
             findNavController().navigate(R.id.blankFragment2)
         }
+
 
 
         viewModel.showToast()

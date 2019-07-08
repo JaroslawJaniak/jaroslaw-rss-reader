@@ -1,42 +1,58 @@
 package pl.mobileappacademy.rssreader
 
 
+import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.activity_main.*
+import pl.mobileappacademy.rssreader.fragments.PortalFragment
 import pl.mobileappacademy.rssreader.fragments.topBar.TopBar
 
+
+
+
+
 class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
-    override fun onBackClick() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
+    private lateinit var topBar: TopBar
+    //lateinit var text: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        findViews()
+        setListeners()
+        onNewIntent(intent)
 
-        //Injector.reInit(application)
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
-        lateinit var topBar: TopBar
+        //setting title according to fragment
+        navController.addOnDestinationChangedListener {
+                controller, destination, arguments ->
+                topBar.setTopBarTitle(navController.currentDestination?.label as String)
 
-        fun getTopBar(): TopBar {
-            return topBar
+            //toolbar.title = navController.currentDestination?.label
+            //text = navController.currentDestination?.label as String
         }
 
-        fun onBackClick() {
-            onBackPressed()
-        }
+        Injector.reInit(application)
 
-        fun findViews() {
-            //topBar = findViewById(R.id.top_bar)
-        }
+    }
 
-        fun setListeners() {
-            topBar.setTopBarListener(this)
-        }
+    fun onBackClick() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
+    private fun findViews() {
 
+        topBar = findViewById(R.id.top_bar)
+    }
 
+    private fun setListeners() {
+        topBar.setTopBarListener(this)
     }
 }
 

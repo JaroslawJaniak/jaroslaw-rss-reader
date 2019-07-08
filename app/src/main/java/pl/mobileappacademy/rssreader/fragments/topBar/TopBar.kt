@@ -40,6 +40,6 @@ class TopBar @JvmOverloads constructor(
     }
 
     interface AppTopBarListener{
-        fun onBackClick()
+        //fun onBackClick()
     }
 }

@@ -6,32 +6,34 @@ package pl.mobileappacademy.rssreader.fragments.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 import kotlinx.android.synthetic.main.item_portal.view.*
 import pl.mobileappacademy.rssreader.R
+import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
 import pl.mobileappacademy.rssreader.models.Portal
 
-class PortalAdapter(private val dataList:List<Portal>?) : RecyclerView.Adapter<PortalAdapter.PostViewHolder>()
+class PortalAdapter() : BaseRecyclerAdapter<Portal, PortalAdapter.PortalViewHolder>()
 {
-    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): PostViewHolder {
+    override fun onBindViewHolder(holder: PortalViewHolder, item: Portal, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val item = items[position]
+        holder.itemView.item_portal_name.text = item.name
+        holder.itemView.item_portal_name.text=item.imageUrl
+    }
+
+
+
+
+    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): PortalViewHolder {
         val itemView=LayoutInflater.from(viewGroup.context).inflate(R.layout.item_portal,viewGroup,false)
 
-        return PostViewHolder(itemView)
+        return PortalViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int {
-        return dataList?.size ?: 0
-    }
-
-    override fun onBindViewHolder(postViewHolder: PostViewHolder, position: Int) {
-        val item=dataList?.get(position)
-
-        // ??? -> portalViewHolder.itemView.portal_textView1.text="aaaaaa"
-        postViewHolder.itemView.portal_textView2.text="bbbbbb"
-    }
-
-
-    inner class PostViewHolder internal  constructor(view: View) :RecyclerView.ViewHolder(view)
+    inner class PortalViewHolder internal  constructor(view: View) :RecyclerView.ViewHolder(view)
 
 }
+
