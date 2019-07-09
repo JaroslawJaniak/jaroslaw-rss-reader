@@ -45,7 +45,7 @@ class HomeFragment : BaseFragment() {
             adapter = homeAdapter
         }
 
-        home_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.blankFragment_1, null))
+        //home_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.blankFragment_1, null))
     }
 
 }

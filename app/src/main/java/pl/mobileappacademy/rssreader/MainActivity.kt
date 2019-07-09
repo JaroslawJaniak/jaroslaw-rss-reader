@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
         findViews()
         setListeners()
 
+
+
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
