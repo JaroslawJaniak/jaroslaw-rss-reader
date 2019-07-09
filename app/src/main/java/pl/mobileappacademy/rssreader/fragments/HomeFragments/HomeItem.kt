@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.simpleframework.xml.Element
 
-@Entity(tableName = "portals")
+@Entity(tableName = "homeItemsTableName")
 data class HomeItem(
 
     @PrimaryKey val id: Int? = -1,

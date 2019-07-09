@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeItem
 import pl.mobileappacademy.rssreader.models.Portal
 
 
