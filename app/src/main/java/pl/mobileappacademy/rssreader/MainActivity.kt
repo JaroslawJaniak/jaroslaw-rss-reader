@@ -6,10 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import pl.mobileappacademy.rssreader.fragments.topBar.TopBar
 
-
-
-
-
 class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
 
     private lateinit var topBar: TopBar
@@ -37,7 +33,7 @@ class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
         Injector.reInit(application)
 
     }
-    
+
     private fun findViews() {
 
         topBar = findViewById(R.id.top_bar)

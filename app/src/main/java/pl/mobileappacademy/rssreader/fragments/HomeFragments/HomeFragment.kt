@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.blank_fragment_1_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.portal_fragment.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
+import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeViewModel
 import pl.mobileappacademy.rssreader.fragments.adapters.HomeAdapter
 
 
@@ -24,7 +22,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private lateinit var viewModel: HomeViewModel
-    private val adapter by lazy { HomeAdapter() }
+    private val homeAdapter by lazy { HomeAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +37,12 @@ class HomeFragment : BaseFragment() {
 
         // TODO: Use the ViewModel
 
-        adapter.items = viewModel.getHomeListView()
+        homeAdapter.items = viewModel.getHomeListView()
 
         home_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             //adapter = this@HomeFragment.adapter
-            adapter = adapter
+            adapter = homeAdapter
         }
 
         home_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.blankFragment_1, null))
