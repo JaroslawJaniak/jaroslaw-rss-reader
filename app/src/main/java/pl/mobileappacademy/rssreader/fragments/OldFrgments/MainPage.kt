@@ -29,7 +29,6 @@ class MainPage : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainPageViewModel::class.java)
-        // TODO: Use the ViewModel
 
         button5.setOnClickListener {
             findNavController().navigate(R.id.blankFragment_1)

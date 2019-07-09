@@ -78,16 +78,9 @@ class PortalFragment() : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(PortalViewModel::class.java)
-
-
-        //todo za pomoca viewmodelu odwloac sie do odpowiedniej metody z vm i pobrac dane do portalList
-        //todo: przekazac portalList do adaptera
-
-
     }
 
     private fun setAdapter() {
-        //adapter = PortalAdapter()
         adapter.items = viewModel.getListOfPortals()
 
         portal_recycle_view.apply {
@@ -96,10 +89,7 @@ class PortalFragment() : BaseFragment() {
         }
     }
 
-
     private fun setListeners() {
-        //refresh_button.setOnClickListener { fetchData() }
-        //go_to_fragmentA_button.setOnClickListener { navigationInteractions.changeFragment(FragmentA.newInstance(),false) }
     }
 
 

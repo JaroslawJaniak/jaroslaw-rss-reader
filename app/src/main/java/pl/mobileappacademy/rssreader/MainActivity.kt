@@ -9,7 +9,6 @@ import pl.mobileappacademy.rssreader.fragments.topBar.TopBar
 class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
 
     private lateinit var topBar: TopBar
-    //lateinit var text: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -17,21 +16,14 @@ class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
         setContentView(R.layout.activity_main)
         findViews()
         setListeners()
-        onNewIntent(intent)
 
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
-        //setting title according to fragment
-        navController.addOnDestinationChangedListener {
-                controller, destination, arguments ->
-                topBar.setTopBarTitle(navController.currentDestination?.label as String)
-
-            //toolbar.title = navController.currentDestination?.label
-            //text = navController.currentDestination?.label as String
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            topBar.setTopBarTitle(navController.currentDestination?.label as String)
         }
 
         Injector.reInit(application)
-
     }
 
     private fun findViews() {

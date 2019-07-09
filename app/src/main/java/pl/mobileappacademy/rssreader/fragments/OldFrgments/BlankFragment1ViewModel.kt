@@ -17,8 +17,4 @@ class BlankFragment1ViewModel : ViewModel() {
         Injector.component.inject(this)
     }
     fun showToast() =  Toast.makeText(context, context.resources.getString(R.string.app_name), Toast.LENGTH_SHORT).show()
-
-
-
-
 }

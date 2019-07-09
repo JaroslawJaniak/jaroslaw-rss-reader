@@ -46,15 +46,6 @@ class HomeFragment : BaseFragment() {
         }
 
         home_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.blankFragment_1, null))
-
-
-
-        /*viewModel.getHomeView().observe(this, Observer {
-            adapter.items = it ?: emptyList()
-            adapter.notifyDataSetChanged()
-        })*/
-
-
     }
 
 }

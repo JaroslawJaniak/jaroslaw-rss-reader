@@ -22,11 +22,4 @@ interface AppComponent {
 
     fun inject(into: BlankFragment2)
     fun inject(into: BlankFragment2ViewModel)
-
-
-
-
-    //fun inject(into: MainActivity)
-    //fun inject(into: TestFragment_1)
-    //fun inject(into: TestFragment1ViewModel)
 }

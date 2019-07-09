@@ -29,7 +29,6 @@ class BlankFragment2 : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(BlankFragment2ViewModel::class.java)
-        // TODO: Use the ViewModel
 
         button2.setOnClickListener {
             findNavController().navigate(R.id.portalFragment)

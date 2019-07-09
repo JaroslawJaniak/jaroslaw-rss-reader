@@ -8,10 +8,10 @@ class PortalViewModel : BaseViewModel() {
     // TODO: Implement the ViewModel
     //todo: dodac metode zwracajaca liste danych
 
-    private  var portalList = listOf<Portal>(
-       Portal(1, "portal1", "portal1URL"),
-        Portal(2,"portal2", "portal2URL"),
-        Portal(3,"portal3", "portal3URL")
+    private var portalList = listOf<Portal>(
+        Portal(1, "portal1", "portal1URL"),
+        Portal(2, "portal2", "portal2URL"),
+        Portal(3, "portal3", "portal3URL")
     )
 
     fun getListOfPortals() = portalList

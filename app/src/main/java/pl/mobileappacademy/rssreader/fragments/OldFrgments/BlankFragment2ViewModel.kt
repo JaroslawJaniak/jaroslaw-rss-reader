@@ -14,5 +14,4 @@ class BlankFragment2ViewModel : ViewModel() {
         Injector.component.inject(this)
     }
 
-
 }

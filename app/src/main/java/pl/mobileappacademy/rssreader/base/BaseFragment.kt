@@ -12,7 +12,7 @@ open class BaseFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        //navigate = (context as? MainActivityInteractions)?.getNavigationController()
+        navigate = (context as? MainActivityInteractions)?.getNavigationController()
     }
 
     override fun onDetach() {

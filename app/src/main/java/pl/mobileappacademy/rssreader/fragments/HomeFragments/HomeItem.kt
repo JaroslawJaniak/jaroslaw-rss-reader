@@ -16,6 +16,10 @@ data class HomeItem(
 
     @Element(name = "imagePath")
     @ColumnInfo(name = "imagePath")
-    var imagePath: String? = ""
+    var imagePath: String? = "",
+
+    @Element(name = "adress")
+    @ColumnInfo(name = "adress")
+    var adress: String? = ""
 
 )
