@@ -41,7 +41,6 @@ class HomeFragment : BaseFragment() {
 
         home_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            //adapter = this@HomeFragment.adapter
             adapter = homeAdapter
         }
 
