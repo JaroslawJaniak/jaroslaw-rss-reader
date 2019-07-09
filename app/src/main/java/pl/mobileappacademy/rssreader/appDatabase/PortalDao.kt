@@ -10,7 +10,7 @@ interface PortalDao {
     @Query("SELECT * FROM homeItemsTableName")
     fun getAll(): LiveData<List<HomeItem>>
 
-    @androidx.room.Query("SELECT * FROM homeItemsTableName WHERE id = :id")
+    @Query("SELECT * FROM homeItemsTableName WHERE id = :id")
     fun getById(id: Long): LiveData<HomeItem>
 
     @Insert

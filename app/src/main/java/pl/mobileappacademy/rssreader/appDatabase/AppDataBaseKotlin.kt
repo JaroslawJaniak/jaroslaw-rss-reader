@@ -5,12 +5,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import pl.mobileappacademy.rssreader.models.Portal
+import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeItem
 
 
 @Database(
-    version = 1,
-    entities = [Portal::class],
+    version = 2,
+    entities = [HomeItem::class],
     exportSchema = false
 )
 abstract class AppDataBaseKotlin : RoomDatabase() {
