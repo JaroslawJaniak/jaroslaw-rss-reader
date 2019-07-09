@@ -1,18 +1,15 @@
-package pl.mobileappacademy.rssreader.fragments.New_Fragments
+package pl.mobileappacademy.rssreader.fragments.HomeFragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
-import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeViewModel
-import pl.mobileappacademy.rssreader.fragments.adapters.HomeAdapter
 
 
 class HomeFragment : BaseFragment() {

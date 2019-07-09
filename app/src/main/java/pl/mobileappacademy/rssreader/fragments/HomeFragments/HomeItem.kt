@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.New_Fragments
+package pl.mobileappacademy.rssreader.fragments.HomeFragments
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

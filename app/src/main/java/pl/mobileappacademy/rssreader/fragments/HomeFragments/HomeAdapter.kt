@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.adapters
+package pl.mobileappacademy.rssreader.fragments.HomeFragments
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.item_portal.view.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
-import pl.mobileappacademy.rssreader.fragments.New_Fragments.HomeItem
 
 class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() {
     override var items: List<HomeItem> = emptyList()
@@ -26,7 +25,7 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
             }
 
             itemView.item_portal_name.text = item.name
-            itemView.item_portal_URL.text = item.imagePath
+            itemView.item_portal_URL.text = item.adress
         }
 
     }

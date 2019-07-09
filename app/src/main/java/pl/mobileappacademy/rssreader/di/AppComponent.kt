@@ -5,7 +5,7 @@ import dagger.Component
 import pl.mobileappacademy.rssreader.App
 import pl.mobileappacademy.rssreader.di.modules.AppModule
 import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeViewModel
-import pl.mobileappacademy.rssreader.fragments.New_Fragments.HomeFragment
+import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeFragment
 import javax.inject.Singleton
 
 @Singleton

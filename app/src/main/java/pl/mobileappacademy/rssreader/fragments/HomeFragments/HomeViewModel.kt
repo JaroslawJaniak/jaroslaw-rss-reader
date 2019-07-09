@@ -1,7 +1,11 @@
 package pl.mobileappacademy.rssreader.fragments.HomeFragments
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import pl.mobileappacademy.rssreader.fragments.New_Fragments.HomeItem
+import pl.mobileappacademy.rssreader.Injector
+import pl.mobileappacademy.rssreader.R
+import javax.inject.Inject
 
 class HomeViewModel : ViewModel() {
     // TODO: Implement the ViewModel
@@ -25,5 +29,14 @@ class HomeViewModel : ViewModel() {
             "https://www.polsatnews.pl/kanaly-rss/"
         )
     )
+
+    @Inject
+    lateinit var context: Context
+
+    init {
+        Injector.component.inject(this)
+    }
+
+    fun showToast() =  Toast.makeText(context, context.resources.getString(R.string.app_name), Toast.LENGTH_SHORT).show()
 
 }

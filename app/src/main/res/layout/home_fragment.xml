@@ -15,9 +15,12 @@
             android:backgroundTint="@color/colorPrimaryDark"
             android:elevation="@dimen/fab_margin"/>
     <Button
-            android:text="home_add_button"
+            android:text="add"
+            android:textColor="#FFF"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/button"/>
+            android:layout_height="wrap_content" android:id="@+id/button" android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
