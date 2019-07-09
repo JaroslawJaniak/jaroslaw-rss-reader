@@ -2,25 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/blankFragment_1">
+            app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/mainPage" android:name="pl.mobileappacademy.rssreader.fragments.MainPage"
+    <fragment android:id="@+id/mainPage" android:name="pl.mobileappacademy.rssreader.fragments.OldFrgments.MainPage"
               android:label="main_page_fragment" tools:layout="@layout/main_page_fragment"/>
 
     <fragment android:id="@+id/blankFragment_1"
-              android:name="pl.mobileappacademy.rssreader.fragments.BlankFragment1"
+              android:name="pl.mobileappacademy.rssreader.fragments.OldFrgments.BlankFragment1"
               android:label="blank_fragment_1_fragment" tools:layout="@layout/blank_fragment_1_fragment">
-
-        <action android:id="@+id/action_blankFragment_1_to_blankFragment2" app:destination="@id/blankFragment2"/>
-        <action android:id="@+id/action_blankFragment_1_to_mainPage" app:destination="@id/mainPage"/>
-
     </fragment>
 
 
-    <fragment android:id="@+id/blankFragment2" android:name="pl.mobileappacademy.rssreader.fragments.BlankFragment2"
+    <fragment android:id="@+id/blankFragment2" android:name="pl.mobileappacademy.rssreader.fragments.OldFrgments.BlankFragment2"
               android:label="blank_fragment2_fragment" tools:layout="@layout/blank_fragment2_fragment"/>
-    <fragment android:id="@+id/portalFragment" android:name="pl.mobileappacademy.rssreader.fragments.PortalFragment"
+    <fragment android:id="@+id/portalFragment" android:name="pl.mobileappacademy.rssreader.fragments.OldFrgments.PortalFragment"
               android:label="PortalFragment"/>
+
+    <fragment android:id="@+id/homeFragment"
+              android:name="pl.mobileappacademy.rssreader.fragments.New_Fragments.HomeFragment"
+              android:label="HomeFragment"/>
 
 
 </navigation>

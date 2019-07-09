@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments
+package pl.mobileappacademy.rssreader.fragments.OldFrgments
 
 import android.content.Context
 import androidx.lifecycle.ViewModel;

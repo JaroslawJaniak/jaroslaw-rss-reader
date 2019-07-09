@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments
+package pl.mobileappacademy.rssreader.fragments.OldFrgments
 
 import androidx.lifecycle.ViewModel;
 import pl.mobileappacademy.rssreader.base.BaseViewModel
@@ -14,6 +14,6 @@ class PortalViewModel : BaseViewModel() {
         Portal(3,"portal3", "portal3URL")
     )
 
-    fun getListofPortals() = portalList
+    fun getListOfPortals() = portalList
 
 }

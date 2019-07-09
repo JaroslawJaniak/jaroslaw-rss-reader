@@ -2,13 +2,12 @@ package pl.mobileappacademy.rssreader.di
 
 
 import dagger.Component
-import dagger.Module
 import pl.mobileappacademy.rssreader.App
 import pl.mobileappacademy.rssreader.di.modules.AppModule
-import pl.mobileappacademy.rssreader.fragments.BlankFragment1
-import pl.mobileappacademy.rssreader.fragments.BlankFragment1ViewModel
-import pl.mobileappacademy.rssreader.fragments.BlankFragment2
-import pl.mobileappacademy.rssreader.fragments.BlankFragment2ViewModel
+import pl.mobileappacademy.rssreader.fragments.OldFrgments.BlankFragment1
+import pl.mobileappacademy.rssreader.fragments.OldFrgments.BlankFragment1ViewModel
+import pl.mobileappacademy.rssreader.fragments.OldFrgments.BlankFragment2
+import pl.mobileappacademy.rssreader.fragments.OldFrgments.BlankFragment2ViewModel
 import javax.inject.Singleton
 
 @Singleton

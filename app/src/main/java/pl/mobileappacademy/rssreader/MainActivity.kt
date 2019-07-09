@@ -1,13 +1,9 @@
 package pl.mobileappacademy.rssreader
 
 
-import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import kotlinx.android.synthetic.main.activity_main.*
-import pl.mobileappacademy.rssreader.fragments.PortalFragment
 import pl.mobileappacademy.rssreader.fragments.topBar.TopBar
 
 
@@ -41,11 +37,7 @@ class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
         Injector.reInit(application)
 
     }
-
-    fun onBackClick() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
+    
     private fun findViews() {
 
         topBar = findViewById(R.id.top_bar)

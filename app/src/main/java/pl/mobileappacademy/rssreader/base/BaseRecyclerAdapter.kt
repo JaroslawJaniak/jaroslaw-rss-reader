@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 abstract class BaseRecyclerAdapter<ITEM, VH: RecyclerView.ViewHolder> : RecyclerView.Adapter<VH> () {
-    var items: List<ITEM> = emptyList()
+    open var items: List<ITEM> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

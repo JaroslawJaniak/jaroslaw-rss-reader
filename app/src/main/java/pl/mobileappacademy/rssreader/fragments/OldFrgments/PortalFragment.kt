@@ -1,7 +1,6 @@
-package pl.mobileappacademy.rssreader.fragments
+package pl.mobileappacademy.rssreader.fragments.OldFrgments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +31,6 @@ class PortalFragment : Fragment() {
 }*/
 
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,8 +38,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import kotlinx.android.synthetic.main.portal_fragment.*
 import pl.mobileappacademy.rssreader.base.BaseFragment
-import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
-import pl.mobileappacademy.rssreader.fragments.adapters.PortalAdapter
 import pl.mobileappacademy.rssreader.models.Portal
 
 class PortalFragment() : BaseFragment() {
@@ -92,7 +88,7 @@ class PortalFragment() : BaseFragment() {
 
     private fun setAdapter() {
         //adapter = PortalAdapter()
-        adapter.items = viewModel.getListofPortals()
+        adapter.items = viewModel.getListOfPortals()
 
         portal_recycle_view.apply {
             layoutManager = LinearLayoutManager(context)

@@ -1,20 +1,15 @@
-package pl.mobileappacademy.rssreader.fragments
+package pl.mobileappacademy.rssreader.fragments.OldFrgments
 
-import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.blank_fragment2_fragment.*
-import kotlinx.android.synthetic.main.blank_fragment_1_fragment.*
-import pl.mobileappacademy.rssreader.Injector
 
 import pl.mobileappacademy.rssreader.R
-import javax.inject.Inject
 
 class BlankFragment2 : Fragment() {
 
