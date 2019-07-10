@@ -1,30 +1,16 @@
 package pl.mobileappacademy.rssreader.Retrofit
 
-import pl.mobileappacademy.rssreader.models.Portal
+import pl.mobileappacademy.rssreader.models.HomeItem
 import retrofit2.Call
 import retrofit2.http.GET
 
 interface RetrofitService {
 
     @GET("/najnowsze.xml")
-    abstract fun getTvn24(): Call<List<Portal>>
+    abstract fun getTvn24(): Call<List<HomeItem>>
 
     @GET("/feed")
-    abstract fun getInteria(): Call<List<Portal>>
-
-    //???
-
-
-
-    /*
-    @GET("posts")
-    abstract fun getPostsKotlin(): Call<List<PostKotlin>>
-
-
-    @GET("/comments")
-    abstract fun getComments(): Call<List<Comment>>
-    */
-
+    abstract fun getInteria(): Call<List<HomeItem>>
 
 }
 

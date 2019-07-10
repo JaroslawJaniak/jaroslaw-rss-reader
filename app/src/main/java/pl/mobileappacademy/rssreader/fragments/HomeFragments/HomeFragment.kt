@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
+import pl.mobileappacademy.rssreader.fragments.adapters.HomeAdapter
 
 
 class HomeFragment : BaseFragment() {
@@ -32,7 +33,7 @@ class HomeFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
-        // TODO: Use the ViewModel
+        // TODO: applay database to adapter
 
         homeAdapter.items = viewModel.getHomeListView()
 
