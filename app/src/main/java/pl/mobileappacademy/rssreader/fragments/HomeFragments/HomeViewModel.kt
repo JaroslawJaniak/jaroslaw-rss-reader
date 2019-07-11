@@ -1,19 +1,21 @@
 package pl.mobileappacademy.rssreader.fragments.HomeFragments
 
 import android.content.Context
-import android.widget.Toast
+import android.database.sqlite.SQLiteQuery
+import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
 import pl.mobileappacademy.rssreader.Injector
-import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin
-import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin.Companion.portalDao
-import pl.mobileappacademy.rssreader.base.HomeRepository
+import pl.mobileappacademy.rssreader.appDatabase.PortalDao
 import pl.mobileappacademy.rssreader.models.HomeItem
 import javax.inject.Inject
 
 class HomeViewModel : ViewModel() {
+
+    var appDb: AppDataBaseKotlin? = null
+    var portlalDao: PortalDao? = null
 
     fun getHomeListView() = listOf(
         HomeItem(
@@ -33,27 +35,48 @@ class HomeViewModel : ViewModel() {
             "POLSAT NEWS",
             "https://www.polsatnews.pl/templates/pnews2018/build/gfx/logo.svg",
             "https://www.polsatnews.pl/kanaly-rss/"
+        ),
+        HomeItem(
+            4,
+            "tvn24",
+            "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
+            "https://www.tvn24.pl/rss.html"
+        ),
+        HomeItem(
+            5,
+            "INTERIA",
+            "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
+            "https://rss.interia.pl/news-rss-interia-pl,nId,2611437"
         )
     )
 
-    private lateinit var repository: HomeRepository
-    lateinit var allPortals: LiveData<List<HomeItem>>
+    var itemTest: HomeItem = getHomeListView()[1]
+
 
     @Inject
     lateinit var context: Context
-    lateinit var coroutineScope: CoroutineScope
 
     init {
         Injector.component.inject(this)
-
-        val portalsDao = AppDataBaseKotlin.getDatabase(context).homeDao()
-        repository = HomeRepository(portalsDao)
-        allPortals = repository.allPortals
+        insertToDatabase()
     }
 
-    suspend fun insert(portal: HomeItem) {
-        repository.insert(portal)
-    }
+    private fun insertToDatabase() {
+        appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
+        portlalDao = appDb?.portalDao()
 
-    fun showToast() = Toast.makeText(context, context.resources.getString(R.string.app_name), Toast.LENGTH_SHORT).show()
+
+        //todo: przeniesc na watek boczny
+
+        AsyncTask.execute {
+
+            for (i in getHomeListView()) {
+                with(portlalDao) {
+                    this?.insert(i)
+                }
+            }
+
+        }
+
+    }
 }

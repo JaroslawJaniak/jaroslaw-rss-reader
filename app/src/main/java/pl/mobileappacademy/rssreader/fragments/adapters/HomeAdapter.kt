@@ -13,6 +13,7 @@ import pl.mobileappacademy.rssreader.models.HomeItem
 
 class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() {
     override var items: List<HomeItem> = emptyList()
+
     override fun onBindViewHolder(holder: HomeViewHolder, item: HomeItem, position: Int) {
 
         val current = items[position]
@@ -30,11 +31,6 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
             itemView.item_portal_URL.text = item.adress
         }
 
-    }
-
-    internal fun setPortals(portals: List<HomeItem>) {
-        this.items = portals
-        notifyDataSetChanged()
     }
 
     override fun getItemCount() = items.size

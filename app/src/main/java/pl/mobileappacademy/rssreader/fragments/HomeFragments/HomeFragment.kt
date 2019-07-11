@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -33,16 +34,27 @@ class HomeFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
-        // TODO: applay database to adapter
+        //homeAdapter.items = viewModel.getHomeListView()
 
-        homeAdapter.items = viewModel.getHomeListView()
+//        viewModel.itemList.observe(this, Observer {
+//            //homeAdapter.items = it ?: emptyList()
+//            homeAdapter.notifyDataSetChanged()
+//        })
 
+        viewModel.appDb?.portalDao()?.getAll()?.observe(this, Observer {
+            homeAdapter.items = it ?: emptyList()
+            homeAdapter.notifyDataSetChanged()
+        })
         home_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = homeAdapter
         }
 
-        //home_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.blankFragment_1, null))
+        //todo: observable
+        //todo: przekazac do adaptera
+        //todo: Oservator(this, Observer { } <- owloanie przez  it = List<HomeItem]
+        //todo: adapter.items = it ?: emptylist
+        //todo notifiDataSetChanged()
     }
 
 }

@@ -5,11 +5,17 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin
+import pl.mobileappacademy.rssreader.appDatabase.PortalDao
+import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeViewModel
 import pl.mobileappacademy.rssreader.fragments.topBar.TopBar
+import pl.mobileappacademy.rssreader.models.HomeItem
+import java.util.*
 
 class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
 
     private lateinit var topBar: TopBar
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -24,7 +30,6 @@ class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
             topBar.setTopBarTitle(navController.currentDestination?.label as String)
         }
 
-        //Toast.makeText(context, context.resources.getString(R.string.app_name), Toast.LENGTH_SHORT).show()
 
         Toast.makeText(application, navController.currentDestination?.label as String, Toast.LENGTH_LONG).show()
 

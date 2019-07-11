@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical" tools:ignore="ExtraText">
 
     <Button
@@ -14,6 +14,7 @@
             android:textColor="#FFF"
             android:backgroundTint="@color/colorPrimaryDark"
             android:elevation="@dimen/fab_margin"/>
+
     <Button
             android:text="add"
             android:textColor="#FFF"
@@ -24,11 +25,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="592dp"
-            android:id="@+id/home_recycle_view"
-    />
-
-
+            android:layout_height="504dp"
+            android:id="@+id/home_recycle_view"/>
 
 
 </LinearLayout>

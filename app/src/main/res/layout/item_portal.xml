@@ -5,7 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/item_homeList_movie" android:background="#00887A7A" android:layout_margin="8dp"
+        android:id="@+id/item_homeList_movie"
+        android:background="#E7E1CF" android:layout_margin="8dp"
         android:layout_marginLeft="8dp" android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp" android:layout_marginEnd="8dp">
 
@@ -36,9 +37,6 @@
             android:fontFamily="@font/impact"
             android:textSize="24sp"
             android:textColor="@color/colorPrimaryDark"
-
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="24sp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:maxWidth="250dp"
@@ -52,21 +50,16 @@
     <TextView
             android:id="@+id/item_portal_URL"
             tools:text="ADRES PORTALU"
-
             android:fontFamily="@font/impact"
-            android:textSize="6dp"
+            android:textSize="12sp"
             android:textColor="@color/colorPrimaryDark"
             android:lines="2"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="24sp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:maxWidth="250dp"
-
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_portal_image_cardView" android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/item_portal_name"
-            app:layout_constraintVertical_bias="0.646"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/item_portal_name"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
