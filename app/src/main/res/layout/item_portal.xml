@@ -38,7 +38,11 @@
 
             android:fontFamily="@font/impact"
             android:textSize="24sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FFF"
+            android:shadowColor="@color/cardview_dark_background"
+            android:shadowRadius="8"
+
+
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:maxWidth="250dp"
@@ -54,7 +58,10 @@
             tools:text="ADRES PORTALU"
             android:fontFamily="@font/impact"
             android:textSize="12sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FFF"
+            android:shadowColor="@color/cardview_dark_background"
+            android:shadowRadius="8"
+
             android:lines="2"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
