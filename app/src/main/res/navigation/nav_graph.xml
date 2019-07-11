@@ -5,7 +5,7 @@
             app:startDestination="@id/homeFragment">
 
     <fragment android:id="@+id/homeFragment"
-              android:name="pl.mobileappacademy.rssreader.fragments.New_Fragments.HomeFragment"
+              android:name="pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeFragment"
               android:label="HomeFragment"/>
 
 

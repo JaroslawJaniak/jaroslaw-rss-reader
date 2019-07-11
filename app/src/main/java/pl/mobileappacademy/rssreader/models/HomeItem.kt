@@ -1,11 +1,11 @@
-package pl.mobileappacademy.rssreader.fragments.New_Fragments
+package pl.mobileappacademy.rssreader.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.simpleframework.xml.Element
 
-@Entity(tableName = "portals")
+@Entity(tableName = "homeItemsTable")
 data class HomeItem(
 
     @PrimaryKey val id: Int? = -1,
@@ -21,5 +21,4 @@ data class HomeItem(
     @Element(name = "adress")
     @ColumnInfo(name = "adress")
     var adress: String? = ""
-
 )

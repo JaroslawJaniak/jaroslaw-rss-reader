@@ -9,12 +9,14 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.item_portal.view.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
-import pl.mobileappacademy.rssreader.fragments.New_Fragments.HomeItem
+import pl.mobileappacademy.rssreader.models.HomeItem
 
 class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() {
     override var items: List<HomeItem> = emptyList()
+
     override fun onBindViewHolder(holder: HomeViewHolder, item: HomeItem, position: Int) {
 
+        val current = items[position]
 
         holder.apply {
             if (item.imagePath != null) {
@@ -26,10 +28,13 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
             }
 
             itemView.item_portal_name.text = item.name
-            itemView.item_portal_URL.text = item.imagePath
+            itemView.item_portal_URL.text = item.adress
         }
 
     }
+
+    override fun getItemCount() = items.size
+
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): HomeViewHolder {
         val itemView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_portal, viewGroup, false)
