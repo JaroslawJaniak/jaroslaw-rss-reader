@@ -1,10 +1,7 @@
 package pl.mobileappacademy.rssreader.fragments.HomeFragments
 
 import android.content.Context
-import android.database.sqlite.SQLiteQuery
 import android.os.AsyncTask
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin
@@ -50,9 +47,6 @@ class HomeViewModel : ViewModel() {
         )
     )
 
-    var itemTest: HomeItem = getHomeListView()[1]
-
-
     @Inject
     lateinit var context: Context
 
@@ -65,9 +59,6 @@ class HomeViewModel : ViewModel() {
         appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
         portlalDao = appDb?.portalDao()
 
-
-        //todo: przeniesc na watek boczny
-
         AsyncTask.execute {
 
             for (i in getHomeListView()) {
@@ -75,7 +66,6 @@ class HomeViewModel : ViewModel() {
                     this?.insert(i)
                 }
             }
-
         }
 
     }

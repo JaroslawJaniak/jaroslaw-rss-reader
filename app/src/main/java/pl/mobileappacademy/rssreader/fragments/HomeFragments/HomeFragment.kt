@@ -16,10 +16,6 @@ import pl.mobileappacademy.rssreader.fragments.adapters.HomeAdapter
 
 class HomeFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
     private lateinit var viewModel: HomeViewModel
     private val homeAdapter by lazy { HomeAdapter() }
 
@@ -34,12 +30,6 @@ class HomeFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
-        //homeAdapter.items = viewModel.getHomeListView()
-
-//        viewModel.itemList.observe(this, Observer {
-//            //homeAdapter.items = it ?: emptyList()
-//            homeAdapter.notifyDataSetChanged()
-//        })
 
         viewModel.appDb?.portalDao()?.getAll()?.observe(this, Observer {
             homeAdapter.items = it ?: emptyList()
@@ -49,12 +39,6 @@ class HomeFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = homeAdapter
         }
-
-        //todo: observable
-        //todo: przekazac do adaptera
-        //todo: Oservator(this, Observer { } <- owloanie przez  it = List<HomeItem]
-        //todo: adapter.items = it ?: emptylist
-        //todo notifiDataSetChanged()
     }
 
 }

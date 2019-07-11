@@ -1,7 +1,6 @@
 package pl.mobileappacademy.rssreader.appDatabase
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 import pl.mobileappacademy.rssreader.models.HomeItem

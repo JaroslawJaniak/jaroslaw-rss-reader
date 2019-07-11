@@ -24,7 +24,8 @@ abstract class AppDataBaseKotlin : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(AppDataBaseKotlin::class) {
                     INSTANCE =
-                        Room.databaseBuilder(context.applicationContext, AppDataBaseKotlin::class.java, "portal").build()
+                        Room.databaseBuilder(context.applicationContext, AppDataBaseKotlin::class.java, "portal")
+                            .build()
                 }
             }
             return INSTANCE
