@@ -13,15 +13,21 @@
             android:text="go to next fragment"
             android:textColor="#FFF"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:elevation="@dimen/fab_margin"/>
-
+    />
+id
     <Button
             android:text="add"
             android:textColor="#FFF"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/button" android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/mainLoginBtn"
+
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center"
+    />
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

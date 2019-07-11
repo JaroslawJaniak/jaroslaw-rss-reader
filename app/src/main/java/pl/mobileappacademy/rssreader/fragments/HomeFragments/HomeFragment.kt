@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.login_dialog.view.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.fragments.adapters.HomeAdapter
@@ -39,6 +42,37 @@ class HomeFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = homeAdapter
         }
+
+        //button click to show dialog
+        mainLoginBtn.setOnClickListener {
+            //Inflate the dialog with custom view
+            val mDialogView = LayoutInflater.from(context).inflate(R.layout.login_dialog, null)
+            //AlertDialogBuilder
+            val mBuilder = context?.let { it1 ->
+                AlertDialog.Builder(it1)
+                    .setView(mDialogView)
+                    .setTitle("Add New Portal")
+            }
+            //show dialog
+            val  mAlertDialog = mBuilder?.show()
+            //login button click of custom layout
+            mDialogView.dialogLoginBtn.setOnClickListener {
+                //dismiss dialog
+                mAlertDialog?.dismiss()
+                //get text from EditTexts of custom layout
+                val adressURL = mDialogView.dialogAdressURL.text.toString()
+                val category = mDialogView.dialogCategory.text.toString()
+                //set the input text in TextView
+                //mainInfoTv.setText("Name:"+ name +"\nEmail: "+ email +"\nPassword: "+ password)
+            }
+            //cancel button click of custom layout
+            mDialogView.dialogCancelBtn.setOnClickListener {
+                //dismiss dialog
+                mAlertDialog?.dismiss()
+            }
+        }
+
+
     }
 
 }

@@ -20,5 +20,9 @@ data class HomeItem(
 
     @Element(name = "adress")
     @ColumnInfo(name = "adress")
-    var adress: String? = ""
+    var adress: String? = "",
+
+    @Element(name = "category")
+    @ColumnInfo(name = "category")
+    var category: String? = ""
 )

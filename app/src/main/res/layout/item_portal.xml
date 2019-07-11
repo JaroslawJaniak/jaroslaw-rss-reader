@@ -6,9 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/item_homeList_movie"
-        android:background="#E7E1CF" android:layout_margin="8dp"
-        android:layout_marginLeft="8dp" android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp" android:layout_marginEnd="8dp">
+        android:background="@drawable/bg_round_portal"
+        android:layout_margin="8dp"
+        android:layout_marginLeft="8dp" android:layout_marginTop="16dp" android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+>
 
     <androidx.cardview.widget.CardView
             android:id="@+id/item_portal_image_cardView"
@@ -48,7 +50,7 @@
             app:layout_constraintStart_toEndOf="@+id/item_portal_image_cardView" android:layout_marginStart="8dp"/>
 
     <TextView
-            android:id="@+id/item_portal_URL"
+            android:id="@+id/item_portal_category"
             tools:text="ADRES PORTALU"
             android:fontFamily="@font/impact"
             android:textSize="12sp"

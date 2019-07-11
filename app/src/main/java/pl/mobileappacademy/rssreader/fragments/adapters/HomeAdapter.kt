@@ -28,7 +28,7 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
             }
 
             itemView.item_portal_name.text = item.name
-            itemView.item_portal_URL.text = item.adress
+            itemView.item_portal_category.text = item.category
         }
 
     }

@@ -19,31 +19,31 @@ class HomeViewModel : ViewModel() {
             1,
             "tvn24",
             "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
-            "https://www.tvn24.pl/rss.html"
+            "https://www.tvn24.pl/rss.html", "none"
         ),
         HomeItem(
             2,
             "INTERIA",
             "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
-            "https://rss.interia.pl/news-rss-interia-pl,nId,2611437"
+            "https://rss.interia.pl/news-rss-interia-pl,nId,2611437", "none"
         ),
         HomeItem(
             3,
             "POLSAT NEWS",
             "https://www.polsatnews.pl/templates/pnews2018/build/gfx/logo.svg",
-            "https://www.polsatnews.pl/kanaly-rss/"
+            "https://www.polsatnews.pl/kanaly-rss/", "none"
         ),
         HomeItem(
             4,
             "tvn24",
             "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
-            "https://www.tvn24.pl/rss.html"
+            "https://www.tvn24.pl/rss.html", "none"
         ),
         HomeItem(
             5,
             "INTERIA",
             "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
-            "https://rss.interia.pl/news-rss-interia-pl,nId,2611437"
+            "https://rss.interia.pl/news-rss-interia-pl,nId,2611437", "none"
         )
     )
 
