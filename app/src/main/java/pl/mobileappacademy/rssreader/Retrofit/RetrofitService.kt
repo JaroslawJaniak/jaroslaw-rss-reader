@@ -9,7 +9,7 @@ interface RetrofitService {
     @GET("/najnowsze.xml")
     abstract fun getTvn24(): Call<List<HomeItem>>
 
-    @GET("/feed")
+    @GET("/najwazniejsze.xml")
     abstract fun getInteria(): Call<List<HomeItem>>
 
 }

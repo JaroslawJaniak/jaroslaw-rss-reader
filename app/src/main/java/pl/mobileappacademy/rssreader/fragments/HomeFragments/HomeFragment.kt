@@ -106,7 +106,6 @@ class HomeFragment : BaseFragment(){
             val nazwa = mDialogView.login_dialog_name.text.toString()
             val category = mDialogView.spinner2.selectedItem.toString()
 
-
             itemToInsert = HomeItem()
             itemToInsert.adress = adressURL
             itemToInsert.name = nazwa
@@ -117,7 +116,6 @@ class HomeFragment : BaseFragment(){
             }
 
             mAlertDialog?.dismiss()
-
         }
 
         mDialogView.login_dialog_CancelBtn.setOnClickListener {

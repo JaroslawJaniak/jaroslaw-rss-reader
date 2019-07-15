@@ -6,13 +6,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.simpleframework.xml.Element
 
-data class Description(
+data class DescriptionCh(
 
-    @Element(name = "linkRSS")
-    @ColumnInfo(name = "linkRSS")
-    var linkRSS: String? = "",
+    @Element(name = "linkDescription")
+    @ColumnInfo(name = "linkDescription")
+    var linkDescription: String? = "",
 
-    @Element(name = "itemRSS")
-    @ColumnInfo(name = "itemRSS")
-    var item: String? = ""
+    @Element(name = "itemDescription")
+    @ColumnInfo(name = "itemDescription")
+    var itemDescription: ItemCh?
 )
