@@ -9,7 +9,7 @@ import pl.mobileappacademy.rssreader.models.HomeItem
 
 
 @Database(
-    version = 2,
+    version = 3,
     entities = [HomeItem::class]
 )
 abstract class AppDataBaseKotlin : RoomDatabase() {

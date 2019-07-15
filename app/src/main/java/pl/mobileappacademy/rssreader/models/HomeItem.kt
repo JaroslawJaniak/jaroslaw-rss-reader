@@ -8,7 +8,10 @@ import org.simpleframework.xml.Element
 @Entity(tableName = "homeItemsTable")
 data class HomeItem(
 
-    @PrimaryKey val id: Int? = -1,
+    @Element(name = "id")
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
 
     @Element(name = "name")
     @ColumnInfo(name = "name")
@@ -20,5 +23,9 @@ data class HomeItem(
 
     @Element(name = "adress")
     @ColumnInfo(name = "adress")
-    var adress: String? = ""
+    var adress: String? = "",
+
+    @Element(name = "category")
+    @ColumnInfo(name = "category")
+    var category: String? = ""
 )

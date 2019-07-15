@@ -6,9 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/item_homeList_movie"
-        android:background="#E7E1CF" android:layout_margin="8dp"
-        android:layout_marginLeft="8dp" android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp" android:layout_marginEnd="8dp">
+        android:background="@drawable/bg_round_portal"
+        android:layout_margin="8dp"
+        android:layout_marginLeft="8dp" android:layout_marginTop="16dp" android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+>
 
     <androidx.cardview.widget.CardView
             android:id="@+id/item_portal_image_cardView"
@@ -36,7 +38,11 @@
 
             android:fontFamily="@font/impact"
             android:textSize="24sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FFF"
+            android:shadowColor="@color/cardview_dark_background"
+            android:shadowRadius="8"
+
+
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:maxWidth="250dp"
@@ -48,11 +54,14 @@
             app:layout_constraintStart_toEndOf="@+id/item_portal_image_cardView" android:layout_marginStart="8dp"/>
 
     <TextView
-            android:id="@+id/item_portal_URL"
-            tools:text="ADRES PORTALU"
+            android:id="@+id/item_portal_category"
+            tools:text="kategoria"
             android:fontFamily="@font/impact"
             android:textSize="12sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FFF"
+            android:shadowColor="@color/cardview_dark_background"
+            android:shadowRadius="8"
+
             android:lines="2"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -61,5 +70,30 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/item_portal_name"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
+
+
+    <TextView
+            android:text="adres URL"
+            android:id="@+id/item_portal_address"
+            android:fontFamily="@font/impact"
+            android:textSize="12sp"
+            android:textColor="#FFF"
+            android:shadowColor="@color/cardview_dark_background"
+            android:shadowRadius="8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/item_portal_image_cardView"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/item_portal_category" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_portal_id"
+            android:textColor="#FFF"
+
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/item_portal_category" android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
