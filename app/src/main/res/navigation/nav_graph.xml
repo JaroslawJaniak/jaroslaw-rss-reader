@@ -7,6 +7,8 @@
     <fragment android:id="@+id/homeFragment"
               android:name="pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeFragment"
               android:label="HomeFragment"/>
+    <fragment android:id="@+id/portalRSS" android:name="pl.mobileappacademy.rssreader.fragments.HomeFragments.PortalRSS"
+              android:label="portal_rs_fragment" tools:layout="@layout/portal_rs_fragment"/>
 
 
 </navigation>

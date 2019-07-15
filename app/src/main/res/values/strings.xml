@@ -4,6 +4,7 @@
     <string name="portal_prompt">Choose a category</string>
 
     <string-array name="portal_category">
+        <item>none</item>
         <item>Ulubione</item>
         <item>Polska</item>
         <item>Świat</item>

@@ -1,26 +1,37 @@
 package pl.mobileappacademy.rssreader.fragments.HomeFragments
 
+
+import android.os.AsyncTask
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.item_portal.view.*
 import kotlinx.android.synthetic.main.login_dialog.view.*
+import kotlinx.android.synthetic.main.portal_dialog.view.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
+import pl.mobileappacademy.rssreader.base.OnItemClickListener
+import pl.mobileappacademy.rssreader.base.addOnItemClickListener
 import pl.mobileappacademy.rssreader.fragments.adapters.HomeAdapter
+import pl.mobileappacademy.rssreader.models.HomeItem
 
 
-class HomeFragment : BaseFragment() {
-
+class HomeFragment : BaseFragment(){
     private lateinit var viewModel: HomeViewModel
     private val homeAdapter by lazy { HomeAdapter() }
+    lateinit var itemToInsert: HomeItem
+    private var selectedCategory: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,41 +49,81 @@ class HomeFragment : BaseFragment() {
             homeAdapter.items = it ?: emptyList()
             homeAdapter.notifyDataSetChanged()
         })
+
         home_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = homeAdapter
         }
 
-        //button click to show dialog
+        showServiceDialog()
         mainLoginBtn.setOnClickListener {
-            //Inflate the dialog with custom view
-            val mDialogView = LayoutInflater.from(context).inflate(R.layout.login_dialog, null)
-            //AlertDialogBuilder
-            val mBuilder = context?.let { it1 ->
-                AlertDialog.Builder(it1)
-                    .setView(mDialogView)
-                    .setTitle("Add New Portal")
+            showAddDialog()
+        }
+    }
+
+    private fun showServiceDialog() {
+        home_recycle_view.addOnItemClickListener(object : OnItemClickListener {
+            override fun onItemClicked(position: Int, view: View) {
+
+                Toast.makeText(context, "clicked on " + homeAdapter.items[position], Toast.LENGTH_LONG).show()
+
+                val mDialogView = LayoutInflater.from(context).inflate(R.layout.portal_dialog, null)
+
+                mDialogView.dialog_name.text = homeAdapter.items[position].name.toString()
+                mDialogView.dialog_adressURL.text = homeAdapter.items[position].adress.toString()
+                mDialogView.dialog_category.text = homeAdapter.items[position].category.toString()
+
+                val mBuilder = context?.let { it1 ->
+                    AlertDialog.Builder(it1)
+                        .setView(mDialogView)
+                        .setTitle(" ")
+                }
+
+                val mAlertDialog = mBuilder?.show()
+
+                mDialogView.dialog_portal_button.setOnClickListener {
+                    findNavController().navigate(R.id.portalRSS)
+                    mAlertDialog?.dismiss()
+                }
             }
-            //show dialog
-            val  mAlertDialog = mBuilder?.show()
-            //login button click of custom layout
-            mDialogView.dialogLoginBtn.setOnClickListener {
-                //dismiss dialog
-                mAlertDialog?.dismiss()
-                //get text from EditTexts of custom layout
-                val adressURL = mDialogView.dialogAdressURL.text.toString()
-                val category = mDialogView.dialogCategory.text.toString()
-                //set the input text in TextView
-                //mainInfoTv.setText("Name:"+ name +"\nEmail: "+ email +"\nPassword: "+ password)
+        })
+    }
+
+    private fun showAddDialog() {
+
+        val mDialogView = LayoutInflater.from(context).inflate(R.layout.login_dialog, null)
+        val mBuilder = context?.let { it1 ->
+            AlertDialog.Builder(it1)
+                .setView(mDialogView)
+                .setTitle(" ")
+
+        }
+        val mAlertDialog = mBuilder?.show()
+
+        mDialogView.login_dialog_OkBtn.setOnClickListener {
+
+            val adressURL = mDialogView.login_dialogAdressURL.text.toString()
+            val nazwa = mDialogView.login_dialog_name.text.toString()
+            val category = mDialogView.spinner2.selectedItem.toString()
+
+
+            itemToInsert = HomeItem()
+            itemToInsert.adress = adressURL
+            itemToInsert.name = nazwa
+            itemToInsert.category = category
+
+            AsyncTask.execute {
+                viewModel.appDb?.portalDao()?.insert(itemToInsert)
             }
-            //cancel button click of custom layout
-            mDialogView.dialogCancelBtn.setOnClickListener {
-                //dismiss dialog
-                mAlertDialog?.dismiss()
-            }
+
+            mAlertDialog?.dismiss()
+
         }
 
-
+        mDialogView.login_dialog_CancelBtn.setOnClickListener {
+            mAlertDialog?.dismiss()
+        }
     }
 
 }
+

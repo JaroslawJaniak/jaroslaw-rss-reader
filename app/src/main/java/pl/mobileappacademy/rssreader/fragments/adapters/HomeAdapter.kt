@@ -29,6 +29,8 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
 
             itemView.item_portal_name.text = item.name
             itemView.item_portal_category.text = item.category
+            itemView.item_portal_address.text = item.adress
+            itemView.item_portal_id.text = item.id.toString()
         }
 
     }

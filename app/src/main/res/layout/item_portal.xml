@@ -55,7 +55,7 @@
 
     <TextView
             android:id="@+id/item_portal_category"
-            tools:text="ADRES PORTALU"
+            tools:text="kategoria"
             android:fontFamily="@font/impact"
             android:textSize="12sp"
             android:textColor="#FFF"
@@ -70,5 +70,30 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/item_portal_name"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
+
+
+    <TextView
+            android:text="adres URL"
+            android:id="@+id/item_portal_address"
+            android:fontFamily="@font/impact"
+            android:textSize="12sp"
+            android:textColor="#FFF"
+            android:shadowColor="@color/cardview_dark_background"
+            android:shadowRadius="8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/item_portal_image_cardView"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/item_portal_category" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_portal_id"
+            android:textColor="#FFF"
+
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/item_portal_category" android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
