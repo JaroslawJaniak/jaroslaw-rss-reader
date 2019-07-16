@@ -16,8 +16,6 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
 
     override fun onBindViewHolder(holder: HomeViewHolder, item: HomeItem, position: Int) {
 
-        val current = items[position]
-
         holder.apply {
             if (item.imagePath != null) {
                 Glide.with(itemView.context)

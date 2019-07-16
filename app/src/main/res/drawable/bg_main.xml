@@ -4,12 +4,12 @@
         <shape android:shape="rectangle">
             <corners android:topLeftRadius="8dp"
                      android:topRightRadius="8dp"
-                     android:bottomLeftRadius="8dp"
-                     android:bottomRightRadius="8dp" />
+                     android:bottomLeftRadius="0dp"
+                     android:bottomRightRadius="0dp" />
 
-            <gradient android:startColor="#73ECF1F1"
+            <gradient android:startColor="#00ECF1F1"
                       android:endColor="#73E2C1A0"
-                      android:angle="225"
+                      android:angle="270"
                       android:type="linear"/>
 
         </shape>

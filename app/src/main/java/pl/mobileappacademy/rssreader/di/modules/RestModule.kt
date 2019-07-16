@@ -16,10 +16,12 @@ class RestModule {
         return Retrofit
             .Builder()
             .baseUrl("https://www.tvn24.pl/")
-            .addConverterFactory(SimpleXmlConverterFactory.create()).build()
+            .addConverterFactory(SimpleXmlConverterFactory.create())
+            .build()
     }
 
     @Provides
+    @Singleton
     fun provideRestService(retrofit: Retrofit): RetrofitService {
         return retrofit.create(RetrofitService::class.java)
     }

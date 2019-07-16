@@ -1,0 +1,51 @@
+package pl.mobileappacademy.rssreader.fragments.RSSFragments
+
+import android.graphics.Movie
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel;
+import pl.mobileappacademy.rssreader.Retrofit.RetrofitService
+import pl.mobileappacademy.rssreader.base.BaseViewModel
+import pl.mobileappacademy.rssreader.di.modules.RestModule
+import pl.mobileappacademy.rssreader.models.rssModels.Item
+import pl.mobileappacademy.rssreader.models.rssModels.Rss
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import javax.inject.Inject
+
+class ChannelViewModel : BaseViewModel() {
+
+    @Inject
+    lateinit var api: RetrofitService
+
+    val itemsChannelList = MutableLiveData<List<Item>>()
+    val errors = MutableLiveData<Throwable>()
+    val refreshing = MutableLiveData<Boolean>()
+
+
+    fun fetchData() {
+        refreshing.value = true
+
+        api.getRss().enqueue(object: Callback<Rss> {
+            override fun onFailure(call: Call<Rss>, t: Throwable) {
+                errors.value = t
+                refreshing.value = false
+            }
+
+            override fun onResponse(call: Call<Rss>, response: Response<Rss>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        refreshing.value = false
+                        itemsChannelList.value = it.channel?.items
+                        errors.value = null
+                    }
+                }
+
+            }
+
+        })
+    }
+    }
+
+
+

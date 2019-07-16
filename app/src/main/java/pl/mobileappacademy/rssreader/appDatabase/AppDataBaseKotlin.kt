@@ -30,10 +30,6 @@ abstract class AppDataBaseKotlin : RoomDatabase() {
             }
             return INSTANCE
         }
-
-        fun destroyAppDataBaseKotlin() {
-            INSTANCE = null
-        }
     }
 
 }
