@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.channel_fragment.*
+import pl.mobileappacademy.rssreader.Injector
 
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
@@ -16,6 +17,7 @@ import pl.mobileappacademy.rssreader.di.modules.RestModule
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 class ChannelFragment : BaseFragment() {
 
@@ -29,7 +31,8 @@ class ChannelFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-
+        Injector.component.inject(this)
+        
         return inflater.inflate(R.layout.channel_fragment, container, false)
     }
 

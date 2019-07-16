@@ -18,7 +18,7 @@ class ChannelAdapter : BaseRecyclerAdapter<Item, ChannelAdapter.ChannelViewHolde
             itemView.item_channel_link.text = item.link
             itemView.item_channel_title.text = item.title
             itemView.item_channel_pubDate.text = item.pubDate
-            
+
         }
     }
 
