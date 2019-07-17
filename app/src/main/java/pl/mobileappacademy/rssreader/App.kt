@@ -10,5 +10,6 @@ class App : Application() {
         super.onCreate()
         Injector.reInit(this)
         AppDataBaseKotlin.getAppDataBaseKotlin(this)
+
     }
 }

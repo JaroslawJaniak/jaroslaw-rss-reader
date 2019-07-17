@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -16,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.item_portal.view.*
 import kotlinx.android.synthetic.main.login_dialog.view.*
 import kotlinx.android.synthetic.main.portal_dialog.view.*
 import pl.mobileappacademy.rssreader.R
@@ -31,7 +28,6 @@ class HomeFragment : BaseFragment(){
     private lateinit var viewModel: HomeViewModel
     private val homeAdapter by lazy { HomeAdapter() }
     lateinit var itemToInsert: HomeItem
-    private var selectedCategory: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +46,7 @@ class HomeFragment : BaseFragment(){
             homeAdapter.notifyDataSetChanged()
         })
 
-        home_recycle_view.apply {
+        channel_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = homeAdapter
         }
@@ -62,7 +58,7 @@ class HomeFragment : BaseFragment(){
     }
 
     private fun showServiceDialog() {
-        home_recycle_view.addOnItemClickListener(object : OnItemClickListener {
+        channel_recycle_view.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
 
                 Toast.makeText(context, "clicked on " + homeAdapter.items[position], Toast.LENGTH_LONG).show()
@@ -82,7 +78,14 @@ class HomeFragment : BaseFragment(){
                 val mAlertDialog = mBuilder?.show()
 
                 mDialogView.dialog_portal_button.setOnClickListener {
-                    findNavController().navigate(R.id.portalRSS)
+                    findNavController().navigate(R.id.channelFragment)
+                    mAlertDialog?.dismiss()
+                }
+
+                mDialogView.dialog_portal_button_usun.setOnClickListener {
+                    AsyncTask.execute {
+                        viewModel.appDb?.portalDao()?.delete(homeAdapter.items[position])
+                    }
                     mAlertDialog?.dismiss()
                 }
             }
@@ -106,7 +109,6 @@ class HomeFragment : BaseFragment(){
             val nazwa = mDialogView.login_dialog_name.text.toString()
             val category = mDialogView.spinner2.selectedItem.toString()
 
-
             itemToInsert = HomeItem()
             itemToInsert.adress = adressURL
             itemToInsert.name = nazwa
@@ -117,7 +119,6 @@ class HomeFragment : BaseFragment(){
             }
 
             mAlertDialog?.dismiss()
-
         }
 
         mDialogView.login_dialog_CancelBtn.setOnClickListener {

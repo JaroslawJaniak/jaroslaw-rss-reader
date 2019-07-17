@@ -5,7 +5,6 @@ import pl.mobileappacademy.rssreader.di.AppComponent
 import pl.mobileappacademy.rssreader.di.DaggerAppComponent
 import pl.mobileappacademy.rssreader.di.modules.AppModule
 
-
 object Injector {
 
     lateinit var component: AppComponent

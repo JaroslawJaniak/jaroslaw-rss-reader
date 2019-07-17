@@ -27,14 +27,29 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:id="@+id/dialog_category" android:layout_marginTop="8dp"/>
-    <Button
-            android:text="przejdź do serwisu"
-            android:textColor="#FFF"
-            android:fontFamily="@font/impact"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/dialog_portal_button"
-            android:layout_marginTop="16dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" android:layout_marginTop="16dp">
+        <Button
+                android:text="przejdź do serwisu"
+                android:textColor="#FFF"
+                android:fontFamily="@font/impact"
+                android:backgroundTint="@color/colorPrimaryDark"
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/dialog_portal_button"
+                android:layout_weight="1"/>
+        <Button
+                android:text="usuń"
+                android:textColor="#FFF"
+                android:fontFamily="@font/impact"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/dialog_portal_button_usun"
+                android:layout_weight="1"/>
+    </LinearLayout>
 
 </LinearLayout>

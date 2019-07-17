@@ -16,15 +16,13 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
 
     override fun onBindViewHolder(holder: HomeViewHolder, item: HomeItem, position: Int) {
 
-        val current = items[position]
-
         holder.apply {
             if (item.imagePath != null) {
                 Glide.with(itemView.context)
                     .load(item.imagePath)
                     .centerCrop()
                     .transform(RoundedCorners(5))
-                    .into(itemView.item_portal_image)
+                    //.into(itemView.item_portal_image)
             }
 
             itemView.item_portal_name.text = item.name
@@ -32,7 +30,6 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
             itemView.item_portal_address.text = item.adress
             itemView.item_portal_id.text = item.id.toString()
         }
-
     }
 
     override fun getItemCount() = items.size
