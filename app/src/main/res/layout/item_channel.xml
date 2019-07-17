@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content"
+              android:background="@drawable/bg_channel_item"
+              android:layout_marginTop="16dp">
 
 
     <TextView
@@ -10,26 +12,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="24sp"
+            android:textSize="14sp"
             android:fontFamily="@font/impact"
-            android:id="@+id/item_channel_title"/>
-    <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="12sp"
-            android:id="@+id/item_channel_link"
-            android:layout_marginTop="16dp"/>
+            android:textColor="#FF9800"
+            android:id="@+id/item_channel_title"
+            android:layout_marginLeft="8dp"/>
 
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="12sp"
-            android:id="@+id/item_channel_pubDate"
-            android:layout_marginTop="16dp"/>
+            android:textSize="14sp"
+            android:fontFamily="@font/impact"
+            android:textColor="#fff"
+            android:id="@+id/item_channel_pubDate" android:layout_marginTop="24dp"/>
+
 
 
 </LinearLayout>

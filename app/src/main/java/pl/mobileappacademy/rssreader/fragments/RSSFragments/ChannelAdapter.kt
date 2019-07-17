@@ -13,9 +13,10 @@ import pl.mobileappacademy.rssreader.models.rssModels.Item
 class ChannelAdapter : BaseRecyclerAdapter<Item, ChannelAdapter.ChannelViewHolder>() {
 
     override fun onBindViewHolder(holder: ChannelViewHolder, item: Item, position: Int) {
+
         holder.apply {
 
-            itemView.item_channel_link.text = item.link
+            //itemView.item_channel_link.text = item.link
             itemView.item_channel_title.text = item.title
             itemView.item_channel_pubDate.text = item.pubDate
 

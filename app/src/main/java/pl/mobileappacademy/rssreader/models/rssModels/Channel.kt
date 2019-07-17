@@ -1,17 +1,18 @@
 package pl.mobileappacademy.rssreader.models.rssModels
 
 import org.simpleframework.xml.Element
+import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 
 @Root(name = "channel", strict = false)
-class Channel(
+data class Channel(
 
-    @Element(name = "title")
+    @field:Element(name = "title")
     var title: String? = "",
 
-    @Element(name = "description")
+    @field:Element(name = "description")
     var description: String? = "",
 
-    @Element(name = "items")
+    @field:ElementList(inline = true, name = "item")
     var items: List<Item>? = null
 )

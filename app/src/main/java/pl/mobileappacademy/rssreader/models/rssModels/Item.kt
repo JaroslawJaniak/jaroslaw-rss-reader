@@ -5,21 +5,21 @@ import org.simpleframework.xml.Element
 import org.simpleframework.xml.Root
 
 @Root(name = "item", strict = false)
-class Item(
+data class Item(
 
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
 
-    @Element(name = "title")
+    @field:Element(name = "title")
     var title: String? = "",
 
-    @Element(name = "description")
+    @field:Element(name = "description")
     var description: String? = "",
 
-    @Element(name = "link")
+    @field:Element(name = "link")
     var link: String? = "",
 
-    @Element(name = "pubDate")
+    @field:Element(name = "pubDate")
     var pubDate: String? = ""
 
 
