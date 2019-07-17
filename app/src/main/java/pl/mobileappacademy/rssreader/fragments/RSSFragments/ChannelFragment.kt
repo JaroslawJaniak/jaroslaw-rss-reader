@@ -15,6 +15,7 @@ import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.di.modules.RestModule
+import pl.mobileappacademy.rssreader.models.HomeListItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,16 +48,11 @@ class ChannelFragment : BaseFragment() {
         }
 
         viewModel.fetchData()
+        viewModel.fetchData2("aaaaa")
 
         viewModel.itemsChannelList.observe(this, Observer {
             channelAdapter.items = it ?: emptyList()
             channelAdapter.notifyDataSetChanged()
         })
-
-
-
     }
-
-
-
 }

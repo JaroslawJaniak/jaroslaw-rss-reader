@@ -10,6 +10,9 @@
     <fragment android:id="@+id/channelFragment"
               android:name="pl.mobileappacademy.rssreader.fragments.RSSFragments.ChannelFragment"
               android:label="channel_fragment" tools:layout="@layout/channel_fragment"/>
+    <fragment android:id="@+id/homeListFragment"
+              android:name="pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeListFragment"
+              android:label="HomeListFragment"/>
 
 
 </navigation>

@@ -6,16 +6,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import pl.mobileappacademy.rssreader.models.HomeItem
+import pl.mobileappacademy.rssreader.models.HomeListItem
 
 
 @Database(
-    version = 3,
-    entities = [HomeItem::class]
+    version = 4,
+    entities = [HomeItem::class, HomeListItem::class]
 )
 abstract class AppDataBaseKotlin : RoomDatabase() {
 
     abstract fun portalDao(): PortalDao
-
 
     companion object {
         var INSTANCE: AppDataBaseKotlin? = null

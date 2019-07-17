@@ -15,14 +15,11 @@
     <TextView
             android:id="@+id/item_portal_name"
             tools:text="NAZWA PORTALU"
-
             android:fontFamily="@font/impact"
             android:textSize="24sp"
             android:textColor="#FF9800"
             android:shadowColor="#000"
             android:shadowRadius="16"
-
-
             android:layout_height="wrap_content"
             android:layout_width="270dp"
             android:maxWidth="250dp"

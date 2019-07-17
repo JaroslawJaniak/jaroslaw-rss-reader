@@ -25,10 +25,17 @@ class ChannelViewModel : BaseViewModel() {
     @Inject
     lateinit var context: Context
     val itemsChannelList = MutableLiveData<List<Item>>()
-    val descriptionChannel: String = ""
     val errors = MutableLiveData<Throwable>()
     val refreshing = MutableLiveData<Boolean>()
 
+    lateinit var url: String
+
+    /*
+    fun getUrl(url: String): String {
+        this.url = url
+        return url
+    }
+    */
 
     init {
         Injector.component.inject(this)
@@ -39,6 +46,32 @@ class ChannelViewModel : BaseViewModel() {
         refreshing.value = true
 
         api.getRss().enqueue(object: Callback<Rss> {
+            override fun onFailure(call: Call<Rss>, t: Throwable) {
+                errors.value = t
+                refreshing.value = false
+                println("")
+            }
+
+            override fun onResponse(call: Call<Rss>, response: Response<Rss>) {
+                if (response.isSuccessful) {
+
+                    Toast.makeText(context, "response.isSuccessful",Toast.LENGTH_LONG).show()
+
+                    response.body()?.let {
+                        refreshing.value = false
+                        itemsChannelList.value = it.channel?.items
+                        errors.value = null
+                    }
+                }
+            }
+
+        })
+    }
+
+    fun fetchData2(url: String) {
+        refreshing.value = true
+
+        api.getRssCh(url).enqueue(object: Callback<Rss> {
             override fun onFailure(call: Call<Rss>, t: Throwable) {
                 errors.value = t
                 refreshing.value = false

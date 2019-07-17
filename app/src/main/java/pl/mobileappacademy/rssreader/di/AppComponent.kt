@@ -7,6 +7,8 @@ import pl.mobileappacademy.rssreader.di.modules.AppModule
 import pl.mobileappacademy.rssreader.di.modules.RestModule
 import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeViewModel
 import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeFragment
+import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeListFragment
+import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeListViewModel
 import pl.mobileappacademy.rssreader.fragments.RSSFragments.ChannelFragment
 import pl.mobileappacademy.rssreader.fragments.RSSFragments.ChannelViewModel
 import javax.inject.Singleton
@@ -21,5 +23,7 @@ interface AppComponent {
     fun inject(into: HomeViewModel)
     fun inject(into: ChannelFragment)
     fun inject(into: ChannelViewModel)
+    fun inject(into: HomeListFragment)
+    fun inject(into: HomeListViewModel)
 
 }

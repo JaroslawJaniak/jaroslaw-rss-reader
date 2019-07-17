@@ -7,7 +7,6 @@
 
 
     <TextView
-            android:text="DESCRIPTION"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/channel_description"/>
     <androidx.recyclerview.widget.RecyclerView
