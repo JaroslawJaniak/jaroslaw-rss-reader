@@ -26,10 +26,8 @@ class ChannelFragment : BaseFragment() {
     private lateinit var viewModel: ChannelViewModel
     private val channelAdapter by lazy { ChannelAdapter() }
     private val homeListAdapter by lazy { RssChannelsAdapter() }
-
-
+    
     private lateinit var viewHomeList: List<HomeListItem>
-    var url: String? = ""
 
     companion object {
         fun newInstance() = ChannelFragment()
@@ -57,7 +55,7 @@ class ChannelFragment : BaseFragment() {
 
         viewHomeList = RssChannelsViewModel().getHomeListViewTVN()
         for (i in viewHomeList) {
-            url = i.adress
+            val url = i.adress
             viewModel.fetchData2(url, i.name ?: "")
         }
 
