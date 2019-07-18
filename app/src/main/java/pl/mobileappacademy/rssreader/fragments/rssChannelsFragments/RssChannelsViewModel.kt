@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.HomeFragments
+package pl.mobileappacademy.rssreader.fragments.rssChannelsFragments
 
 import android.content.Context
 import android.os.AsyncTask
@@ -9,7 +9,7 @@ import pl.mobileappacademy.rssreader.appDatabase.PortalDao
 import pl.mobileappacademy.rssreader.models.HomeListItem
 import javax.inject.Inject
 
-class HomeListViewModel : ViewModel() {
+class RssChannelsViewModel : ViewModel() {
 
     fun getHomeListViewTVN() = listOf(
         HomeListItem(

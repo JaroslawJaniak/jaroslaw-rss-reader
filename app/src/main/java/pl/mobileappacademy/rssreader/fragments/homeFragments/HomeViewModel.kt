@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.HomeFragments
+package pl.mobileappacademy.rssreader.fragments.homeFragments
 
 import android.content.Context
 import android.os.AsyncTask

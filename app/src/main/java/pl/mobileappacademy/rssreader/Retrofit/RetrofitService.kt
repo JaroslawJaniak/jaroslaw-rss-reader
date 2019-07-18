@@ -14,6 +14,6 @@ interface RetrofitService {
     fun getRss(): Call<Rss>
 
     @GET
-    fun getRssCh(@Url url: String): Call<Rss>
+    fun getRssCh(@Url url: String?): Call<Rss>
 }
 

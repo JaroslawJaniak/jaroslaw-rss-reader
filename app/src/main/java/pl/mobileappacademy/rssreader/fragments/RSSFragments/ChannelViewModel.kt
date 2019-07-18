@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.Retrofit.RetrofitService
+import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin
 import pl.mobileappacademy.rssreader.base.BaseViewModel
 import pl.mobileappacademy.rssreader.di.modules.RestModule
 import pl.mobileappacademy.rssreader.models.rssModels.Item
@@ -21,25 +22,19 @@ class ChannelViewModel : BaseViewModel() {
 
     @Inject
     lateinit var api: RetrofitService
-
+/*
+    @Inject
+    lateinit var appDb: AppDataBaseKotlin
+*/
     @Inject
     lateinit var context: Context
     val itemsChannelList = MutableLiveData<List<Item>>()
     val errors = MutableLiveData<Throwable>()
     val refreshing = MutableLiveData<Boolean>()
 
-    lateinit var url: String
-
-    /*
-    fun getUrl(url: String): String {
-        this.url = url
-        return url
-    }
-    */
-
     init {
         Injector.component.inject(this)
-        fetchData()
+        //fetchData()
     }
 
     fun fetchData() {
@@ -64,11 +59,10 @@ class ChannelViewModel : BaseViewModel() {
                     }
                 }
             }
-
         })
     }
 
-    fun fetchData2(url: String) {
+    fun fetchData2(url: String?, category: String) {
         refreshing.value = true
 
         api.getRssCh(url).enqueue(object: Callback<Rss> {
@@ -81,16 +75,18 @@ class ChannelViewModel : BaseViewModel() {
             override fun onResponse(call: Call<Rss>, response: Response<Rss>) {
                 if (response.isSuccessful) {
 
-                    Toast.makeText(context, "response.isSuccessful",Toast.LENGTH_LONG).show()
-
                     response.body()?.let {
                         refreshing.value = false
-                        itemsChannelList.value = it.channel?.items
+                        val listWithCategory = arrayListOf<Item>()
+                        it.channel?.items?.forEach {
+                            it.category = category
+                            listWithCategory.add(it)
+                        }
+                        itemsChannelList.value = listWithCategory
                         errors.value = null
                     }
                 }
             }
-
         })
     }
     }

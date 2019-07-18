@@ -5,33 +5,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.channel_fragment.*
+import kotlinx.android.synthetic.main.channel_fragment.channel_recycle_view
 import pl.mobileappacademy.rssreader.Injector
 
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
-import pl.mobileappacademy.rssreader.di.modules.RestModule
+import pl.mobileappacademy.rssreader.fragments.rssChannelsFragments.RssChannelsViewModel
+import pl.mobileappacademy.rssreader.fragments.adapters.RssChannelsAdapter
 import pl.mobileappacademy.rssreader.models.HomeListItem
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import javax.inject.Inject
 
 class ChannelFragment : BaseFragment() {
 
     private lateinit var viewModel: ChannelViewModel
     private val channelAdapter by lazy { ChannelAdapter() }
+    private val homeListAdapter by lazy { RssChannelsAdapter() }
+
+
+    private lateinit var viewHomeList: List<HomeListItem>
+    var url: String? = ""
+    var x: String? = ""
 
     companion object {
         fun newInstance() = ChannelFragment()
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
 
         Injector.component.inject(this)
 
@@ -47,12 +53,19 @@ class ChannelFragment : BaseFragment() {
             adapter = channelAdapter
         }
 
-        viewModel.fetchData()
-        viewModel.fetchData2("aaaaa")
+        viewHomeList = RssChannelsViewModel().getHomeListViewTVN()
+        for (i in viewHomeList) {
+            url = i.adress
+            viewModel.fetchData2(url, i.name?:"")
+        }
 
         viewModel.itemsChannelList.observe(this, Observer {
-            channelAdapter.items = it ?: emptyList()
+            channelAdapter.updateData(it ?: emptyList())
             channelAdapter.notifyDataSetChanged()
         })
+
+        channel_filtr_button.setOnClickListener {
+            findNavController().navigate(R.id.dialogFilterFragment)
+        }
     }
 }

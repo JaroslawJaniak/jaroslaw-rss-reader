@@ -10,7 +10,7 @@ data class Item(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
 
-    @field:Element(name = "title")
+    @field:Element(name = "title", required = false)
     var title: String? = "",
 
     @field:Element(name = "description")
@@ -20,7 +20,9 @@ data class Item(
     var link: String? = "",
 
     @field:Element(name = "pubDate")
-    var pubDate: String? = ""
+    var pubDate: String? = "",
+
+    var category :String? = ""
 
 
 )

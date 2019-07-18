@@ -1,69 +1,67 @@
-package pl.mobileappacademy.rssreader.fragments.HomeFragments
-
+package pl.mobileappacademy.rssreader.fragments.dialogs
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.home_list_fragment.*
+import kotlinx.android.synthetic.main.rss_channels_fragment.*
+
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.base.OnItemClickListener
 import pl.mobileappacademy.rssreader.base.addOnItemClickListener
+import pl.mobileappacademy.rssreader.fragments.adapters.RssChannelsAdapter
 
-import pl.mobileappacademy.rssreader.fragments.adapters.HomeListAdapter
-
-class HomeListFragment : BaseFragment() {
+class DialogFilterFragment : DialogFragment() {
 
     var url: String = ""
+    private lateinit var viewModel: DialogFilterViewModel
 
-    private lateinit var viewModel: HomeListViewModel
-    private val homeListAdapter by lazy { HomeListAdapter() }
+    private val rssChannelsAdapter by lazy { RssChannelsAdapter() }
 
     companion object {
-        fun newInstance() = HomeListFragment()
+        fun newInstance() = DialogFilterFragment()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.home_list_fragment, container, false)
+        return inflater.inflate(R.layout.dialog_filter_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(DialogFilterViewModel::class.java)
 
         viewModel.appDb?.portalDao()?.getAllRss()?.observe(this, Observer {
-            homeListAdapter.items = it ?: emptyList()
-            homeListAdapter.notifyDataSetChanged()
+            rssChannelsAdapter.items = it ?: emptyList()
+            rssChannelsAdapter.notifyDataSetChanged()
         })
 
-        homeList_recycle_view.apply {
+        rss_channels_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            adapter = homeListAdapter
+            adapter = rssChannelsAdapter
         }
 
         goToRssChanels()
     }
 
     private fun goToRssChanels() {
-        homeList_recycle_view.addOnItemClickListener(object : OnItemClickListener {
+        rss_channels_recycle_view.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
-
-                url = homeListAdapter.items[position].adress.toString()
+                url = rssChannelsAdapter.items[position].adress.toString()
                 findNavController().navigate(R.id.channelFragment)
 
             }
         })
     }
-
-    fun getUrl(url: String, position: Int) = this.homeListAdapter.items[position].adress.toString()
 
 }

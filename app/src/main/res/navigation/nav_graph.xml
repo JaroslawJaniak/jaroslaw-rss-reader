@@ -5,14 +5,17 @@
             app:startDestination="@id/homeFragment">
 
     <fragment android:id="@+id/homeFragment"
-              android:name="pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeFragment"
+              android:name="pl.mobileappacademy.rssreader.fragments.homeFragments.HomeFragment"
               android:label="HomeFragment"/>
     <fragment android:id="@+id/channelFragment"
               android:name="pl.mobileappacademy.rssreader.fragments.RSSFragments.ChannelFragment"
               android:label="channel_fragment" tools:layout="@layout/channel_fragment"/>
-    <fragment android:id="@+id/homeListFragment"
-              android:name="pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeListFragment"
-              android:label="HomeListFragment"/>
+    <fragment android:id="@+id/dialogFilterFragment"
+              android:name="pl.mobileappacademy.rssreader.fragments.dialogs.DialogFilterFragment"
+              android:label="DialogFilterFragment"/>
+    <fragment android:id="@+id/rssChannelsFragment"
+              android:name="pl.mobileappacademy.rssreader.fragments.rssChannelsFragments.RssChannelsFragment"
+              android:label="RssChannelsFragment"/>
 
 
 </navigation>

@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.HomeFragments
+package pl.mobileappacademy.rssreader.fragments.homeFragments
 
 
 import android.os.AsyncTask
@@ -78,7 +78,7 @@ class HomeFragment : BaseFragment(){
                 val mAlertDialog = mBuilder?.show()
 
                 mDialogView.dialog_portal_button.setOnClickListener {
-                    findNavController().navigate(R.id.homeListFragment)
+                    findNavController().navigate(R.id.channelFragment)
                     mAlertDialog?.dismiss()
                 }
 
