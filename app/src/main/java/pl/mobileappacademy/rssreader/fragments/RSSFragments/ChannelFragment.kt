@@ -18,6 +18,7 @@ import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.fragments.rssChannelsFragments.RssChannelsViewModel
 import pl.mobileappacademy.rssreader.fragments.adapters.RssChannelsAdapter
+import pl.mobileappacademy.rssreader.fragments.dialogs.DialogFilterFragment
 import pl.mobileappacademy.rssreader.models.HomeListItem
 
 class ChannelFragment : BaseFragment() {
@@ -29,7 +30,6 @@ class ChannelFragment : BaseFragment() {
 
     private lateinit var viewHomeList: List<HomeListItem>
     var url: String? = ""
-    var x: String? = ""
 
     companion object {
         fun newInstance() = ChannelFragment()
@@ -48,6 +48,8 @@ class ChannelFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ChannelViewModel::class.java)
 
+        val dialog = DialogFilterFragment()
+
         channel_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = channelAdapter
@@ -56,7 +58,7 @@ class ChannelFragment : BaseFragment() {
         viewHomeList = RssChannelsViewModel().getHomeListViewTVN()
         for (i in viewHomeList) {
             url = i.adress
-            viewModel.fetchData2(url, i.name?:"")
+            viewModel.fetchData2(url, i.name ?: "")
         }
 
         viewModel.itemsChannelList.observe(this, Observer {
@@ -65,7 +67,10 @@ class ChannelFragment : BaseFragment() {
         })
 
         channel_filtr_button.setOnClickListener {
-            findNavController().navigate(R.id.dialogFilterFragment)
+            //findNavController().navigate(R.id.dialogFilterFragment)
+
+            dialog.show(fragmentManager, "DialogFilterFragment")
+
         }
     }
 }

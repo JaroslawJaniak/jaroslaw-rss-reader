@@ -25,10 +25,6 @@ class RssChannelsFragment : BaseFragment() {
     private lateinit var viewModel: RssChannelsViewModel
     private val homeListAdapter by lazy { RssChannelsAdapter() }
 
-    companion object {
-        fun newInstance() = RssChannelsFragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,10 +46,10 @@ class RssChannelsFragment : BaseFragment() {
             adapter = homeListAdapter
         }
 
-        goToRssChanels()
+        setLsteners()
     }
 
-    private fun goToRssChanels() {
+    private fun setLsteners() {
         rss_channels_recycle_view.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
                 url = homeListAdapter.items[position].adress.toString()

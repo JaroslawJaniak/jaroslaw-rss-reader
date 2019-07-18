@@ -21,14 +21,9 @@ import pl.mobileappacademy.rssreader.fragments.adapters.RssChannelsAdapter
 
 class DialogFilterFragment : DialogFragment() {
 
-    var url: String = ""
     private lateinit var viewModel: DialogFilterViewModel
 
     private val rssChannelsAdapter by lazy { RssChannelsAdapter() }
-
-    companion object {
-        fun newInstance() = DialogFilterFragment()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,17 +46,5 @@ class DialogFilterFragment : DialogFragment() {
             adapter = rssChannelsAdapter
         }
 
-        goToRssChanels()
     }
-
-    private fun goToRssChanels() {
-        rss_channels_recycle_view.addOnItemClickListener(object : OnItemClickListener {
-            override fun onItemClicked(position: Int, view: View) {
-                url = rssChannelsAdapter.items[position].adress.toString()
-                findNavController().navigate(R.id.channelFragment)
-
-            }
-        })
-    }
-
 }
