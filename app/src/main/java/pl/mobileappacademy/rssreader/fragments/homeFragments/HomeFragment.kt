@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.HomeFragments
+package pl.mobileappacademy.rssreader.fragments.homeFragments
 
 
 import android.os.AsyncTask
@@ -38,8 +38,8 @@ class HomeFragment : BaseFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         viewModel.appDb?.portalDao()?.getAll()?.observe(this, Observer {
             homeAdapter.items = it ?: emptyList()

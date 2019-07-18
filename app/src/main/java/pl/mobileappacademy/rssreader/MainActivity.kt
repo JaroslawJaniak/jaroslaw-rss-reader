@@ -5,12 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin
-import pl.mobileappacademy.rssreader.appDatabase.PortalDao
-import pl.mobileappacademy.rssreader.fragments.HomeFragments.HomeViewModel
+import pl.mobileappacademy.rssreader.fragments.homeFragments.HomeViewModel
 import pl.mobileappacademy.rssreader.fragments.topBar.TopBar
-import pl.mobileappacademy.rssreader.models.HomeItem
-import java.util.*
 
 class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
 

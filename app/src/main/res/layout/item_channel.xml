@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@drawable/bg_channel_item"
+              android:background="@drawable/bg_item_rss"
               android:layout_marginTop="16dp">
 
 
@@ -11,8 +11,8 @@
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="14sp"
+            android:layout_gravity="fill_vertical"
+            android:textSize="18sp"
             android:fontFamily="@font/impact"
             android:textColor="#FF9800"
             android:id="@+id/item_channel_title"
@@ -26,7 +26,18 @@
             android:textSize="14sp"
             android:fontFamily="@font/impact"
             android:textColor="#fff"
-            android:id="@+id/item_channel_pubDate" android:layout_marginTop="24dp"/>
+            android:id="@+id/item_channel_pubDate" android:layout_marginTop="16dp"/>
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_channel_category"
+            android:textColor="#fff"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            />
 
 
 

@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.HomeFragments
+package pl.mobileappacademy.rssreader.fragments.homeFragments
 
 import android.content.Context
 import android.os.AsyncTask
@@ -18,25 +18,7 @@ class HomeViewModel : BaseViewModel() {
         HomeItem(
             1,
             "tvn24",
-            "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
-            "https://www.tvn24.pl/rss.html", "none"
-        ),
-        HomeItem(
-            2,
-            "INTERIA",
-            "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
-            "https://rss.interia.pl/news-rss-interia-pl,nId,2611437", "none"
-        ),
-        HomeItem(
-            3,
-            "POLSAT NEWS",
-            "https://www.polsatnews.pl/templates/pnews2018/build/gfx/logo.svg",
-            "https://www.polsatnews.pl/kanaly-rss/", "none"
-        ),
-        HomeItem(
-            4,
-            "tvn24",
-            "https://www.rmf24.pl/s/classic/Small-rmf24.pl.png",
+            "",
             "https://www.tvn24.pl/rss.html", "none"
         )
     )

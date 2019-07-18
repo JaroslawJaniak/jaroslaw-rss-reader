@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.Retrofit.RetrofitService
+import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin
 import pl.mobileappacademy.rssreader.base.BaseViewModel
 import pl.mobileappacademy.rssreader.di.modules.RestModule
 import pl.mobileappacademy.rssreader.models.rssModels.Item
@@ -21,18 +22,19 @@ class ChannelViewModel : BaseViewModel() {
 
     @Inject
     lateinit var api: RetrofitService
-
+/*
+    @Inject
+    lateinit var appDb: AppDataBaseKotlin
+*/
     @Inject
     lateinit var context: Context
     val itemsChannelList = MutableLiveData<List<Item>>()
-    val descriptionChannel: String = ""
     val errors = MutableLiveData<Throwable>()
     val refreshing = MutableLiveData<Boolean>()
 
-
     init {
         Injector.component.inject(this)
-        fetchData()
+        //fetchData()
     }
 
     fun fetchData() {
@@ -57,7 +59,34 @@ class ChannelViewModel : BaseViewModel() {
                     }
                 }
             }
+        })
+    }
 
+    fun fetchData2(url: String?, category: String) {
+        refreshing.value = true
+
+        api.getRssCh(url).enqueue(object: Callback<Rss> {
+            override fun onFailure(call: Call<Rss>, t: Throwable) {
+                errors.value = t
+                refreshing.value = false
+                println("")
+            }
+
+            override fun onResponse(call: Call<Rss>, response: Response<Rss>) {
+                if (response.isSuccessful) {
+
+                    response.body()?.let {
+                        refreshing.value = false
+                        val listWithCategory = arrayListOf<Item>()
+                        it.channel?.items?.forEach {
+                            it.category = category
+                            listWithCategory.add(it)
+                        }
+                        itemsChannelList.value = listWithCategory
+                        errors.value = null
+                    }
+                }
+            }
         })
     }
     }

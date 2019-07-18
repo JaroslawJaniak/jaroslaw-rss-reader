@@ -10,9 +10,9 @@ data class Channel(
     @field:Element(name = "title")
     var title: String? = "",
 
-    @field:Element(name = "description")
+    @field:Element(name = "description", required = false)
     var description: String? = "",
 
-    @field:ElementList(inline = true, name = "item")
+    @field:ElementList(inline = true, required = false)
     var items: List<Item>? = null
 )

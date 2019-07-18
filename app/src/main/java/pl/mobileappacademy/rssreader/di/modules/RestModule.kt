@@ -15,7 +15,7 @@ class RestModule {
     fun provideRetrofit() : Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("https://www.tvn24.pl/")
+            .baseUrl("https://google.pl/")
             .addConverterFactory(SimpleXmlConverterFactory.create())
             .build()
     }
