@@ -5,15 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.channel_fragment.*
 import kotlinx.android.synthetic.main.channel_fragment.channel_recycle_view
 import pl.mobileappacademy.rssreader.Injector
-
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.fragments.rssChannelsFragments.RssChannelsViewModel
@@ -25,13 +22,8 @@ class ChannelFragment : BaseFragment() {
 
     private lateinit var viewModel: ChannelViewModel
     private val channelAdapter by lazy { ChannelAdapter() }
-    private val homeListAdapter by lazy { RssChannelsAdapter() }
-    
-    private lateinit var viewHomeList: List<HomeListItem>
 
-    companion object {
-        fun newInstance() = ChannelFragment()
-    }
+    private lateinit var viewHomeList: List<HomeListItem>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -65,7 +57,6 @@ class ChannelFragment : BaseFragment() {
         })
 
         channel_filtr_button.setOnClickListener {
-            //findNavController().navigate(R.id.dialogFilterFragment)
 
             dialog.show(fragmentManager, "DialogFilterFragment")
 
