@@ -11,14 +11,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bg_item_rss"
 >
 
     <TextView
             android:id="@+id/item_list_rss_name"
             tools:text="NAZWA PORTALU"
             android:fontFamily="@font/impact"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textColor="#FF9800"
             android:shadowColor="#000"
             android:shadowRadius="8"
