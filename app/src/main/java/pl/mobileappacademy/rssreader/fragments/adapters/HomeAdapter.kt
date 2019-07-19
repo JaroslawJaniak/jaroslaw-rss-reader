@@ -10,9 +10,19 @@ import kotlinx.android.synthetic.main.item_portal.view.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
 import pl.mobileappacademy.rssreader.models.HomeItem
+import pl.mobileappacademy.rssreader.models.rssModels.Item
 
 class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() {
     override var items: List<HomeItem> = emptyList()
+
+    fun updateData(newData: List<HomeItem>) {
+        val data = arrayListOf<HomeItem>()
+        data.addAll(items)
+        data.addAll(newData)
+
+        this.items = data
+        notifyDataSetChanged()
+    }
 
     override fun onBindViewHolder(holder: HomeViewHolder, item: HomeItem, position: Int) {
 

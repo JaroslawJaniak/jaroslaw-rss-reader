@@ -9,10 +9,10 @@ import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
 import pl.mobileappacademy.rssreader.models.HomeListItem
 
-class RssChannelsAdapter: BaseRecyclerAdapter<HomeListItem, RssChannelsAdapter.HomeListViewHolder>() {
+class RssChannelsAdapter: BaseRecyclerAdapter<HomeListItem, RssChannelsAdapter.RssChannelsViewHolder>() {
     override var items: List<HomeListItem> = emptyList()
 
-    override fun onBindViewHolder(holder: HomeListViewHolder, item: HomeListItem, position: Int) {
+    override fun onBindViewHolder(holder: RssChannelsViewHolder, item: HomeListItem, position: Int) {
         holder.apply {
 
             itemView.item_list_rss_name.text = item.name
@@ -20,11 +20,11 @@ class RssChannelsAdapter: BaseRecyclerAdapter<HomeListItem, RssChannelsAdapter.H
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): HomeListViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RssChannelsViewHolder {
         val itemView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_rss_channels, viewGroup, false)
-        return HomeListViewHolder(itemView)
+        return RssChannelsViewHolder(itemView)
     }
 
-    class HomeListViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class RssChannelsViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
 }

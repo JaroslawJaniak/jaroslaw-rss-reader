@@ -4,14 +4,32 @@ package pl.mobileappacademy.rssreader
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import pl.mobileappacademy.rssreader.fragments.homeFragments.HomeViewModel
-import pl.mobileappacademy.rssreader.fragments.topBar.TopBar
+import pl.mobileappacademy.rssreader.fragments.navBars.BottomBar
+import pl.mobileappacademy.rssreader.fragments.navBars.TopBar
 
-class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
+class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener, BottomBar.AppBottomBarListener,
+    MainActivityInteractions {
+
+    override fun onHomeClick() {
+        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.homeFragment)
+    }
+
+    override fun onAddClick() {
+
+    }
+
+    override fun onSortClick() {
+
+    }
+
+    override fun onBackClick() {
+
+    }
 
     private lateinit var topBar: TopBar
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var bottomBar: BottomBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -33,12 +51,18 @@ class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener {
     }
 
     private fun findViews() {
-
         topBar = findViewById(R.id.top_bar)
+        bottomBar = findViewById(R.id.bottom_bar)
     }
 
-    private fun setListeners() {
+    fun setListeners() {
         topBar.setTopBarListener(this)
+        bottomBar.setBottomBarListener(this)
     }
+
+    override fun getBottomBar(): BottomBar = bottomBar
+    override fun getNavigationController(): NavController = Navigation.findNavController(this, R.id.nav_host_fragment)
+
+
 }
 

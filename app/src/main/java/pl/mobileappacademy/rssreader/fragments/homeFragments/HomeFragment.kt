@@ -1,6 +1,7 @@
 package pl.mobileappacademy.rssreader.fragments.homeFragments
 
 
+
 import android.os.AsyncTask
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -14,17 +15,32 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.login_dialog.view.*
+import kotlinx.android.synthetic.main.add_service_dialog.view.*
 import kotlinx.android.synthetic.main.portal_dialog.view.*
+import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.base.OnItemClickListener
 import pl.mobileappacademy.rssreader.base.addOnItemClickListener
 import pl.mobileappacademy.rssreader.fragments.adapters.HomeAdapter
+import pl.mobileappacademy.rssreader.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.models.HomeItem
 
 
-class HomeFragment : BaseFragment(){
+class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
+
+    override fun onHomeClick() {
+
+    }
+
+    override fun onAddClick() {
+        showAddDialog()
+    }
+
+    override fun onSortClick() {
+
+    }
+
     private lateinit var viewModel: HomeViewModel
     private val homeAdapter by lazy { HomeAdapter() }
     lateinit var itemToInsert: HomeItem
@@ -39,6 +55,8 @@ class HomeFragment : BaseFragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //Injector.component.inject(this)
+
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         viewModel.appDb?.portalDao()?.getAll()?.observe(this, Observer {
@@ -51,9 +69,11 @@ class HomeFragment : BaseFragment(){
             adapter = homeAdapter
         }
 
+        bottomBar?.setBottomBarListener(this)
+
         showServiceDialog()
         mainLoginBtn.setOnClickListener {
-            showAddDialog()
+            //showAddDialog()
         }
     }
 
@@ -61,7 +81,7 @@ class HomeFragment : BaseFragment(){
         channel_recycle_view.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
 
-                Toast.makeText(context, "clicked on " + homeAdapter.items[position], Toast.LENGTH_LONG).show()
+                //Toast.makeText(context, "clicked on " + homeAdapter.items[position], Toast.LENGTH_LONG).show()
 
                 val mDialogView = LayoutInflater.from(context).inflate(R.layout.portal_dialog, null)
 
@@ -94,7 +114,7 @@ class HomeFragment : BaseFragment(){
 
     private fun showAddDialog() {
 
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.login_dialog, null)
+        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_service_dialog, null)
         val mBuilder = context?.let { it1 ->
             AlertDialog.Builder(it1)
                 .setView(mDialogView)
@@ -105,16 +125,13 @@ class HomeFragment : BaseFragment(){
 
         mDialogView.login_dialog_OkBtn.setOnClickListener {
 
-            val adressURL = mDialogView.login_dialogAdressURL.text.toString()
             val nazwa = mDialogView.login_dialog_name.text.toString()
-            val category = mDialogView.spinner2.selectedItem.toString()
 
             itemToInsert = HomeItem()
-            itemToInsert.adress = adressURL
             itemToInsert.name = nazwa
-            itemToInsert.category = category
 
             AsyncTask.execute {
+
                 viewModel.appDb?.portalDao()?.insert(itemToInsert)
             }
 

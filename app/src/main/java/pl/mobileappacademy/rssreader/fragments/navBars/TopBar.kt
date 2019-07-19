@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.fragments.topBar
+package pl.mobileappacademy.rssreader.fragments.navBars
 
 import android.content.Context
 import android.util.AttributeSet
@@ -28,10 +28,10 @@ class TopBar @JvmOverloads constructor(
     }
 
     private fun setListeners() {
-
+        //top_bar_back_button.setOnClickListener { appTopBarListener.onBackClick() }
     }
 
     interface AppTopBarListener {
-
+        fun onBackClick()
     }
 }
