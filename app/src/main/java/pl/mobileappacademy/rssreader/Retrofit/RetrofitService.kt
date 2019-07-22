@@ -15,5 +15,6 @@ interface RetrofitService {
 
     @GET
     fun getRssCh(@Url url: String?): Call<Rss>
+
 }
 

@@ -28,7 +28,7 @@ class TopBar @JvmOverloads constructor(
     }
 
     private fun setListeners() {
-        //top_bar_back_button.setOnClickListener { appTopBarListener.onBackClick() }
+        top_bar_back_arrow.setOnClickListener { appTopBarListener.onBackClick() }
     }
 
     interface AppTopBarListener {

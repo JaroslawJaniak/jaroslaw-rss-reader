@@ -5,6 +5,8 @@ import dagger.Component
 import pl.mobileappacademy.rssreader.App
 import pl.mobileappacademy.rssreader.di.modules.AppModule
 import pl.mobileappacademy.rssreader.di.modules.RestModule
+import pl.mobileappacademy.rssreader.fragments.RSSFragments.ChannelDetailesFragment
+import pl.mobileappacademy.rssreader.fragments.RSSFragments.ChannelDetailesViewModel
 import pl.mobileappacademy.rssreader.fragments.homeFragments.HomeViewModel
 import pl.mobileappacademy.rssreader.fragments.homeFragments.HomeFragment
 import pl.mobileappacademy.rssreader.fragments.rssChannelsFragments.RssChannelsFragment
@@ -25,6 +27,8 @@ interface AppComponent {
     fun inject(into: HomeViewModel)
     fun inject(into: ChannelFragment)
     fun inject(into: ChannelViewModel)
+    fun inject(into: ChannelDetailesFragment)
+    fun inject(into: ChannelDetailesViewModel)
     fun inject(into: RssChannelsFragment)
     fun inject(into: RssChannelsViewModel)
     fun inject(into: DialogFilterFragment)

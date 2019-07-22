@@ -16,38 +16,44 @@ class RssChannelsViewModel : ViewModel() {
             1,
             "Najnowsze",
             "",
-            "https://www.tvn24.pl/najnowsze.xml", ""
-        ),
+            "https://www.tvn24.pl/najnowsze.xml",
+            ""
+        )/*,
         HomeListItem(
             2,
             "Najważniejsze",
             "",
-            "https://www.tvn24.pl/najwazniejsze.xml", ""
+            "https://www.tvn24.pl/najwazniejsze.xml",
+            ""
         ),
         HomeListItem(
             3,
             "Galerie",
             "",
-            "https://www.tvn24.pl/zdjecia.xml", ""
+            "https://www.tvn24.pl/zdjecia.xml",
+            ""
         ),
         HomeListItem(
             4,
             "Sport",
             "",
-            "https://eurosport.tvn24.pl/sport,81,m.xml", ""
+            "https://eurosport.tvn24.pl/sport,81,m.xml",
+            ""
         ),
         HomeListItem(
             5,
             "Polska",
             "",
-            "https://www.tvn24.pl/wiadomosci-z-kraju,3.xml", ""
+            "https://www.tvn24.pl/wiadomosci-z-kraju,3.xml",
+            ""
         ),
         HomeListItem(
             6,
             "Świat",
             "",
-            "https://www.tvn24.pl/wiadomosci-ze-swiata,2.xml", ""
-        )
+            "https://www.tvn24.pl/wiadomosci-ze-swiata,2.xml",
+            ""
+        )*/
     )
 
     var appDb: AppDataBaseKotlin? = null

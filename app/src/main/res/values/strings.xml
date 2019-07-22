@@ -4,14 +4,12 @@
     <string name="portal_prompt">Choose a category</string>
 
     <string-array name="portal_category">
-        <item>none</item>
-        <item>Ulubione</item>
+        <item>Najnowsze</item>
+        <item>Najważniejsze</item>
+        <item>Galerie</item>
+        <item>Sport</item>
         <item>Polska</item>
         <item>Świat</item>
-        <item>Biznes</item>
-        <item>Sport</item>
-        <item>Zdrowie</item>
-        <item>Nauka</item>
-        <item>Kultura</item>
+        <item>Inne...</item>
     </string-array>
 </resources>

@@ -16,6 +16,9 @@
     <fragment android:id="@+id/rssChannelsFragment"
               android:name="pl.mobileappacademy.rssreader.fragments.rssChannelsFragments.RssChannelsFragment"
               android:label="RssChannelsFragment"/>
+    <fragment android:id="@+id/channelDetailesFragment"
+              android:name="pl.mobileappacademy.rssreader.fragments.RSSFragments.ChannelDetailesFragment"
+              android:label="channel_detailes_fragment" tools:layout="@layout/channel_detailes_fragment"/>
 
 
 </navigation>

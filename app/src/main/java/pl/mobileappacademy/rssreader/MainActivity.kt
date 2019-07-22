@@ -6,27 +6,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.topbar_view.*
 import pl.mobileappacademy.rssreader.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.fragments.navBars.TopBar
 
 class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener, BottomBar.AppBottomBarListener,
     MainActivityInteractions {
-
-    override fun onHomeClick() {
-        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.homeFragment)
-    }
-
-    override fun onAddClick() {
-
-    }
-
-    override fun onSortClick() {
-
-    }
-
-    override fun onBackClick() {
-
-    }
 
     private lateinit var topBar: TopBar
     private lateinit var bottomBar: BottomBar
@@ -62,6 +47,22 @@ class MainActivity : AppCompatActivity(), TopBar.AppTopBarListener, BottomBar.Ap
 
     override fun getBottomBar(): BottomBar = bottomBar
     override fun getNavigationController(): NavController = Navigation.findNavController(this, R.id.nav_host_fragment)
+
+    override fun onHomeClick() {
+        Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.homeFragment)
+    }
+
+    override fun onAddClick() {
+
+    }
+
+    override fun onSortClick() {
+
+    }
+
+    override fun onBackClick() {
+        onBackPressed()
+    }
 
 
 }

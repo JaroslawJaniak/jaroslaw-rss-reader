@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_channel.view.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
+import pl.mobileappacademy.rssreader.fragments.adapters.RssChannelsAdapter
 import pl.mobileappacademy.rssreader.fragments.navBars.BottomBar
+import pl.mobileappacademy.rssreader.models.HomeListItem
+import pl.mobileappacademy.rssreader.models.rssModels.Channel
 import pl.mobileappacademy.rssreader.models.rssModels.Item
 
 class ChannelAdapter : BaseRecyclerAdapter<Item, ChannelAdapter.ChannelViewHolder>(){
