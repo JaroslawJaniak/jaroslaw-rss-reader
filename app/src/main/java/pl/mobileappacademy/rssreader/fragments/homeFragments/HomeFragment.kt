@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.add_dialog.view.*
 import kotlinx.android.synthetic.main.portal_dialog.view.*
+import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.base.OnItemClickListener
 import pl.mobileappacademy.rssreader.base.addOnItemClickListener
@@ -62,13 +63,14 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
         channel_recycle_view.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
 
-                //Toast.makeText(context, "clicked on " + homeAdapter.items[position], Toast.LENGTH_LONG).show()
+                val item = homeAdapter.items[position]
 
                 val mDialogView = LayoutInflater.from(context).inflate(pl.mobileappacademy.rssreader.R.layout.portal_dialog, null)
 
-                mDialogView.dialog_name.text = homeAdapter.items[position].name.toString()
-                mDialogView.dialog_adressURL.text = homeAdapter.items[position].adress.toString()
-                mDialogView.dialog_category.text = homeAdapter.items[position].category.toString()
+                mDialogView.dialog_name.text = item.name.toString()
+                mDialogView.dialog_adressURL.text = item.adress.toString()
+                mDialogView.dialog_isClicked.text = item.isClicked.toString()
+
 
                 val mBuilder = context?.let { it1 ->
                     AlertDialog.Builder(it1)
@@ -79,8 +81,10 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
                 val mAlertDialog = mBuilder?.show()
 
                 mDialogView.dialog_portal_button.setOnClickListener {
-                    findNavController().navigate(pl.mobileappacademy.rssreader.R.id.channelFragment)
-                    mAlertDialog?.dismiss()
+                        val bundle = Bundle()
+                        bundle.putString("SERIVISE_FILTER", item.name)
+                        findNavController().navigate(R.id.channelFragment, bundle)
+                        mAlertDialog?.dismiss()
                 }
 
                 mDialogView.dialog_portal_button_usun.setOnClickListener {

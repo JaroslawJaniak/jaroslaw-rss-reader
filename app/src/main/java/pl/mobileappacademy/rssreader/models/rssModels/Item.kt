@@ -22,7 +22,9 @@ data class Item(
     @field:Element(name = "pubDate")
     var pubDate: String? = "",
 
-    var category :String? = ""
+    var category : String? = "",
+
+    var portalName: String? = ""
 
 
 )

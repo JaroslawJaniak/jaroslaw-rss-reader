@@ -24,7 +24,6 @@ class ChannelViewModel : BaseViewModel() {
     lateinit var context: Context
 
     var appDb: AppDataBaseKotlin? = null
-    var portlalDao: PortalDao? = null
 
     val itemsChannelList = MutableLiveData<List<Item>>()
     val errors = MutableLiveData<Throwable>()
@@ -34,7 +33,7 @@ class ChannelViewModel : BaseViewModel() {
         Injector.component.inject(this)
     }
 
-    fun fetchData(url: String?, category: String) {
+    fun fetchData(url: String?, category: String, portalName: String) {
         refreshing.value = true
 
         api.getRssCh(url).enqueue(object: Callback<Rss> {
@@ -52,10 +51,14 @@ class ChannelViewModel : BaseViewModel() {
                         val listWithCategory = arrayListOf<Item>()
 
                         it.channels?.forEach {
+
                             it.items?.forEach {
-                            it.category = category
+                                it.portalName = portalName
+                                it.category = category
                                 listWithCategory.add(it)
-                        }
+                            }
+
+
                         }
 
                         itemsChannelList.value = listWithCategory

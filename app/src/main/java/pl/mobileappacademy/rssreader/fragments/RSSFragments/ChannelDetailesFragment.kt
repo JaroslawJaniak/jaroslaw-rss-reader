@@ -41,7 +41,7 @@ class ChannelDetailesFragment : BaseFragment() {
             adapter = channelDetailesAdapter
         }
 
-        var viewHomeList = RssChannelsViewModel().getHomeListViewTVN()
+        var viewHomeList = RssChannelsViewModel().getHomeListView()
 
         for (i in viewHomeList) {
             val url = i.adress

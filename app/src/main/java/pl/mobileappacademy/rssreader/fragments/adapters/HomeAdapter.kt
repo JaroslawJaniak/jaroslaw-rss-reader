@@ -7,22 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.item_portal.view.*
-import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseRecyclerAdapter
 import pl.mobileappacademy.rssreader.models.HomeItem
-import pl.mobileappacademy.rssreader.models.rssModels.Item
+
+
+
 
 class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() {
+
     override var items: List<HomeItem> = emptyList()
-
-    fun updateData(newData: List<HomeItem>) {
-        val data = arrayListOf<HomeItem>()
-        data.addAll(items)
-        data.addAll(newData)
-
-        this.items = data
-        notifyDataSetChanged()
-    }
 
     override fun onBindViewHolder(holder: HomeViewHolder, item: HomeItem, position: Int) {
 
@@ -36,7 +29,6 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
             }
 
             itemView.item_portal_name.text = item.name
-            itemView.item_portal_category.text = item.category
             itemView.item_portal_address.text = item.adress
             itemView.item_portal_id.text = item.id.toString()
         }
@@ -44,12 +36,15 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
 
     override fun getItemCount() = items.size
 
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): HomeViewHolder {
-        val itemView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_portal, viewGroup, false)
+        val itemView = LayoutInflater.from(viewGroup.context).inflate(pl.mobileappacademy.rssreader.R.layout.item_portal, viewGroup, false)
         return HomeViewHolder(itemView)
     }
 
+    fun setItems() = this.items
+
     class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
+
 }
 

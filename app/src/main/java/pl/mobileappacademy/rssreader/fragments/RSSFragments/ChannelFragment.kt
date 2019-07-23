@@ -6,32 +6,47 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.add_dialog_spinner.view.*
+import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_CancelBtn
+import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_OkBtn
 import kotlinx.android.synthetic.main.channel_fragment.*
 import kotlinx.android.synthetic.main.channel_fragment.channel_recycle_view
+import kotlinx.android.synthetic.main.dialog_filter_spinner.*
+import kotlinx.android.synthetic.main.dialog_filter_spinner.view.spinner_filter
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.base.BaseFragment
 import pl.mobileappacademy.rssreader.fragments.rssChannelsFragments.RssChannelsViewModel
-import pl.mobileappacademy.rssreader.fragments.dialogs.DialogFilterFragment
 import pl.mobileappacademy.rssreader.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.models.HomeListItem
-import pl.mobileappacademy.rssreader.models.rssModels.Channel
 
 class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener {
 
     private lateinit var itemToInsert: HomeListItem
-    val dialog = DialogFilterFragment()
     private lateinit var viewModel: ChannelViewModel
+    private lateinit var viewHomeList: List<HomeListItem>
+    private var portalNameHome: String? = ""
+    private var filterCategory: String? = ""
+
+    var categoryFilter = arrayOf("Najnowsze", "Najważniejsze", "Galerie", "Sport", "Polska", "Świat", "Inne...")
+    var spinner: Spinner? = null
+
     private val channelAdapter by lazy { ChannelAdapter() }
 
-    private lateinit var viewHomeList: List<HomeListItem>
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            portalNameHome = it.getString("SERIVISE_FILTER")
+        }
 
-    private lateinit var viewChannel: List<Channel>
+        spinner = this.spinner_filter
+        spinner!!.selectedItem
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -46,19 +61,18 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ChannelViewModel::class.java)
 
-
-
         channel_recycle_view.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = channelAdapter
         }
 
-        viewHomeList = RssChannelsViewModel().getHomeListViewTVN()
-        viewChannel = ChannelDetailsAdapter().items
+        viewHomeList = RssChannelsViewModel().getHomeListView()
 
         for (i in viewHomeList) {
             val url = i.adress
-            viewModel.fetchData(url, i.name ?: "")
+            if (i.portalName == portalNameHome) {
+                viewModel.fetchData(url, i.name ?: "", i.portalName ?: "")
+            }
         }
 
         viewModel.itemsChannelList.observe(this, Observer {
@@ -69,8 +83,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         bottomBar?.setBottomBarListener(this)
 
         channel_filtr_button.setOnClickListener {
-            //navigate?.navigate(R.id.channelDetailesFragment)
-            navigate?.navigate(R.id.rssChannelsFragment)
+            navigate?.navigate(R.id.channelDetailesFragment)
         }
     }
 
@@ -84,9 +97,6 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener {
 
         }
         val mAlertDialog = mBuilder?.show()
-
-        val spinner = mDialogView.spinner.selectedItem as String
-
 
         mDialogView.add_dialog_OkBtn.setOnClickListener {
 
@@ -111,6 +121,27 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         }
     }
 
+    private fun showFilterDialog() {
+
+        val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_filter_spinner, null)
+        val mBuilder = context?.let { it1 ->
+            AlertDialog.Builder(it1)
+                .setView(mDialogView)
+                .setTitle("Fitruj według kategorii")
+
+        }
+        val mAlertDialog = mBuilder?.show()
+
+        mDialogView.add_dialog_OkBtn.setOnClickListener {
+            filterCategory = mDialogView.spinner_filter.selectedItem.toString()
+            mAlertDialog?.dismiss()
+        }
+
+        mDialogView.add_dialog_CancelBtn.setOnClickListener {
+            mAlertDialog?.dismiss()
+        }
+    }
+
     override fun onHomeClick() {
         navigate?.navigate(R.id.homeFragment)
     }
@@ -120,7 +151,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener {
     }
 
     override fun onSortClick() {
-        dialog.show(fragmentManager, "DialogFilterFragment")
+        showFilterDialog()
     }
 
 }

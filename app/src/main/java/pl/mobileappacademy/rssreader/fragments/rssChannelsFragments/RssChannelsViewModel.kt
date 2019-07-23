@@ -11,27 +11,30 @@ import javax.inject.Inject
 
 class RssChannelsViewModel : ViewModel() {
 
-    fun getHomeListViewTVN() = listOf(
+    fun getHomeListView() = listOf(
         HomeListItem(
             1,
             "Najnowsze",
             "",
             "https://www.tvn24.pl/najnowsze.xml",
-            ""
-        )/*,
+            "",
+            "tvn24"
+        ),
         HomeListItem(
             2,
             "Najważniejsze",
             "",
             "https://www.tvn24.pl/najwazniejsze.xml",
-            ""
+            "",
+            "tvn24"
         ),
         HomeListItem(
             3,
-            "Galerie",
+            "Polska",
             "",
-            "https://www.tvn24.pl/zdjecia.xml",
-            ""
+            "https://www.tvn24.pl/wiadomosci-z-kraju,3.xml",
+            "",
+            "tvn24"
         ),
         HomeListItem(
             4,
@@ -42,18 +45,27 @@ class RssChannelsViewModel : ViewModel() {
         ),
         HomeListItem(
             5,
-            "Polska",
-            "",
-            "https://www.tvn24.pl/wiadomosci-z-kraju,3.xml",
-            ""
-        ),
-        HomeListItem(
-            6,
             "Świat",
             "",
             "https://www.tvn24.pl/wiadomosci-ze-swiata,2.xml",
             ""
-        )*/
+        ),
+        HomeListItem(
+            6,
+            "Polska",
+            "",
+            "https://www.polsatnews.pl/rss/polska.xml",
+            "",
+            "POLSAT NEWS"
+        ),
+        HomeListItem(
+            7,
+            "Świat",
+            "",
+            "https://www.polsatnews.pl/rss/swiat.xml",
+            "",
+            "POLSAT NEWS"
+        )
     )
 
     var appDb: AppDataBaseKotlin? = null
@@ -72,7 +84,7 @@ class RssChannelsViewModel : ViewModel() {
         portlalDao = appDb?.portalDao()
 
         AsyncTask.execute {
-            for (i in getHomeListViewTVN()) {
+            for (i in getHomeListView()) {
                 with(portlalDao) {
                     this?.insertPortal(i)
                 }

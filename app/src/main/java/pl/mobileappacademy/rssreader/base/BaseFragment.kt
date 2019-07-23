@@ -27,7 +27,4 @@ open class BaseFragment : Fragment() {
         bottomBar = null
     }
 
-    fun showToast(message: String?) {
-        Toast.makeText(activity, message ?: IllegalStateException().message ?: "", Toast.LENGTH_LONG).show()
-    }
 }

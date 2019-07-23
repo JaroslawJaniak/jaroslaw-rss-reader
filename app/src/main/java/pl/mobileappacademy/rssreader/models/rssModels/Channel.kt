@@ -14,5 +14,7 @@ data class Channel(
     var description: String? = "",
 
     @field:ElementList(inline = true, required = false)
-    var items: List<Item>? = null
+    var items: List<Item>? = null,
+
+    var portalName: String? = ""
 )

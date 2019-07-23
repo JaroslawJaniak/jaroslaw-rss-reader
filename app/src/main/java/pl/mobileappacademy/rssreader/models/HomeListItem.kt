@@ -8,24 +8,21 @@ import org.simpleframework.xml.Element
 @Entity(tableName = "homeListItemsTable")
 data class HomeListItem(
 
-    @Element(name = "id")
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
 
-    @Element(name = "name")
     @ColumnInfo(name = "name")
     var name: String? = "",
 
-    @Element(name = "imagePath")
     @ColumnInfo(name = "imagePath")
     var imagePath: String? = "",
 
-    @Element(name = "adress")
     @ColumnInfo(name = "adress")
     var adress: String? = "",
 
-    @Element(name = "category")
     @ColumnInfo(name = "category")
-    var category: String? = ""
+    var category: String? = "",
+
+    var portalName: String? = ""
 )

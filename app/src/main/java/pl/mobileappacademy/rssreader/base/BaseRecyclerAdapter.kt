@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecyclerAdapter<ITEM, VH: RecyclerView.ViewHolder> : RecyclerView.Adapter<VH> () {
     open var items: List<ITEM> = emptyList()
+
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -21,6 +22,7 @@ abstract class BaseRecyclerAdapter<ITEM, VH: RecyclerView.ViewHolder> : Recycler
     abstract fun onBindViewHolder(holder: VH, item: ITEM, position: Int)
 
     override fun getItemCount() = items.size
+
     fun getItem(position: Int) = items[position]
 
     fun ViewGroup.inflate(@LayoutRes id: Int): View = LayoutInflater.from(this.context).inflate(id, this, false)
