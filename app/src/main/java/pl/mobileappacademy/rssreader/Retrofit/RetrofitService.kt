@@ -1,12 +1,10 @@
 package pl.mobileappacademy.rssreader.Retrofit
 
 
-import pl.mobileappacademy.rssreader.models.rssModels.Rss
+import pl.mobileappacademy.rssreader.data.models.rssModels.Rss
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Url
-import java.net.URL
 
 interface RetrofitService {
 

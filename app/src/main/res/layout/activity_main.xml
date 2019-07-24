@@ -6,9 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/poster"
-        tools:context=".MainActivity">
+        tools:context=".presentation.activities.MainActivity">
 
-    <pl.mobileappacademy.rssreader.fragments.navBars.TopBar
+    <pl.mobileappacademy.rssreader.presentation.fragments.navBars.TopBar
             android:id="@+id/top_bar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -16,7 +16,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-    </pl.mobileappacademy.rssreader.fragments.navBars.TopBar>
+    </pl.mobileappacademy.rssreader.presentation.fragments.navBars.TopBar>
 
 
     <fragment
@@ -34,7 +34,7 @@
             app:layout_constraintBottom_toTopOf="@+id/bottom_bar">
     </fragment>
 
-    <pl.mobileappacademy.rssreader.fragments.navBars.BottomBar
+    <pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -43,6 +43,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
     >
-    </pl.mobileappacademy.rssreader.fragments.navBars.BottomBar>
+    </pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
