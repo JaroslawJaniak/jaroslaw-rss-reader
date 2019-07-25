@@ -5,12 +5,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import pl.mobileappacademy.rssreader.data.models.HomeItem
 import pl.mobileappacademy.rssreader.data.models.HomeListItem
 import pl.mobileappacademy.rssreader.data.models.rssModels.Channel
 import pl.mobileappacademy.rssreader.data.models.rssModels.Item
+import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.GithubTypeConverters
 
-
+@TypeConverters(GithubTypeConverters::class)
 @Database(
     version = 1,
     entities = [HomeItem::class, HomeListItem::class, Channel::class, Item::class]
@@ -18,8 +20,8 @@ import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 abstract class AppDataBaseKotlin : RoomDatabase() {
 
     abstract fun portalDao(): PortalDao
-    abstract fun channelRssDao(): ChannelsRssDao
-    abstract fun itemChannelXmlDao(): PortalDao
+    abstract fun channelsRssDao(): ChannelsRssDao
+    abstract fun itemChannelXmlDao(): ItemChannelXmlDao
 
     companion object {
         var appDb: AppDataBaseKotlin? = null

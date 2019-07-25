@@ -21,8 +21,5 @@ data class HomeListItem(
     @ColumnInfo(name = "adress")
     var adress: String? = "",
 
-    @ColumnInfo(name = "category")
-    var category: String? = "",
-
     var portalName: String? = ""
 )

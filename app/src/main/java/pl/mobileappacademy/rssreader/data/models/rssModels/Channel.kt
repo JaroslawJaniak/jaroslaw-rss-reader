@@ -1,11 +1,10 @@
 package pl.mobileappacademy.rssreader.data.models.rssModels
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import org.simpleframework.xml.Element
 import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
+import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.GithubTypeConverters
 
 @Entity(tableName = "channelXmlTable")
 @Root(name = "channel", strict = false)
@@ -25,8 +24,10 @@ data class Channel(
 
     @ColumnInfo(name = "items")
     @field:ElementList(inline = true, required = false)
+    @TypeConverters(GithubTypeConverters::class)
     var items: List<Item>? = null,
 
     @ColumnInfo(name = "portalName")
     var portalName: String? = ""
 )
+

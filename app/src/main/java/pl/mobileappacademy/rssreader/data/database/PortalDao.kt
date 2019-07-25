@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 import pl.mobileappacademy.rssreader.data.models.HomeItem
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
 
 @Dao
 interface PortalDao {
@@ -21,7 +20,7 @@ interface PortalDao {
     @Insert(onConflict = REPLACE)
     fun insert(homeItem: HomeItem)
 
-    @Update
+    @Update(onConflict = REPLACE)
     fun update(task: HomeItem)
 
     @Delete

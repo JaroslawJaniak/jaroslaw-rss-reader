@@ -18,7 +18,6 @@ class RssChannelsViewModel : ViewModel() {
             "Najnowsze",
             "",
             "https://www.tvn24.pl/najnowsze.xml",
-            "",
             "tvn24"
         ),
         HomeListItem(
@@ -26,7 +25,6 @@ class RssChannelsViewModel : ViewModel() {
             "Najważniejsze",
             "",
             "https://www.tvn24.pl/najwazniejsze.xml",
-            "",
             "tvn24"
         ),
         HomeListItem(
@@ -34,7 +32,6 @@ class RssChannelsViewModel : ViewModel() {
             "Polska",
             "",
             "https://www.tvn24.pl/wiadomosci-z-kraju,3.xml",
-            "",
             "tvn24"
         ),
         HomeListItem(
@@ -42,7 +39,6 @@ class RssChannelsViewModel : ViewModel() {
             "Sport",
             "",
             "https://eurosport.tvn24.pl/sport,81,m.xml",
-            "",
             "tvn24"
         ),
         HomeListItem(
@@ -50,7 +46,6 @@ class RssChannelsViewModel : ViewModel() {
             "Świat",
             "",
             "https://www.tvn24.pl/wiadomosci-ze-swiata,2.xml",
-            "",
             "tvn24"
         ),
         HomeListItem(
@@ -58,7 +53,6 @@ class RssChannelsViewModel : ViewModel() {
             "Polska",
             "",
             "https://www.polsatnews.pl/rss/polska.xml",
-            "",
             "POLSAT NEWS"
         ),
         HomeListItem(
@@ -66,7 +60,6 @@ class RssChannelsViewModel : ViewModel() {
             "Świat",
             "",
             "https://www.polsatnews.pl/rss/swiat.xml",
-            "",
             "POLSAT NEWS"
         )
     )
@@ -84,7 +77,7 @@ class RssChannelsViewModel : ViewModel() {
 
     private fun insertToDatabaseChannelsRss() {
         appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
-        channelsRssDao = appDb?.channelRssDao()
+        channelsRssDao = appDb?.channelsRssDao()
 
         AsyncTask.execute {
             for (i in getHomeListView()) {

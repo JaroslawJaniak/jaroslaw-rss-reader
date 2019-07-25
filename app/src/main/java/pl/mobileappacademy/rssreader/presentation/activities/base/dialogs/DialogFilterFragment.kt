@@ -2,17 +2,13 @@ package pl.mobileappacademy.rssreader.presentation.activities.base.dialogs
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.fragment.app.DialogFragment
-import kotlinx.android.synthetic.main.channel_fragment.view.*
 import kotlinx.android.synthetic.main.dialog_filter_spinner.*
-import kotlinx.android.synthetic.main.dialog_filter_spinner.view.*
 
 import pl.mobileappacademy.rssreader.R
 
@@ -41,13 +37,10 @@ class DialogFilterFragment : DialogFragment(), AdapterView.OnItemSelectedListene
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DialogFilterViewModel::class.java)
 
-
-
         var list_of_items = arrayOf("Polska", "Świat", "Najnowsze")
         val spinner = spinner_filter
         val spinnerArrayAdapter = ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, list_of_items)
 
-        //selected item will look like a spinner set from XML
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = spinnerArrayAdapter
 
@@ -66,17 +59,6 @@ class DialogFilterFragment : DialogFragment(), AdapterView.OnItemSelectedListene
 
             }
         }
-
-
-
-
-
-
-
-
-
-
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_filter_spinner, null)
 
         add_dialog_OkBtn.setOnClickListener{
             dialogInterface.categorySelected(mCategory)

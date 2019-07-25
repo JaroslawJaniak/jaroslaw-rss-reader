@@ -1,10 +1,13 @@
 package pl.mobileappacademy.rssreader.presentation.fragments.RSSFragments
 
 import android.content.Context
+import android.os.AsyncTask
 import androidx.lifecycle.MutableLiveData
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.Retrofit.RetrofitService
 import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
+import pl.mobileappacademy.rssreader.data.database.ChannelsRssDao
+import pl.mobileappacademy.rssreader.data.database.ItemChannelXmlDao
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseViewModel
 import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 import pl.mobileappacademy.rssreader.data.models.rssModels.Rss
@@ -22,6 +25,7 @@ class ChannelViewModel : BaseViewModel() {
     lateinit var context: Context
 
     var appDb: AppDataBaseKotlin? = null
+    var itemChannelXmlDao: ItemChannelXmlDao? = null
 
     val itemsChannelList = MutableLiveData<List<Item>>()
     val errors = MutableLiveData<Throwable>()
@@ -32,9 +36,14 @@ class ChannelViewModel : BaseViewModel() {
     }
 
     fun fetchData(url: String?, category: String, portalName: String) {
+
+        appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
+        itemChannelXmlDao = appDb?.itemChannelXmlDao()
+
         refreshing.value = true
 
         api.getRssCh(url).enqueue(object: Callback<Rss> {
+
             override fun onFailure(call: Call<Rss>, t: Throwable) {
                 errors.value = t
                 refreshing.value = false
@@ -53,6 +62,12 @@ class ChannelViewModel : BaseViewModel() {
                                 it.portalName = portalName
                                 it.category = category
                                 listWithCategory.add(it)
+
+                                AsyncTask.execute {
+                                        with(itemChannelXmlDao) {
+                                            this?.insertItemChannelXml(it)
+                                        }
+                                }
                             }
                         }
 

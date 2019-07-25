@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import org.simpleframework.xml.Element
 import org.simpleframework.xml.Root
 
-@Entity(tableName = "itemChannelXmlTable")
+@Entity(tableName = "itemsChannelXmlTable")
 @Root(name = "item", strict = false)
 data class Item(
 

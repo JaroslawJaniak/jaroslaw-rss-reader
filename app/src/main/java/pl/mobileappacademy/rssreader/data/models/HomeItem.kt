@@ -8,7 +8,6 @@ import org.simpleframework.xml.Element
 @Entity(tableName = "portalTable")
 data class HomeItem(
 
-
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,

@@ -3,7 +3,6 @@ package pl.mobileappacademy.rssreader.data.database
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import pl.mobileappacademy.rssreader.data.models.HomeItem
 import pl.mobileappacademy.rssreader.data.models.HomeListItem
 
 @Dao
@@ -13,10 +12,10 @@ interface ChannelsRssDao {
     fun getAllChannelsRss(): LiveData<List<HomeListItem>>?
 
     @Query("SELECT * from channelsRssTable ORDER BY name ASC")
-    fun sortByNameChannelsRss(): LiveData<List<HomeItem>>
+    fun sortByNameChannelsRss(): LiveData<List<HomeListItem>>
 
     @Query("SELECT * FROM channelsRssTable WHERE id = :id")
-    fun getByIdRss(id: Long): LiveData<HomeItem>
+    fun getByIdChannelsRss(id: Long): LiveData<HomeListItem>
 
     @Insert(onConflict = REPLACE)
     fun insertChannelsRss(homeListItem: HomeListItem)

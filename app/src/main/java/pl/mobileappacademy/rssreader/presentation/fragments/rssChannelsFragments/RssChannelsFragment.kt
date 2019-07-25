@@ -54,7 +54,7 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(RssChannelsViewModel::class.java)
 
-        viewModel.appDb?.portalDao()?.getAllRss()?.observe(this, Observer {
+        viewModel.appDb?.channelsRssDao()?.getAllChannelsRss()?.observe(this, Observer {
             rssChannelsAdapter.items = it ?: emptyList()
             rssChannelsAdapter.notifyDataSetChanged()
         })
@@ -92,16 +92,14 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         mDialogView.add_dialog_OkBtn.setOnClickListener {
 
             val url: String = mDialogView.add_dialogAdressURL.text.toString()
-            val category = mDialogView.spinner.selectedItem.toString()
             val name = mDialogView.spinner.selectedItem.toString()
 
             itemToInsert = HomeListItem()
             itemToInsert.name = name
             itemToInsert.adress = url
-            itemToInsert.category = category
 
             AsyncTask.execute {
-                viewModel.appDb?.portalDao()?.insertPortal(itemToInsert)
+                viewModel.appDb?.channelsRssDao()?.insertChannelsRss(itemToInsert)
             }
 
             mAlertDialog?.dismiss()

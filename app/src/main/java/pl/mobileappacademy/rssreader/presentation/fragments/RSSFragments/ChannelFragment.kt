@@ -28,7 +28,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
 
 
     override fun categorySelected(category: String) {
-        channelAdapter.filterItems(category)
+        channelAdapter.filterItems(category, channelAdapter.items)
     }
 
     fun showDialog(){
@@ -71,8 +71,13 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
 
         initFiltrByPortalName(viewHomeList)
 
+        viewModel.appDb?.itemChannelXmlDao()?.getAllItemChannelXml()?.observe(this, Observer {
+            channelAdapter.items = it ?: emptyList()
+            channelAdapter.notifyDataSetChanged()
+        })
+
         viewModel.itemsChannelList.observe(this, Observer {
-            channelAdapter.updateData(it ?: emptyList())
+            //channelAdapter.updateData(it ?: emptyList())
             channelAdapter.notifyDataSetChanged()
         })
 
@@ -104,10 +109,9 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
             itemToInsert = HomeListItem()
             itemToInsert.name = name
             itemToInsert.adress = url
-            itemToInsert.category = category
 
             AsyncTask.execute {
-                viewModel.appDb?.portalDao()?.insertPortal(itemToInsert)
+                viewModel.appDb?.channelsRssDao()?.insertChannelsRss(itemToInsert)
             }
 
             mAlertDialog?.dismiss()
@@ -133,8 +137,6 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
 
             var filterCategory = mDialogView.spinner_filter.selectedItem.toString()
             textView2.text = filterCategory
-
-
 
             val bundle = Bundle()
             bundle.putString("SPINNER_SELECTED_ITEM", filterCategory)
