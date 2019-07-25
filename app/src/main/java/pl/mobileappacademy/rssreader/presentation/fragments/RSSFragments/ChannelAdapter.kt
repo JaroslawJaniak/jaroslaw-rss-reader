@@ -19,11 +19,11 @@ class ChannelAdapter : BaseRecyclerAdapter<Item, ChannelAdapter.ChannelViewHolde
         notifyDataSetChanged()
     }
 
-    fun filterItems(selectedCategory: String, newData: List<Item>) {
-        val data = arrayListOf<Item>()
+    fun filterItems(selectedCategory: String, data: List<Item>) {
+        //val data = arrayListOf<Item>()
         val filteredData = arrayListOf<Item>()
-        data.addAll(items)
-        data.addAll(newData)
+        //data.addAll(items)
+        //data.addAll(newData)
 
         var x = selectedCategory
 

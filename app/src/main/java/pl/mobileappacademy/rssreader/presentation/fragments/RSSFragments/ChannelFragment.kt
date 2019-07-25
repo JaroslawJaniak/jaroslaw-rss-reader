@@ -22,13 +22,14 @@ import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.Ba
 import pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragments.RssChannelsViewModel
 import pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 import pl.mobileappacademy.rssreader.presentation.activities.base.dialogs.DialogFilterFragment
 
 class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFilterFragment.DialogInterface {
 
 
     override fun categorySelected(category: String) {
-        channelAdapter.filterItems(category, channelAdapter.items)
+        channelAdapter.filterItems(category, allItems )
     }
 
     fun showDialog(){
@@ -41,6 +42,8 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
     private lateinit var viewModel: ChannelViewModel
     private lateinit var viewHomeList: List<HomeListItem>
     private var portalNameHome: String? = ""
+
+    private var allItems = arrayListOf<Item>()
 
     private val channelAdapter by lazy { ChannelAdapter() }
 
@@ -77,7 +80,9 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         })
 
         viewModel.itemsChannelList.observe(this, Observer {
-            //channelAdapter.updateData(it ?: emptyList())
+            allItems.addAll(it)
+            channelAdapter.updateData(it ?: emptyList())
+            //allItems.addAll(channelAdapter.items)
             channelAdapter.notifyDataSetChanged()
         })
 
