@@ -5,6 +5,7 @@ import android.os.AsyncTask
 import androidx.lifecycle.ViewModel
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
+import pl.mobileappacademy.rssreader.data.database.ChannelsRssDao
 import pl.mobileappacademy.rssreader.data.database.PortalDao
 import pl.mobileappacademy.rssreader.data.models.HomeListItem
 import javax.inject.Inject
@@ -41,14 +42,16 @@ class RssChannelsViewModel : ViewModel() {
             "Sport",
             "",
             "https://eurosport.tvn24.pl/sport,81,m.xml",
-            ""
+            "",
+            "tvn24"
         ),
         HomeListItem(
             5,
             "Świat",
             "",
             "https://www.tvn24.pl/wiadomosci-ze-swiata,2.xml",
-            ""
+            "",
+            "tvn24"
         ),
         HomeListItem(
             6,
@@ -69,24 +72,24 @@ class RssChannelsViewModel : ViewModel() {
     )
 
     var appDb: AppDataBaseKotlin? = null
-    var portlalDao: PortalDao? = null
+    var channelsRssDao: ChannelsRssDao? = null
 
     @Inject
     lateinit var context: Context
 
     init {
         Injector.component.inject(this)
-        insertToDatabase()
+        insertToDatabaseChannelsRss()
     }
 
-    private fun insertToDatabase() {
+    private fun insertToDatabaseChannelsRss() {
         appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
-        portlalDao = appDb?.portalDao()
+        channelsRssDao = appDb?.channelRssDao()
 
         AsyncTask.execute {
             for (i in getHomeListView()) {
-                with(portlalDao) {
-                    this?.insertPortal(i)
+                with(channelsRssDao) {
+                    this?.insertChannelsRss(i)
                 }
             }
         }

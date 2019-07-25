@@ -37,15 +37,10 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         dialog.show(fragmentManager, "dialog")
     }
 
-
     private lateinit var itemToInsert: HomeListItem
     private lateinit var viewModel: ChannelViewModel
     private lateinit var viewHomeList: List<HomeListItem>
     private var portalNameHome: String? = ""
-    private var category: String = ""
-
-
-
 
     private val channelAdapter by lazy { ChannelAdapter() }
 

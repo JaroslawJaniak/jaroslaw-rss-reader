@@ -19,13 +19,13 @@ class HomeViewModel : BaseViewModel() {
             1,
             "tvn24",
             "",
-            "https://www.tvn24.pl/rss.html", false
+            "https://www.tvn24.pl/rss.html"
         ),
         HomeItem(
             2,
             "POLSAT NEWS",
             "",
-            "https://www.polsatnews.pl/kanaly-rss/", false
+            "https://www.polsatnews.pl/kanaly-rss/"
         )
     )
 

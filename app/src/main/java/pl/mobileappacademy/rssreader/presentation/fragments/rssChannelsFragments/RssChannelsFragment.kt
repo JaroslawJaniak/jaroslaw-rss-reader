@@ -73,9 +73,7 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         rss_channels_recycle_view.addOnItemClickListener(object :
             OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
-                //url = rssChannelsAdapter.items[position].adress.toString()
                 findNavController().navigate(R.id.channelFragment)
-
             }
         })
     }

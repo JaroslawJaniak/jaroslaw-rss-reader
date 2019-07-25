@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.simpleframework.xml.Element
 
-@Entity(tableName = "homeItemsTable")
+@Entity(tableName = "portalTable")
 data class HomeItem(
 
 
@@ -20,8 +20,6 @@ data class HomeItem(
     var imagePath: String? = "",
 
     @ColumnInfo(name = "adress")
-    var adress: String? = "",
-
-    var isClicked: Boolean = false
+    var adress: String? = ""
 
 )

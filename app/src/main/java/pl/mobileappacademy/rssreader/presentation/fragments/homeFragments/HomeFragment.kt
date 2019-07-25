@@ -70,8 +70,6 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
 
                 mDialogView.dialog_name.text = item.name.toString()
                 mDialogView.dialog_adressURL.text = item.adress.toString()
-                mDialogView.dialog_isClicked.text = item.isClicked.toString()
-
 
                 val mBuilder = context?.let { it1 ->
                     AlertDialog.Builder(it1)

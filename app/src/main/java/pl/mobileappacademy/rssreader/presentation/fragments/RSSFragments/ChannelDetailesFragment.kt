@@ -16,10 +16,6 @@ import pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragments
 
 class ChannelDetailesFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = ChannelDetailesFragment()
-    }
-
     private lateinit var viewModel: ChannelDetailesViewModel
     private val channelDetailesAdapter by lazy { ChannelDetailsAdapter() }
 

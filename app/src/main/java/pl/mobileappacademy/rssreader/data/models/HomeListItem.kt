@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.simpleframework.xml.Element
 
-@Entity(tableName = "homeListItemsTable")
+@Entity(tableName = "channelsRssTable")
 data class HomeListItem(
 
     @ColumnInfo(name = "id")

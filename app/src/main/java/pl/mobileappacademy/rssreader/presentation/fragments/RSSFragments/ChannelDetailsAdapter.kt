@@ -16,7 +16,6 @@ class ChannelDetailsAdapter : BaseRecyclerAdapter<Channel, ChannelDetailsAdapter
             itemView.item_channel_title.text = item.title
             itemView.item_channel_pubDate.text = item.description
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChannelDetailesViewHolder {

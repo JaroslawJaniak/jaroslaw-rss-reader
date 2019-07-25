@@ -29,7 +29,4 @@ interface AppComponent {
     fun inject(into: ChannelDetailesViewModel)
     fun inject(into: RssChannelsFragment)
     fun inject(into: RssChannelsViewModel)
-
-
-
 }
