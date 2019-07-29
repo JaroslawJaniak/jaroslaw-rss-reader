@@ -30,6 +30,7 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
     private lateinit var viewModel: HomeViewModel
     private val homeAdapter by lazy { HomeAdapter() }
     lateinit var itemToInsert: HomeItem
+    var isSortASC = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,9 +81,11 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
                 val mAlertDialog = mBuilder?.show()
 
                 mDialogView.dialog_portal_button.setOnClickListener {
-                        val bundle = Bundle()
-                        bundle.putString("SERIVISE_FILTER", item.name)
-                        findNavController().navigate(R.id.channelFragment, bundle)
+                    val bundle = Bundle()
+                    bundle.putString("SERIVISE_FILTER", item.name)
+                    findNavController().navigate(R.id.channelFragment, bundle)
+                    homeAdapter.items[position].isAdded = true
+
                         mAlertDialog?.dismiss()
                 }
 
@@ -138,9 +141,21 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
     }
 
     override fun onSortClick() {
+        if (!isSortASC) {
 
+            viewModel.appDb?.portalDao()?.sortByASCName()?.observe(this, Observer {
+                homeAdapter.items = it ?: emptyList()
+                homeAdapter.notifyDataSetChanged()
+            })
+
+            isSortASC = true
+        } else {
+            viewModel.appDb?.portalDao()?.sortByDSCName()?.observe(this, Observer {
+                homeAdapter.items = it ?: emptyList()
+                homeAdapter.notifyDataSetChanged()
+            })
+            isSortASC = false
+        }
     }
-
-
 }
 

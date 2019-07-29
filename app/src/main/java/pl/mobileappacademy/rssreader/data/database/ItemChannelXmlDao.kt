@@ -12,10 +12,16 @@ interface ItemChannelXmlDao {
     fun getAllItemChannelXml(): LiveData<List<Item>>?
 
     @Query("SELECT * from itemsChannelXmlTable ORDER BY category ASC")
-    fun sortByNameItemChannelXml(): LiveData<List<Item>>
+    fun sortByNameASCItemChannelXml(): LiveData<List<Item>>
+
+    @Query("SELECT * from itemsChannelXmlTable ORDER BY category DESC")
+    fun sortByNameDSCItemChannelXml(): LiveData<List<Item>>
+
+    @Query("SELECT * FROM itemsChannelXmlTable WHERE portalName = :portalName")
+    fun getByPortalNameItemChannelXml(portalName: String?): LiveData<List<Item>>
 
     @Query("SELECT * FROM itemsChannelXmlTable WHERE id = :id")
-    fun getByIdItemChannelXml(id: Long): LiveData<Item>
+    fun getByIdItemChannelXml(id: Long): LiveData<List<Item>>
 
     @Insert(onConflict = REPLACE)
     fun insertItemChannelXml(itemXml: Item)

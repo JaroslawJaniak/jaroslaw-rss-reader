@@ -37,7 +37,6 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
 
     }
 
-    var url: String = ""
     private lateinit var itemToInsert: HomeListItem
 
     private lateinit var viewModel: RssChannelsViewModel
