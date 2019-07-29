@@ -18,7 +18,7 @@
                 android:backgroundTint="@color/cardview_light_background"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_home"
+                app:srcCompat="@android:drawable/ic_menu_compass"
                 android:id="@+id/bottom_bar_home"
                 android:layout_weight="1"/>
         <ImageButton
@@ -26,15 +26,16 @@
                 android:backgroundTint="@color/cardview_light_background"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/add"
                 android:id="@+id/bottom_bar_add"
-                android:layout_weight="1"/>
+                android:layout_weight="1" app:srcCompat="@android:drawable/ic_menu_add"/>
         <ImageButton
                 android:textColor="#FFF"
                 android:backgroundTint="@color/cardview_light_background"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_activity_feed"
-                android:id="@+id/bottom_bar_sort" android:layout_weight="1"/>
+                android:id="@+id/bottom_bar_sort"
+                android:layout_weight="1"
+                tools:src="@android:drawable/ic_menu_sort_alphabetically"
+                android:src="@android:drawable/ic_menu_sort_alphabetically"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
