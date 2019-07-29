@@ -28,10 +28,10 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
 
 
     override fun categorySelected(category: String) {
-        channelAdapter.filterItems(category, allItems )
+        channelAdapter.filterItems(category, portalNameHome, allItems)
     }
 
-    fun showDialog(){
+    fun showDialog() {
         val dialog = DialogFilterFragment()
         dialog.setInterface(this)
         dialog.show(fragmentManager, "dialog")
@@ -41,6 +41,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
     private lateinit var viewModel: ChannelViewModel
     private lateinit var viewHomeList: List<HomeListItem>
     private var portalNameHome: String? = ""
+    var isSortASC = false
 
     private var allItems = arrayListOf<Item>()
 
@@ -73,7 +74,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
 
         initFiltrByPortalName(viewHomeList)
 
-        viewModel.appDb?.itemChannelXmlDao()?.getAllItemChannelXml()?.observe(this, Observer {
+        viewModel.appDb?.itemChannelXmlDao()?.getByPortalNameItemChannelXml(portalNameHome)?.observe(this, Observer {
             channelAdapter.items = it ?: emptyList()
             channelAdapter.notifyDataSetChanged()
         })
@@ -122,7 +123,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
             mAlertDialog?.dismiss()
         }
     }
-    
+
     override fun onHomeClick() {
         navigation?.navigate(R.id.homeFragment)
     }
@@ -132,16 +133,35 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
     }
 
     override fun onSortClick() {
+        if(!isSortASC){
+
+            viewModel.appDb?.itemChannelXmlDao()?.sortByNameASCItemChannelXml()?.observe(this, Observer {
+                channelAdapter.items = it ?: emptyList()
+                channelAdapter.notifyDataSetChanged()
+            })
+
+            isSortASC = true
+        }
+        else{
+            viewModel.appDb?.itemChannelXmlDao()?.sortByNameDSCItemChannelXml()?.observe(this, Observer {
+                channelAdapter.items = it ?: emptyList()
+                channelAdapter.notifyDataSetChanged()
+            })
+            isSortASC = false
+        }
+
 
     }
 
 
-    fun initFiltrByPortalName(viewHomeList: List<HomeListItem>){
+    fun initFiltrByPortalName(viewHomeList: List<HomeListItem>) {
         for (i in viewHomeList) {
             if (i.portalName == portalNameHome) {
                 viewModel.fetchData(i.adress, i.name ?: "", i.portalName ?: "")
             }
         }
+
+        channelAdapter.initFilterItems(portalNameHome , allItems)
     }
 
 }

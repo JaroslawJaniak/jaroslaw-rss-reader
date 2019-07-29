@@ -19,11 +19,24 @@ class ChannelAdapter : BaseRecyclerAdapter<Item, ChannelAdapter.ChannelViewHolde
         notifyDataSetChanged()
     }
 
-    fun filterItems(selectedCategory: String, data: List<Item>) {
+    fun filterItems(selectedCategory: String, portalName: String?, data: List<Item>) {
         val filteredData = arrayListOf<Item>()
 
         data.forEach {
-            if(it.category == selectedCategory){
+            if(it.category == selectedCategory && it.portalName == portalName){
+                filteredData.add(it)
+            }
+        }
+
+        this.items = filteredData
+        notifyDataSetChanged()
+    }
+
+    fun initFilterItems(portalName: String?, data: List<Item>) {
+        val filteredData = arrayListOf<Item>()
+
+        data.forEach {
+            if(it.portalName == portalName){
                 filteredData.add(it)
             }
         }

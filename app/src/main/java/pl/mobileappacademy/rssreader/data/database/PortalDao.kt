@@ -12,7 +12,10 @@ interface PortalDao {
     fun getAll(): LiveData<List<HomeItem>>?
 
     @Query("SELECT * from portalTable ORDER BY name ASC")
-    fun sortByName(): LiveData<List<HomeItem>>
+    fun sortByASCName(): LiveData<List<HomeItem>>
+
+    @Query("SELECT * from portalTable ORDER BY name DESC")
+    fun sortByDSCName(): LiveData<List<HomeItem>>
 
     @Query("SELECT * FROM portalTable WHERE id = :id")
     fun getById(id: Long): LiveData<HomeItem>
