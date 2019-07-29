@@ -1,17 +1,16 @@
 <resources>
     <string name="app_name">Rss-reader</string>
-
     <string name="portal_prompt">Choose a category</string>
+    <string name="dodaj_kanal">Dodaj kanał</string>
+    <string name="dodaj_portal">Dodaj portal</string>
 
     <string-array name="portal_category">
-        <item>none</item>
-        <item>Ulubione</item>
+        <item>xxxx</item>>
+        <item>Najnowsze</item>
+        <item>Najważniejsze</item>
+        <item>Galerie</item>
+        <item>Sport</item>
         <item>Polska</item>
         <item>Świat</item>
-        <item>Biznes</item>
-        <item>Sport</item>
-        <item>Zdrowie</item>
-        <item>Nauka</item>
-        <item>Kultura</item>
     </string-array>
 </resources>

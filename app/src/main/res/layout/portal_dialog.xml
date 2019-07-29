@@ -26,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/dialog_category" android:layout_marginTop="8dp"/>
+            android:fontFamily="@font/impact"
+            android:id="@+id/dialog_isClicked" android:layout_marginTop="8dp"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

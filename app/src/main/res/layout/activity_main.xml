@@ -6,9 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/poster"
-        tools:context=".MainActivity">
+        tools:context=".presentation.activities.MainActivity">
 
-    <pl.mobileappacademy.rssreader.fragments.topBar.TopBar
+    <pl.mobileappacademy.rssreader.presentation.fragments.navBars.TopBar
             android:id="@+id/top_bar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -16,7 +16,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-    </pl.mobileappacademy.rssreader.fragments.topBar.TopBar>
+    </pl.mobileappacademy.rssreader.presentation.fragments.navBars.TopBar>
 
 
     <fragment
@@ -26,13 +26,25 @@
             android:layout_height="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
 
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintTop_toBottomOf="@+id/top_bar" android:layout_marginBottom="24dp"
-            android:layout_marginTop="8dp">
+            app:navGraph="@navigation/nav_graph"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/top_bar"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_bar">
     </fragment>
+
+    <pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+    >
+    </pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

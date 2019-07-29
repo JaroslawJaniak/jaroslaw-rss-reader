@@ -1,7 +1,7 @@
 package pl.mobileappacademy.rssreader;
 
 import android.app.Application
-import pl.mobileappacademy.rssreader.appDatabase.AppDataBaseKotlin
+import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
 
 
 class App : Application() {
