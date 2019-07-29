@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.presentation.fragments.RSSFragments
+package pl.mobileappacademy.rssreader.presentation.fragments.channelFragments
 
 import android.view.View
 import android.view.ViewGroup
@@ -20,12 +20,7 @@ class ChannelAdapter : BaseRecyclerAdapter<Item, ChannelAdapter.ChannelViewHolde
     }
 
     fun filterItems(selectedCategory: String, data: List<Item>) {
-        //val data = arrayListOf<Item>()
         val filteredData = arrayListOf<Item>()
-        //data.addAll(items)
-        //data.addAll(newData)
-
-        var x = selectedCategory
 
         data.forEach {
             if(it.category == selectedCategory){

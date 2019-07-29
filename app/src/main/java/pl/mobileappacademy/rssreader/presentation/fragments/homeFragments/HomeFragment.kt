@@ -89,7 +89,6 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
                 mDialogView.dialog_portal_button_usun.setOnClickListener {
                     AsyncTask.execute {
                         viewModel.appDb?.portalDao()?.delete(homeAdapter.items[position])
-                        //viewModel.appDb?.portalDao()?.deletePortal(homeAdapter.getItemId(position))
                     }
                     mAlertDialog?.dismiss()
                 }

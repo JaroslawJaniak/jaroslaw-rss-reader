@@ -84,7 +84,7 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         val mBuilder = context?.let { it1 ->
             AlertDialog.Builder(it1)
                 .setView(mDialogView)
-                .setTitle("Dodaj kanał")
+                .setTitle(resources.getString(R.string.dodaj_kanal))
 
         }
         val mAlertDialog = mBuilder?.show()

@@ -49,10 +49,6 @@ class DialogFilterFragment : DialogFragment(), AdapterView.OnItemSelectedListene
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 mCategory = selectedItem
-
-                if (selectedItem == "Add new category") {
-                    // do your stuff
-                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {

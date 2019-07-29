@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Rss-reader</string>
-
     <string name="portal_prompt">Choose a category</string>
+    <string name="dodaj_kanal">Dodaj kanał</string>
+    <string name="dodaj_portal">Dodaj portal</string>
 
     <string-array name="portal_category">
         <item>xxxx</item>>

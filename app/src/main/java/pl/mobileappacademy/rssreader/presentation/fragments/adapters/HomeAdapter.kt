@@ -10,9 +10,6 @@ import kotlinx.android.synthetic.main.item_portal.view.*
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseRecyclerAdapter
 import pl.mobileappacademy.rssreader.data.models.HomeItem
 
-
-
-
 class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() {
 
     override var items: List<HomeItem> = emptyList()
@@ -40,8 +37,6 @@ class HomeAdapter : BaseRecyclerAdapter<HomeItem, HomeAdapter.HomeViewHolder>() 
         val itemView = LayoutInflater.from(viewGroup.context).inflate(pl.mobileappacademy.rssreader.R.layout.item_portal, viewGroup, false)
         return HomeViewHolder(itemView)
     }
-
-    fun setItems() = this.items
 
     class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view)
 

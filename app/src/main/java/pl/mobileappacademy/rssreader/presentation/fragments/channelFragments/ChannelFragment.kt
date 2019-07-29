@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.presentation.fragments.RSSFragments
+package pl.mobileappacademy.rssreader.presentation.fragments.channelFragments
 
 import android.os.AsyncTask
 import androidx.lifecycle.ViewModelProviders
@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_CancelB
 import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_OkBtn
 import kotlinx.android.synthetic.main.channel_fragment.*
 import kotlinx.android.synthetic.main.channel_fragment.channel_recycle_view
-import kotlinx.android.synthetic.main.dialog_filter_spinner.view.spinner_filter
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseFragment
@@ -82,14 +81,12 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         viewModel.itemsChannelList.observe(this, Observer {
             allItems.addAll(it)
             channelAdapter.updateData(it ?: emptyList())
-            //allItems.addAll(channelAdapter.items)
             channelAdapter.notifyDataSetChanged()
         })
 
         bottomBar?.setBottomBarListener(this)
 
         channel_filtr_button.setOnClickListener {
-            //showFilterDialog()
             showDialog()
         }
     }
@@ -100,7 +97,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         val mBuilder = context?.let { it1 ->
             AlertDialog.Builder(it1)
                 .setView(mDialogView)
-                .setTitle("Dodaj kanał")
+                .setTitle(resources.getString(R.string.dodaj_kanal))
 
         }
         val mAlertDialog = mBuilder?.show()
@@ -108,7 +105,6 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         mDialogView.add_dialog_OkBtn.setOnClickListener {
 
             val url: String = mDialogView.add_dialogAdressURL.text.toString()
-            val category = mDialogView.spinner.selectedItem.toString()
             val name = mDialogView.spinner.selectedItem.toString()
 
             itemToInsert = HomeListItem()
@@ -126,34 +122,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
             mAlertDialog?.dismiss()
         }
     }
-
-    private fun showFilterDialog() {
-
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_filter_spinner, null)
-        val mBuilder = context?.let { it1 ->
-            AlertDialog.Builder(it1)
-                .setView(mDialogView)
-                .setTitle("Fitruj według kategorii")
-        }
-
-        val mAlertDialog = mBuilder?.show()
-
-        mDialogView.add_dialog_OkBtn.setOnClickListener {
-
-            var filterCategory = mDialogView.spinner_filter.selectedItem.toString()
-            textView2.text = filterCategory
-
-            val bundle = Bundle()
-            bundle.putString("SPINNER_SELECTED_ITEM", filterCategory)
-
-            mAlertDialog?.dismiss()
-        }
-
-        mDialogView.add_dialog_CancelBtn.setOnClickListener {
-            mAlertDialog?.dismiss()
-        }
-    }
-
+    
     override fun onHomeClick() {
         navigation?.navigate(R.id.homeFragment)
     }
@@ -163,28 +132,14 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
     }
 
     override fun onSortClick() {
-        /*
-        when (clicked) {
-            true -> {
-                viewModel.channelList.postValue(adapter.items.sortedBy { it.date })
-                showToast(getString(R.string.date_sort_asc))
-                clicked = false
-            }
-            false -> {
-                viewModel.channelList.postValue(adapter.items.sortedBy { it.date }.reversed())
-                showToast(getString(R.string.date_sort_desc))
-                clicked = true
-            }
-        }
-        */
+
     }
 
 
     fun initFiltrByPortalName(viewHomeList: List<HomeListItem>){
         for (i in viewHomeList) {
-            val url = i.adress
             if (i.portalName == portalNameHome) {
-                viewModel.fetchData(url, i.name ?: "", i.portalName ?: "")
+                viewModel.fetchData(i.adress, i.name ?: "", i.portalName ?: "")
             }
         }
     }

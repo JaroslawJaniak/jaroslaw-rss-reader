@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.presentation.fragments.RSSFragments
+package pl.mobileappacademy.rssreader.presentation.fragments.channelFragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

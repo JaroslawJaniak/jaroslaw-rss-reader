@@ -19,10 +19,6 @@
 
             android:id="@+id/channel_filtr_button"/>
 
-    <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView2"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"

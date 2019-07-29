@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.presentation.fragments.RSSFragments
+package pl.mobileappacademy.rssreader.presentation.fragments.channelFragments
 
 import android.content.Context
 import android.os.AsyncTask
@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.Retrofit.RetrofitService
 import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
-import pl.mobileappacademy.rssreader.data.database.ChannelsRssDao
 import pl.mobileappacademy.rssreader.data.database.ItemChannelXmlDao
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseViewModel
 import pl.mobileappacademy.rssreader.data.models.rssModels.Item
