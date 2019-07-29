@@ -2,6 +2,7 @@ package pl.mobileappacademy.rssreader.presentation.fragments.homeFragments
 
 import android.content.Context
 import android.os.AsyncTask
+import androidx.lifecycle.LiveData
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
 import pl.mobileappacademy.rssreader.data.database.PortalDao
@@ -12,22 +13,20 @@ import javax.inject.Inject
 class HomeViewModel : BaseViewModel() {
 
     var appDb: AppDataBaseKotlin? = null
-    var portlalDao: PortalDao? = null
+    var portalDao: PortalDao? = null
 
-    fun getHomeListView() = listOf(
+    fun getHomeListView() = arrayListOf<HomeItem>(
         HomeItem(
             1,
             "tvn24",
             "",
-            "https://www.tvn24.pl/rss.html",
-            false
+            "https://www.tvn24.pl/rss.html"
         ),
         HomeItem(
             2,
             "POLSAT NEWS",
             "",
-            "https://www.polsatnews.pl/kanaly-rss/",
-            false
+            "https://www.polsatnews.pl/kanaly-rss/"
         )
     )
 
@@ -36,20 +35,26 @@ class HomeViewModel : BaseViewModel() {
 
     init {
         Injector.component.inject(this)
+
         insertToDatabase()
     }
 
     private fun insertToDatabase() {
         appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
-        portlalDao = appDb?.portalDao()
+        portalDao = appDb?.portalDao()
 
-        AsyncTask.execute {
-            for (i in getHomeListView()) {
-                with(portlalDao) {
-                    this?.insert(i)
+                AsyncTask.execute {
+
+                    val entityCount = appDb?.portalDao()?.getCount()?.or(0)
+
+                    if (entityCount == 0) {
+                        for (i in getHomeListView()) {
+                            with(portalDao) {
+                                this?.insert(i)
+                            }
+                        }
+                    }
                 }
-            }
-        }
 
     }
 

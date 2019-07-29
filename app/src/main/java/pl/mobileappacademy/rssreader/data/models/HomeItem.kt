@@ -19,8 +19,6 @@ data class HomeItem(
     var imagePath: String? = "",
 
     @ColumnInfo(name = "adress")
-    var adress: String? = "",
-
-    var isAdded: Boolean = false
+    var adress: String? = ""
 
 )

@@ -17,6 +17,9 @@ interface ChannelsRssDao {
     @Query("SELECT * FROM channelsRssTable WHERE id = :id")
     fun getByIdChannelsRss(id: Long): LiveData<HomeListItem>
 
+    @Query("SELECT COUNT(id) FROM channelsRssTable")
+    fun getCount(): Int
+
     @Insert(onConflict = REPLACE)
     fun insertChannelsRss(homeListItem: HomeListItem)
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 import pl.mobileappacademy.rssreader.data.models.HomeItem
+import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 
 @Dao
 interface PortalDao {
@@ -19,6 +20,9 @@ interface PortalDao {
 
     @Query("SELECT * FROM portalTable WHERE id = :id")
     fun getById(id: Long): LiveData<HomeItem>
+
+    @Query("SELECT COUNT(id) FROM portalTable")
+    fun getCount(): Int
 
     @Insert(onConflict = REPLACE)
     fun insert(homeItem: HomeItem)

@@ -22,25 +22,25 @@ import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.ad
 import pl.mobileappacademy.rssreader.presentation.fragments.adapters.RssChannelsAdapter
 import pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 
 class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
 
-    override fun onHomeClick() {
-
-    }
-
-    override fun onAddClick() {
-        showAddDialog()
-    }
-
-    override fun onSortClick() {
-
-    }
-
+    private var allItems = arrayListOf<HomeListItem>()
+    private lateinit var viewHomeList: List<HomeListItem>
     private lateinit var itemToInsert: HomeListItem
+    private var portalNameHome: String? = ""
+    var isSortASC = false
 
     private lateinit var viewModel: RssChannelsViewModel
     private val rssChannelsAdapter by lazy { RssChannelsAdapter() }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            portalNameHome = it.getString("SERIVISE_FILTER")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,15 +53,26 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(RssChannelsViewModel::class.java)
 
+        rss_channels_recycle_view.apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = rssChannelsAdapter
+        }
+
+        viewHomeList = RssChannelsViewModel().getHomeListView()
+        //initFiltrByPortalName(viewHomeList)
+
         viewModel.appDb?.channelsRssDao()?.getAllChannelsRss()?.observe(this, Observer {
             rssChannelsAdapter.items = it ?: emptyList()
             rssChannelsAdapter.notifyDataSetChanged()
         })
 
-        rss_channels_recycle_view.apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            adapter = rssChannelsAdapter
-        }
+        viewModel.homeListItemlList.observe(this, Observer {
+            allItems.addAll(it)
+            rssChannelsAdapter.updateData(it ?: emptyList())
+            rssChannelsAdapter.notifyDataSetChanged()
+        })
+
+        var x = viewHomeList[1].name
 
         bottomBar?.setBottomBarListener(this)
         setLsteners()
@@ -79,7 +90,7 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
 
     private fun showAddDialog() {
 
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog_spinner, null)
+        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog_portal, null)
         val mBuilder = context?.let { it1 ->
             AlertDialog.Builder(it1)
                 .setView(mDialogView)
@@ -107,5 +118,21 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         mDialogView.add_dialog_CancelBtn.setOnClickListener {
             mAlertDialog?.dismiss()
         }
+    }
+
+    fun initFiltrByPortalName(viewHomeList: List<HomeListItem>) {
+
+    }
+
+    override fun onHomeClick() {
+
+    }
+
+    override fun onAddClick() {
+        showAddDialog()
+    }
+
+    override fun onSortClick() {
+
     }
 }
