@@ -15,7 +15,7 @@
               android:name="pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragments.RssChannelsFragment"
               android:label="Kanały RSS"/>
     <fragment android:id="@+id/channelDetailesFragment"
-              android:name="pl.mobileappacademy.rssreader.presentation.fragments.channelFragments.ChannelDetailesFragment"
+              android:name="pl.mobileappacademy.rssreader.presentation.fragments.channelDetails.ChannelDetailesFragment"
               android:label="Zawartość posta"
               tools:layout="@layout/channel_detailes_fragment"/>
 

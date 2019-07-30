@@ -5,8 +5,8 @@ import dagger.Component
 import pl.mobileappacademy.rssreader.App
 import pl.mobileappacademy.rssreader.di.modules.AppModule
 import pl.mobileappacademy.rssreader.di.modules.RestModule
-import pl.mobileappacademy.rssreader.presentation.fragments.channelFragments.ChannelDetailesFragment
-import pl.mobileappacademy.rssreader.presentation.fragments.channelFragments.ChannelDetailesViewModel
+import pl.mobileappacademy.rssreader.presentation.fragments.channelDetails.ChannelDetailesFragment
+import pl.mobileappacademy.rssreader.presentation.fragments.channelDetails.ChannelDetailesViewModel
 import pl.mobileappacademy.rssreader.presentation.fragments.homeFragments.HomeViewModel
 import pl.mobileappacademy.rssreader.presentation.fragments.homeFragments.HomeFragment
 import pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragments.RssChannelsFragment

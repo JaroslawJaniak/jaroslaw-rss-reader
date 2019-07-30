@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import org.simpleframework.xml.Element
 
 @Entity(tableName = "channelsRssTable")
-data class HomeListItem(
+data class Portal(
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)

@@ -7,9 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.Retrofit.RetrofitService
 import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
-import pl.mobileappacademy.rssreader.data.database.ChannelsRssDao
 import pl.mobileappacademy.rssreader.data.database.ItemChannelXmlDao
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.Portal
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseViewModel
 import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 import pl.mobileappacademy.rssreader.data.models.rssModels.Rss
@@ -29,8 +28,8 @@ class ChannelViewModel : BaseViewModel() {
     var appDb: AppDataBaseKotlin? = null
     var itemChannelXmlDao: ItemChannelXmlDao? = null
 
-    var myDataFromDB = MutableLiveData<List<HomeListItem>>()
-    lateinit var data : ArrayList<HomeListItem>
+    var myDataFromDB: LiveData<List<Portal>>? = null
+
 
     val itemsChannelList = MutableLiveData<List<Item>>()
     val errors = MutableLiveData<Throwable>()
@@ -38,20 +37,19 @@ class ChannelViewModel : BaseViewModel() {
 
     init {
         Injector.component.inject(this)
+        appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
         loadDb()
     }
 
-    fun loadDb(){
-        appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
-        myDataFromDB.postValue(appDb?.channelsRssDao()?.getAllChannelsRss()?.value)
 
-
+    private fun loadDb(){
+        myDataFromDB = appDb?.channelsRssDao()?.getAllChannelsRss()
     }
 
 
-    fun fetchData(url: String?, category: String, portalName: String) {
 
-        appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
+
+    fun fetchData(url: String?, category: String, portalName: String) {
         itemChannelXmlDao = appDb?.itemChannelXmlDao()
 
         refreshing.value = true
@@ -61,7 +59,6 @@ class ChannelViewModel : BaseViewModel() {
             override fun onFailure(call: Call<Rss>, t: Throwable) {
                 errors.value = t
                 refreshing.value = false
-                println("")
             }
 
             override fun onResponse(call: Call<Rss>, response: Response<Rss>) {

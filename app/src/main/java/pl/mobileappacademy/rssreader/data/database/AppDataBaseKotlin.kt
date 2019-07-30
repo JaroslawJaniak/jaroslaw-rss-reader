@@ -7,7 +7,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import pl.mobileappacademy.rssreader.data.models.HomeItem
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.Portal
 import pl.mobileappacademy.rssreader.data.models.rssModels.Channel
 import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.GithubTypeConverters
@@ -15,7 +15,7 @@ import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.Gi
 @TypeConverters(GithubTypeConverters::class)
 @Database(
     version = 1,
-    entities = [HomeItem::class, HomeListItem::class, Channel::class, Item::class]
+    entities = [HomeItem::class, Portal::class, Channel::class, Item::class]
 )
 abstract class AppDataBaseKotlin : RoomDatabase() {
 

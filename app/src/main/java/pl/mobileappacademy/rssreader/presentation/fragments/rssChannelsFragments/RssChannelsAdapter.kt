@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_rss_channels.view.*
 import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseRecyclerAdapter
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.Portal
 
-class RssChannelsAdapter: BaseRecyclerAdapter<HomeListItem, RssChannelsAdapter.RssChannelsViewHolder>() {
-    override var items: List<HomeListItem> = emptyList()
+class RssChannelsAdapter: BaseRecyclerAdapter<Portal, RssChannelsAdapter.RssChannelsViewHolder>() {
+    override var items: List<Portal> = emptyList()
 
-    fun updateData(newData: List<HomeListItem>) {
-        val data = arrayListOf<HomeListItem>()
+    fun updateData(newData: List<Portal>) {
+        val data = arrayListOf<Portal>()
         data.addAll(items)
         data.addAll(newData)
 
@@ -21,7 +21,7 @@ class RssChannelsAdapter: BaseRecyclerAdapter<HomeListItem, RssChannelsAdapter.R
         notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: RssChannelsViewHolder, item: HomeListItem, position: Int) {
+    override fun onBindViewHolder(holder: RssChannelsViewHolder, item: Portal, position: Int) {
         holder.apply {
 
             itemView.item_list_rss_address.text = item.adress
