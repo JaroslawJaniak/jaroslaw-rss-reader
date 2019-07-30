@@ -30,7 +30,7 @@ class ChannelViewModel : BaseViewModel() {
     var itemChannelXmlDao: ItemChannelXmlDao? = null
 
     var myDataFromDB = MutableLiveData<List<HomeListItem>>()
-
+    lateinit var data : ArrayList<HomeListItem>
 
     val itemsChannelList = MutableLiveData<List<Item>>()
     val errors = MutableLiveData<Throwable>()
@@ -41,13 +41,12 @@ class ChannelViewModel : BaseViewModel() {
         loadDb()
     }
 
-
     fun loadDb(){
         appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
-        myDataFromDB.postValue(appDb?.channelsRssDao()?.getAllChannelsRss())
+        myDataFromDB.postValue(appDb?.channelsRssDao()?.getAllChannelsRss()?.value)
+
+
     }
-
-
 
 
     fun fetchData(url: String?, category: String, portalName: String) {

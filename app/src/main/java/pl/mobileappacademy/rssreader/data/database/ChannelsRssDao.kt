@@ -9,7 +9,7 @@ import pl.mobileappacademy.rssreader.data.models.HomeListItem
 interface ChannelsRssDao {
 
     @Query("SELECT * FROM channelsRssTable")
-    fun getAllChannelsRss(): List<HomeListItem>?
+    fun getAllChannelsRss(): LiveData<List<HomeListItem>>?
 
     @Query("SELECT * from channelsRssTable WHERE portalName = :portalName ORDER BY name ASC")
     fun sortByNameASCChannelsRss(portalName: String?): LiveData<List<HomeListItem>>

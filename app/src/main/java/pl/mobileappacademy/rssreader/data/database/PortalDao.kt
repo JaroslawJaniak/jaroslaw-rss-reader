@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 import pl.mobileappacademy.rssreader.data.models.HomeItem
-import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 
 @Dao
 interface PortalDao {

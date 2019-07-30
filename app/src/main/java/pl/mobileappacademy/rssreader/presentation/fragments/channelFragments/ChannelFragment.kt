@@ -101,7 +101,9 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
            allHomeListItems.addAll(it)
        })
 
-       val x =  allHomeListItems[1].portalName
+
+        viewHomeList = RssChannelsViewModel().getHomeListView()
+        initFiltrByPortalName(viewHomeList)
 
         bottomBar?.setBottomBarListener(this)
 
