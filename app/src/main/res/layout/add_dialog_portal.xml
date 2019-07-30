@@ -17,15 +17,7 @@
 
     <EditText
             android:id="@+id/login_dialog_name"
-            android:hint="podaj nazwę kanału..."
-            android:inputType="textPersonName"
-            android:layout_gravity="center"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"/>
-
-    <EditText
-            android:id="@+id/login_dialog_portalName"
-            android:hint="podaj nazwę portalu..."
+            android:hint="podaj nazwę..."
             android:inputType="textPersonName"
             android:layout_gravity="center"
             android:layout_width="250dp"

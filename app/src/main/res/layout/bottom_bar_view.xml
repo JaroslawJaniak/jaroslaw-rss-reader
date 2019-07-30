@@ -18,23 +18,24 @@
                 android:backgroundTint="@color/cardview_light_background"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_home"
+                app:srcCompat="@drawable/ic_home_black_24dp"
                 android:id="@+id/bottom_bar_home"
-                android:layout_weight="1"/>
+                android:layout_weight="1" tools:ignore="VectorDrawableCompat"/>
         <ImageButton
                 android:textColor="#FFF"
                 android:backgroundTint="@color/cardview_light_background"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/add"
                 android:id="@+id/bottom_bar_add"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_add_circle_black_24dp" tools:ignore="VectorDrawableCompat"/>
         <ImageButton
                 android:textColor="#FFF"
                 android:backgroundTint="@color/cardview_light_background"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_activity_feed"
-                android:id="@+id/bottom_bar_sort" android:layout_weight="1"/>
+                android:id="@+id/bottom_bar_sort"
+                android:layout_weight="1"
+                android:src="@drawable/ic_sort_by_alpha_black_24dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

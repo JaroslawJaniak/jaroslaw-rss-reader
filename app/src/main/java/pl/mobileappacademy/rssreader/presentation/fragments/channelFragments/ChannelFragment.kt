@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.add_dialog.view.*
 import kotlinx.android.synthetic.main.add_dialog_spinner.view.*
 import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_CancelBtn
 import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_OkBtn
@@ -40,10 +41,10 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
     private lateinit var itemToInsert: HomeListItem
     private lateinit var viewModel: ChannelViewModel
     private lateinit var viewHomeList: List<HomeListItem>
+    private var allItems = arrayListOf<Item>()
     private var portalNameHome: String? = ""
     var isSortASC = false
 
-    private var allItems = arrayListOf<Item>()
 
     private val channelAdapter by lazy { ChannelAdapter() }
 
@@ -71,7 +72,6 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         }
 
         viewHomeList = RssChannelsViewModel().getHomeListView()
-
         initFiltrByPortalName(viewHomeList)
 
         viewModel.appDb?.itemChannelXmlDao()?.getByPortalNameItemChannelXml(portalNameHome)?.observe(this, Observer {
@@ -93,8 +93,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
     }
 
     private fun showAddDialog() {
-
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog_spinner, null)
+        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog, null)
         val mBuilder = context?.let { it1 ->
             AlertDialog.Builder(it1)
                 .setView(mDialogView)
@@ -103,14 +102,17 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         }
         val mAlertDialog = mBuilder?.show()
 
-        mDialogView.add_dialog_OkBtn.setOnClickListener {
+        mDialogView.login_dialog_OkBtn.setOnClickListener {
 
-            val url: String = mDialogView.add_dialogAdressURL.text.toString()
-            val name = mDialogView.spinner.selectedItem.toString()
+            val url: String = mDialogView.login_dialogAdressURL.text.toString()
+            val name: String = mDialogView.login_dialog_name.text.toString()
+            val portalName: String = mDialogView.login_dialog_portalName.text.toString()
 
             itemToInsert = HomeListItem()
-            itemToInsert.name = name
             itemToInsert.adress = url
+            itemToInsert.name = name
+            itemToInsert.portalName = portalName
+
 
             AsyncTask.execute {
                 viewModel.appDb?.channelsRssDao()?.insertChannelsRss(itemToInsert)
@@ -119,7 +121,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
             mAlertDialog?.dismiss()
         }
 
-        mDialogView.add_dialog_CancelBtn.setOnClickListener {
+        mDialogView.login_dialog_CancelBtn.setOnClickListener {
             mAlertDialog?.dismiss()
         }
     }
@@ -153,14 +155,12 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
 
     }
 
-
     fun initFiltrByPortalName(viewHomeList: List<HomeListItem>) {
         for (i in viewHomeList) {
             if (i.portalName == portalNameHome) {
                 viewModel.fetchData(i.adress, i.name ?: "", i.portalName ?: "")
             }
         }
-
         channelAdapter.initFilterItems(portalNameHome , allItems)
     }
 

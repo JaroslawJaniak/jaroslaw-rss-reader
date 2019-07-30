@@ -24,11 +24,12 @@
 
     <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_revert"
             android:id="@+id/top_bar_back_arrow"
             android:background="#3F4F50"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.023"

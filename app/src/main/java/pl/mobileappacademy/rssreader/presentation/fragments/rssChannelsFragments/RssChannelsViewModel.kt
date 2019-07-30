@@ -2,15 +2,15 @@ package pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragment
 
 import android.content.Context
 import android.os.AsyncTask
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
 import pl.mobileappacademy.rssreader.data.database.ChannelsRssDao
-import pl.mobileappacademy.rssreader.data.database.PortalDao
 import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseViewModel
 import javax.inject.Inject
 
-class RssChannelsViewModel : ViewModel() {
+class RssChannelsViewModel : BaseViewModel() {
 
     fun getHomeListView() = listOf(
         HomeListItem(
@@ -66,6 +66,7 @@ class RssChannelsViewModel : ViewModel() {
 
     var appDb: AppDataBaseKotlin? = null
     var channelsRssDao: ChannelsRssDao? = null
+    val homeListItemlList = MutableLiveData<ArrayList<HomeListItem>>()
 
     @Inject
     lateinit var context: Context
@@ -75,17 +76,29 @@ class RssChannelsViewModel : ViewModel() {
         insertToDatabaseChannelsRss()
     }
 
-    private fun insertToDatabaseChannelsRss() {
+    fun insertToDatabaseChannelsRss() {
         appDb = AppDataBaseKotlin.getAppDataBaseKotlin(context)
         channelsRssDao = appDb?.channelsRssDao()
 
         AsyncTask.execute {
-            for (i in getHomeListView()) {
-                with(channelsRssDao) {
-                    this?.insertChannelsRss(i)
+
+            val entityCount = appDb?.channelsRssDao()?.getCount()?.or(0)
+
+            val listWithCategory = arrayListOf<HomeListItem>()
+
+            if (entityCount == 0){
+                for (i in getHomeListView()) {
+                    with(channelsRssDao) {
+                        this?.insertChannelsRss(i)
+                        listWithCategory.add(i)
+                    }
                 }
+                homeListItemlList.value = listWithCategory
+                var x = homeListItemlList?.value!![1]?.portalName
             }
         }
 
+
     }
+
 }

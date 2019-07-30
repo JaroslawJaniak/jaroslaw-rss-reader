@@ -23,6 +23,7 @@ import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.ad
 import pl.mobileappacademy.rssreader.presentation.fragments.adapters.HomeAdapter
 import pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.data.models.HomeItem
+import pl.mobileappacademy.rssreader.data.models.HomeListItem
 
 
 class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
@@ -31,6 +32,7 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
     private val homeAdapter by lazy { HomeAdapter() }
     lateinit var itemToInsert: HomeItem
     var isSortASC = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,8 +85,8 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
                 mDialogView.dialog_portal_button.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putString("SERIVISE_FILTER", item.name)
-                    findNavController().navigate(R.id.channelFragment, bundle)
-                    homeAdapter.items[position].isAdded = true
+                    //findNavController().navigate(R.id.channelFragment, bundle)
+                    findNavController().navigate(R.id.rssChannelsFragment, bundle)
 
                         mAlertDialog?.dismiss()
                 }
@@ -101,7 +103,7 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
 
     private fun showAddDialog() {
 
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog, null)
+        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog_portal, null)
         val mBuilder = context?.let { it1 ->
             AlertDialog.Builder(it1)
                 .setView(mDialogView)

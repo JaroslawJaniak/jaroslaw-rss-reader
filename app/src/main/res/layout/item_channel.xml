@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
+              android:layout_height="150dp"
               android:background="@drawable/bg_item_rss"
               android:layout_marginTop="16dp">
 
@@ -37,12 +37,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            />
+    />
     <TextView
             android:text="portal name (default)"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="39dp"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@font/impact"
             android:textColor="#fff"
             android:id="@+id/item_channel_portal_name"/>
