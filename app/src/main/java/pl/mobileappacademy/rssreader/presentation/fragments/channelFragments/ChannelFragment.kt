@@ -11,19 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.add_dialog.view.*
-import kotlinx.android.synthetic.main.add_dialog_spinner.view.*
-import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_CancelBtn
-import kotlinx.android.synthetic.main.add_dialog_spinner.view.add_dialog_OkBtn
 import kotlinx.android.synthetic.main.channel_fragment.*
 import kotlinx.android.synthetic.main.channel_fragment.channel_recycle_view
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.R
-import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
-import pl.mobileappacademy.rssreader.data.database.ChannelsRssDao
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseFragment
-import pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragments.RssChannelsViewModel
 import pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.Portal
 import pl.mobileappacademy.rssreader.data.models.rssModels.Item
 import pl.mobileappacademy.rssreader.presentation.activities.base.dialogs.DialogFilterFragment
 import pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragments.RssChannelsFragment as RssChannelsFragment
@@ -41,10 +35,10 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         dialog.show(fragmentManager, "dialog")
     }
 
-    private lateinit var itemToInsert: HomeListItem
+    private lateinit var itemToInsert: Portal
     private lateinit var viewModel: ChannelViewModel
-    private lateinit var viewHomeList: List<HomeListItem>
-    private var allHomeListItems = arrayListOf<HomeListItem>()
+    private lateinit var viewHomeList: List<Portal>
+    private var allHomeListItems = arrayListOf<Portal>()
     private var allItems = arrayListOf<Item>()
     private var portalNameHome: String? = ""
     private var channelName: String? = ""
@@ -98,10 +92,10 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         })
 
         viewModel.myDataFromDB?.observe(this, Observer {
-           allHomeListItems.addAll(it)
+            initFiltrByPortalName(it)
        })
 
-       val x =  allHomeListItems[1].portalName
+
 
         bottomBar?.setBottomBarListener(this)
 
@@ -126,7 +120,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
             val name: String = mDialogView.login_dialog_name.text.toString()
             val portalName: String = mDialogView.login_dialog_portalName.text.toString()
 
-            itemToInsert = HomeListItem()
+            itemToInsert = Portal()
             itemToInsert.adress = url
             itemToInsert.name = name
             itemToInsert.portalName = portalName
@@ -171,7 +165,7 @@ class ChannelFragment : BaseFragment(), BottomBar.AppBottomBarListener, DialogFi
         }
     }
 
-    fun initFiltrByPortalName(viewHomeList: List<HomeListItem>) {
+    fun initFiltrByPortalName(viewHomeList: List<Portal>) {
         for (i in viewHomeList) {
             if (i.portalName == portalNameHome) {
                 viewModel.fetchData(i.adress, i.name ?: "", i.portalName ?: "")

@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.presentation.fragments.channelFragments
+package pl.mobileappacademy.rssreader.presentation.fragments.channelDetails
 
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +19,9 @@ class ChannelDetailsAdapter : BaseRecyclerAdapter<Channel, ChannelDetailsAdapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChannelDetailesViewHolder {
-        return ChannelDetailesViewHolder(parent.inflate(R.layout.item_channel))
+        return ChannelDetailesViewHolder(
+            parent.inflate(R.layout.item_channel)
+        )
     }
 
     override fun getItemCount(): Int {

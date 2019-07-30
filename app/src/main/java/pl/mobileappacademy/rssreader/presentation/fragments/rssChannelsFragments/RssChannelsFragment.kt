@@ -13,22 +13,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.add_dialog.view.*
-import kotlinx.android.synthetic.main.add_dialog_spinner.view.*
 import kotlinx.android.synthetic.main.rss_channels_fragment.*
 import pl.mobileappacademy.rssreader.R
-import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseFragment
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.OnItemClickListener
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.addOnItemClickListener
 import pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.Portal
 
 
 class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
 
-    var allItems = arrayListOf<HomeListItem>()
-    private lateinit var viewHomeList: List<HomeListItem>
-    private lateinit var itemToInsert: HomeListItem
+    var allItems = arrayListOf<Portal>()
+    private lateinit var viewHomeList: List<Portal>
+    private lateinit var itemToInsert: Portal
     private var portalNameHome: String? = ""
     var isSortASC = false
 
@@ -106,7 +104,7 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
             val name: String = mDialogView.login_dialog_name.text.toString()
             val portalName: String = mDialogView.login_dialog_portalName.text.toString()
 
-            itemToInsert = HomeListItem()
+            itemToInsert = Portal()
             itemToInsert.adress = url
             itemToInsert.name = name
             itemToInsert.portalName = portalName

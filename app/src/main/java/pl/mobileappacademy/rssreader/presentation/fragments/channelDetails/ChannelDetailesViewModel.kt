@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.presentation.fragments.channelFragments
+package pl.mobileappacademy.rssreader.presentation.fragments.channelDetails
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData

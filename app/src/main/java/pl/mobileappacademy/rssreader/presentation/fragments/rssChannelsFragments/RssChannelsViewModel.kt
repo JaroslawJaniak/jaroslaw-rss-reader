@@ -6,56 +6,56 @@ import androidx.lifecycle.MutableLiveData
 import pl.mobileappacademy.rssreader.Injector
 import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
 import pl.mobileappacademy.rssreader.data.database.ChannelsRssDao
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
+import pl.mobileappacademy.rssreader.data.models.Portal
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseViewModel
 import javax.inject.Inject
 
 class RssChannelsViewModel : BaseViewModel() {
 
     fun getHomeListView() = listOf(
-        HomeListItem(
+        Portal(
             1,
             "Najnowsze",
             "",
             "https://www.tvn24.pl/najnowsze.xml",
             "tvn24"
         ),
-        HomeListItem(
+        Portal(
             2,
             "Najważniejsze",
             "",
             "https://www.tvn24.pl/najwazniejsze.xml",
             "tvn24"
         ),
-        HomeListItem(
+        Portal(
             3,
             "Polska",
             "",
             "https://www.tvn24.pl/wiadomosci-z-kraju,3.xml",
             "tvn24"
         ),
-        HomeListItem(
+        Portal(
             4,
             "Sport",
             "",
             "https://eurosport.tvn24.pl/sport,81,m.xml",
             "tvn24"
         ),
-        HomeListItem(
+        Portal(
             5,
             "Świat",
             "",
             "https://www.tvn24.pl/wiadomosci-ze-swiata,2.xml",
             "tvn24"
         ),
-        HomeListItem(
+        Portal(
             6,
             "Polska",
             "",
             "https://www.polsatnews.pl/rss/polska.xml",
             "POLSAT NEWS"
         ),
-        HomeListItem(
+        Portal(
             7,
             "Świat",
             "",
@@ -66,7 +66,7 @@ class RssChannelsViewModel : BaseViewModel() {
 
     var appDb: AppDataBaseKotlin? = null
     var channelsRssDao: ChannelsRssDao? = null
-    val homeListItemlList = MutableLiveData<ArrayList<HomeListItem>>()
+    val homeListItemlList = MutableLiveData<ArrayList<Portal>>()
 
     @Inject
     lateinit var context: Context
@@ -84,7 +84,7 @@ class RssChannelsViewModel : BaseViewModel() {
 
             val entityCount = appDb?.channelsRssDao()?.getCount()?.or(0)
 
-            val listWithCategory = arrayListOf<HomeListItem>()
+            val listWithCategory = arrayListOf<Portal>()
 
             if (entityCount == 0){
                 for (i in getHomeListView()) {
@@ -93,7 +93,7 @@ class RssChannelsViewModel : BaseViewModel() {
                         listWithCategory.add(i)
                     }
                 }
-                homeListItemlList.value = listWithCategory
+                //homeListItemlList.value = listWithCategory
 
             }
         }
