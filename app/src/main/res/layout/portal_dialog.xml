@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp" android:layout_marginTop="16dp">
         <Button
-                android:text="przejdź do serwisu"
+                android:text="kanały"
                 android:textColor="#FFF"
                 android:fontFamily="@font/impact"
                 android:backgroundTint="@color/colorPrimaryDark"
@@ -43,14 +43,34 @@
                 android:id="@+id/dialog_portal_button"
                 android:layout_weight="1"/>
         <Button
-                android:text="usuń"
+                android:text="wszystkie wiadomosci"
                 android:textColor="#FFF"
                 android:fontFamily="@font/impact"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/dialog_portal_button_usun"
+                android:id="@+id/dialog_portal_button_channel_items"
                 android:layout_weight="1"/>
     </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp">
+        <Button
+                android:text="usuń"
+                android:textColor="#FFF"
+                android:fontFamily="@font/impact"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dialog_portal_button_usun"
+                android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

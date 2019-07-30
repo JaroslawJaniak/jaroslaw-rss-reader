@@ -94,7 +94,7 @@ class RssChannelsViewModel : BaseViewModel() {
                     }
                 }
                 homeListItemlList.value = listWithCategory
-                var x = homeListItemlList?.value!![1]?.portalName
+
             }
         }
 
