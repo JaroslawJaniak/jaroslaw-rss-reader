@@ -2,6 +2,7 @@ package pl.mobileappacademy.rssreader.presentation.fragments.homeFragments
 
 
 
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -20,10 +21,9 @@ import pl.mobileappacademy.rssreader.R
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseFragment
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.OnItemClickListener
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.addOnItemClickListener
-import pl.mobileappacademy.rssreader.presentation.fragments.adapters.HomeAdapter
 import pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.data.models.HomeItem
-import pl.mobileappacademy.rssreader.data.models.HomeListItem
+
 
 
 class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
@@ -83,12 +83,24 @@ class HomeFragment : BaseFragment(), BottomBar.AppBottomBarListener{
                 val mAlertDialog = mBuilder?.show()
 
                 mDialogView.dialog_portal_button.setOnClickListener {
+
                     val bundle = Bundle()
-                    bundle.putString("SERIVISE_FILTER", item.name)
-                    //findNavController().navigate(R.id.channelFragment, bundle)
+
+
+                    bundle.putString("SERVISE_FILTER", item.name)
+
+
                     findNavController().navigate(R.id.rssChannelsFragment, bundle)
 
                         mAlertDialog?.dismiss()
+                }
+
+                mDialogView.dialog_portal_button_channel_items.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString("SERVISE_FILTER", item.name)
+                    findNavController().navigate(R.id.channelFragment, bundle)
+
+                    mAlertDialog?.dismiss()
                 }
 
                 mDialogView.dialog_portal_button_usun.setOnClickListener {

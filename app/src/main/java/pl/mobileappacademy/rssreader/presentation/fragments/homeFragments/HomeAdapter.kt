@@ -1,4 +1,4 @@
-package pl.mobileappacademy.rssreader.presentation.fragments.adapters
+package pl.mobileappacademy.rssreader.presentation.fragments.homeFragments
 
 import android.view.LayoutInflater
 import android.view.View

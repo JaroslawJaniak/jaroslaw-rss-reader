@@ -9,13 +9,19 @@ import pl.mobileappacademy.rssreader.data.models.HomeListItem
 interface ChannelsRssDao {
 
     @Query("SELECT * FROM channelsRssTable")
-    fun getAllChannelsRss(): LiveData<List<HomeListItem>>?
+    fun getAllChannelsRss(): List<HomeListItem>?
 
-    @Query("SELECT * from channelsRssTable ORDER BY name ASC")
-    fun sortByNameChannelsRss(): LiveData<List<HomeListItem>>
+    @Query("SELECT * from channelsRssTable WHERE portalName = :portalName ORDER BY name ASC")
+    fun sortByNameASCChannelsRss(portalName: String?): LiveData<List<HomeListItem>>
+
+    @Query("SELECT * from channelsRssTable WHERE portalName = :portalName ORDER BY name DESC")
+    fun sortByNameDSCChannelsRss(portalName: String?): LiveData<List<HomeListItem>>
 
     @Query("SELECT * FROM channelsRssTable WHERE id = :id")
     fun getByIdChannelsRss(id: Long): LiveData<HomeListItem>
+
+    @Query("SELECT * FROM channelsRssTable WHERE portalName = :portalName")
+    fun getByPortalNameChannelsRss(portalName: String?): LiveData<List<HomeListItem>>
 
     @Query("SELECT COUNT(id) FROM channelsRssTable")
     fun getCount(): Int

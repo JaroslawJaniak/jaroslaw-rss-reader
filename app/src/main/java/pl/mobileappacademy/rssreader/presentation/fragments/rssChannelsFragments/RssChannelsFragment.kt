@@ -12,21 +12,21 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.add_dialog.view.*
 import kotlinx.android.synthetic.main.add_dialog_spinner.view.*
 import kotlinx.android.synthetic.main.rss_channels_fragment.*
 import pl.mobileappacademy.rssreader.R
+import pl.mobileappacademy.rssreader.data.database.AppDataBaseKotlin
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.BaseFragment
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.OnItemClickListener
 import pl.mobileappacademy.rssreader.presentation.activities.base.customViews.addOnItemClickListener
-
-import pl.mobileappacademy.rssreader.presentation.fragments.adapters.RssChannelsAdapter
 import pl.mobileappacademy.rssreader.presentation.fragments.navBars.BottomBar
 import pl.mobileappacademy.rssreader.data.models.HomeListItem
-import pl.mobileappacademy.rssreader.data.models.rssModels.Item
+
 
 class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
 
-    private var allItems = arrayListOf<HomeListItem>()
+    var allItems = arrayListOf<HomeListItem>()
     private lateinit var viewHomeList: List<HomeListItem>
     private lateinit var itemToInsert: HomeListItem
     private var portalNameHome: String? = ""
@@ -38,7 +38,7 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            portalNameHome = it.getString("SERIVISE_FILTER")
+            portalNameHome = it.getString("SERVISE_FILTER")
         }
     }
 
@@ -59,9 +59,9 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
         }
 
         viewHomeList = RssChannelsViewModel().getHomeListView()
-        //initFiltrByPortalName(viewHomeList)
 
-        viewModel.appDb?.channelsRssDao()?.getAllChannelsRss()?.observe(this, Observer {
+
+        viewModel.appDb?.channelsRssDao()?.getByPortalNameChannelsRss(portalNameHome)?.observe(this, Observer {
             rssChannelsAdapter.items = it ?: emptyList()
             rssChannelsAdapter.notifyDataSetChanged()
         })
@@ -72,41 +72,45 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
             rssChannelsAdapter.notifyDataSetChanged()
         })
 
-        var x = viewHomeList[1].name
 
         bottomBar?.setBottomBarListener(this)
-        setLsteners()
-
+        setListeners()
     }
 
-    private fun setLsteners() {
+    private fun setListeners() {
         rss_channels_recycle_view.addOnItemClickListener(object :
             OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
-                findNavController().navigate(R.id.channelFragment)
+                val item = rssChannelsAdapter.items[position]
+
+                val bundle = Bundle()
+                bundle.putString("SERVISE_FILTER", portalNameHome)
+                bundle.putString("SERVISE_CHANNEL", item.name)
+                findNavController().navigate(R.id.channelFragment, bundle)
             }
         })
     }
 
     private fun showAddDialog() {
-
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog_portal, null)
+        val mDialogView = LayoutInflater.from(context).inflate(R.layout.add_dialog, null)
         val mBuilder = context?.let { it1 ->
             AlertDialog.Builder(it1)
                 .setView(mDialogView)
                 .setTitle(resources.getString(R.string.dodaj_kanal))
-
         }
         val mAlertDialog = mBuilder?.show()
 
-        mDialogView.add_dialog_OkBtn.setOnClickListener {
+        mDialogView.login_dialog_OkBtn.setOnClickListener {
 
-            val url: String = mDialogView.add_dialogAdressURL.text.toString()
-            val name = mDialogView.spinner.selectedItem.toString()
+            val url: String = mDialogView.login_dialogAdressURL.text.toString()
+            val name: String = mDialogView.login_dialog_name.text.toString()
+            val portalName: String = mDialogView.login_dialog_portalName.text.toString()
 
             itemToInsert = HomeListItem()
-            itemToInsert.name = name
             itemToInsert.adress = url
+            itemToInsert.name = name
+            itemToInsert.portalName = portalName
+
 
             AsyncTask.execute {
                 viewModel.appDb?.channelsRssDao()?.insertChannelsRss(itemToInsert)
@@ -115,17 +119,13 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
             mAlertDialog?.dismiss()
         }
 
-        mDialogView.add_dialog_CancelBtn.setOnClickListener {
+        mDialogView.login_dialog_CancelBtn.setOnClickListener {
             mAlertDialog?.dismiss()
         }
     }
 
-    fun initFiltrByPortalName(viewHomeList: List<HomeListItem>) {
-
-    }
-
     override fun onHomeClick() {
-
+        navigation?.navigate(R.id.homeFragment)
     }
 
     override fun onAddClick() {
@@ -133,6 +133,21 @@ class RssChannelsFragment : BaseFragment(), BottomBar.AppBottomBarListener {
     }
 
     override fun onSortClick() {
+        if(!isSortASC){
 
+            viewModel.appDb?.channelsRssDao()?.sortByNameASCChannelsRss(portalNameHome)?.observe(this, Observer {
+                rssChannelsAdapter.items = it ?: emptyList()
+                rssChannelsAdapter.notifyDataSetChanged()
+            })
+
+            isSortASC = true
+        }
+        else{
+            viewModel.appDb?.channelsRssDao()?.sortByNameDSCChannelsRss(portalNameHome)?.observe(this, Observer {
+                rssChannelsAdapter.items = it ?: emptyList()
+                rssChannelsAdapter.notifyDataSetChanged()
+            })
+            isSortASC = false
+        }
     }
 }

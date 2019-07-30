@@ -6,16 +6,18 @@
 
     <fragment android:id="@+id/homeFragment"
               android:name="pl.mobileappacademy.rssreader.presentation.fragments.homeFragments.HomeFragment"
-              android:label="HomeFragment"/>
+              android:label="Strona domowa"/>
     <fragment android:id="@+id/channelFragment"
               android:name="pl.mobileappacademy.rssreader.presentation.fragments.channelFragments.ChannelFragment"
-              android:label="channel_fragment" tools:layout="@layout/channel_fragment"/>
+              android:label="Wiadomości"
+              tools:layout="@layout/channel_fragment"/>
     <fragment android:id="@+id/rssChannelsFragment"
               android:name="pl.mobileappacademy.rssreader.presentation.fragments.rssChannelsFragments.RssChannelsFragment"
-              android:label="RssChannelsFragment"/>
+              android:label="Kanały RSS"/>
     <fragment android:id="@+id/channelDetailesFragment"
               android:name="pl.mobileappacademy.rssreader.presentation.fragments.channelFragments.ChannelDetailesFragment"
-              android:label="channel_detailes_fragment" tools:layout="@layout/channel_detailes_fragment"/>
+              android:label="Zawartość posta"
+              tools:layout="@layout/channel_detailes_fragment"/>
 
 
 </navigation>
